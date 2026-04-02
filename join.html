@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join the Waitlist — mymodel</title>
+    <meta name="description" content="Cookies made them billions. You got nothing. Until now. Claim your spot on the mymodel waitlist.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&family=Outfit:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#0c0c14;--surface:#12121c;--elevated:#1a1a28;--card:#161624;
+            --border:rgba(255,255,255,0.07);--border-hi:rgba(255,255,255,0.12);
+            --text:#eeedf2;--muted:#7d7a92;--dim:#3d3a56;
+            --accent:#7c5cbf;--accent-soft:#9b82d4;--accent-muted:rgba(124,92,191,0.12);
+            --vivid:#7C3AED;--violet-glow:#A78BFA;
+            --fuchsia:#E879F9;--gold:#FBBF24;--green:#34D399;--red:#ef4444;
+        }
+        @keyframes shimmer{0%{background-position:200% center}100%{background-position:-200% center}}
+        @keyframes fadein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes glow-pulse{0%,100%{opacity:.5}50%{opacity:1}}
+
+        body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+        /* ─── AMBIENT ─── */
+        .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px)}
+        .orb-1{width:500px;height:500px;background:radial-gradient(circle,rgba(124,58,237,0.12),transparent 70%);top:-100px;left:50%;transform:translateX(-50%)}
+        .orb-2{width:400px;height:400px;background:radial-gradient(circle,rgba(232,121,249,0.06),transparent 70%);bottom:0;right:-100px}
+
+        /* ─── NAV ─── */
+        nav{position:relative;z-index:10;width:100%;padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border)}
+        .nav-logo{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.375rem;text-decoration:none;letter-spacing:-0.03em;display:flex;align-items:baseline;gap:0.05em}
+        .nav-logo .my{color:var(--text)}.nav-logo .model{color:var(--accent-soft)}
+
+        /* ─── PAGE ─── */
+        .page{position:relative;z-index:1;width:100%;max-width:500px;padding:2rem 1.25rem 5rem;flex:1}
+
+        /* ─── CARD ─── */
+        .card{
+            width:100%;
+            background:var(--card);
+            border-radius:24px;
+            overflow:hidden;
+            border:1px solid var(--border);
+            box-shadow:0 0 0 1px rgba(255,255,255,0.03) inset, 0 24px 80px rgba(0,0,0,0.5), 0 0 60px rgba(124,58,237,0.04);
+            animation:fadein 0.4s ease both;
+        }
+
+        /* ─── PROGRESS ─── */
+        .progress{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+        .prog-seg{height:3px;background:var(--dim);transition:background 0.5s ease}
+        .prog-seg.on{background:linear-gradient(90deg,var(--fuchsia),var(--vivid))}
+
+        /* ─── CARD BODY ─── */
+        .card-body{padding:1.75rem 1.75rem}
+
+        /* ─── STEP LABEL ─── */
+        .step-label{font-size:0.6875rem;font-weight:600;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;margin-bottom:1.125rem}
+
+        /* ─── BADGE ─── */
+        .badge{
+            display:inline-flex;align-items:center;gap:0.4rem;
+            padding:0.375rem 0.875rem;border-radius:999px;
+            background:var(--accent-muted);
+            border:1px solid rgba(124,92,191,0.22);
+            font-size:0.75rem;color:var(--accent-soft);
+            margin-bottom:1.25rem;
+        }
+        .badge svg{flex-shrink:0}
+
+        /* ─── HEADLINES ─── */
+        h1{
+            font-family:'Space Grotesk',sans-serif;font-weight:800;
+            font-size:clamp(1.875rem,7.5vw,2.5rem);
+            line-height:1.08;letter-spacing:-0.04em;
+            margin-bottom:0.625rem;
+        }
+        .shimmer-text{
+            background:linear-gradient(90deg,var(--fuchsia) 0%,var(--violet-glow) 35%,var(--fuchsia) 65%,var(--violet-glow) 100%);
+            background-size:300% auto;
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+            animation:shimmer 4s linear infinite;
+        }
+        .sub{font-size:0.9375rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.55}
+        h2{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(1.5rem,6vw,2rem);line-height:1.1;letter-spacing:-0.04em;margin-bottom:0.5rem}
+        .step2-sub{font-size:0.875rem;color:var(--muted);line-height:1.6;margin-bottom:1.25rem}
+
+        /* ─── FIELDS ─── */
+        .field-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.875rem}
+        .field-group{display:flex;flex-direction:column;gap:0.375rem;margin-bottom:0.875rem}
+        .field-group:last-of-type{margin-bottom:0}
+        .field-label{font-size:0.6875rem;font-weight:600;letter-spacing:0.09em;color:var(--muted);text-transform:uppercase}
+        .req{color:var(--fuchsia);margin-left:2px}
+        .field-input,.dob-sel{
+            background:var(--elevated);
+            border:1px solid var(--border);
+            border-radius:12px;
+            padding:0.8125rem 1rem;
+            color:var(--text);
+            font-family:'Outfit',sans-serif;font-size:0.9375rem;
+            outline:none;width:100%;
+            transition:border-color 0.2s,box-shadow 0.2s;
+            -webkit-appearance:none;appearance:none;
+        }
+        .field-input::placeholder{color:var(--dim)}
+        .field-input:focus,.dob-sel:focus{
+            border-color:rgba(124,92,191,0.5);
+            box-shadow:0 0 0 3px rgba(124,92,191,0.08);
+        }
+        .field-input.err{border-color:var(--red);box-shadow:0 0 0 3px rgba(239,68,68,0.08)}
+        .dob-row{display:grid;grid-template-columns:5fr 3fr 4fr;gap:0.5rem}
+        .dob-sel{color:var(--text);-webkit-text-fill-color:var(--text)}
+        .dob-sel option{background:#1a1a28;color:#eeedf2}
+        .dob-sel.err{border-color:var(--red)}
+        .field-error{font-size:0.75rem;color:var(--red);margin-top:0.1875rem;display:none}
+        .field-error.show{display:block}
+
+        /* ─── DIVIDER ─── */
+        .form-divider{height:1px;background:var(--border);margin:0.25rem 0 0.875rem}
+
+        /* ─── BUTTONS ─── */
+        .btn-primary{
+            width:100%;padding:1rem;
+            background:linear-gradient(135deg,var(--vivid),var(--accent));
+            color:#fff;border:none;border-radius:14px;
+            font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;
+            cursor:pointer;margin-top:1.25rem;
+            display:flex;align-items:center;justify-content:center;gap:0.4rem;
+            transition:opacity 0.15s,transform 0.1s;
+            box-shadow:0 8px 24px rgba(124,58,237,0.3);
+            -webkit-tap-highlight-color:transparent;
+        }
+        .btn-primary:hover{opacity:0.92}
+        .btn-primary:active{transform:scale(0.99);opacity:0.88}
+        .btn-primary:disabled{opacity:0.5;cursor:default;pointer-events:none;box-shadow:none}
+        .btn-row{display:grid;grid-template-columns:auto 1fr;gap:0.75rem;margin-top:1.25rem}
+        .btn-back{
+            padding:1rem 1.25rem;
+            background:var(--elevated);border:1px solid var(--border);border-radius:14px;
+            color:var(--muted);font-family:'Outfit',sans-serif;font-size:0.9375rem;font-weight:500;
+            cursor:pointer;white-space:nowrap;
+            transition:border-color 0.2s,color 0.2s;
+            -webkit-tap-highlight-color:transparent;
+        }
+        .btn-back:hover{border-color:var(--border-hi);color:var(--text)}
+
+        /* ─── BRAND SELECTION ─── */
+        .brands-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+        .brands-header-label{font-size:0.6875rem;font-weight:600;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase}
+        .brands-counter{
+            font-family:'JetBrains Mono',monospace;font-size:0.75rem;font-weight:500;
+            color:var(--muted);background:var(--elevated);
+            border:1px solid var(--border);border-radius:999px;
+            padding:0.2rem 0.625rem;transition:all 0.25s;
+        }
+        .brands-counter.met{color:var(--green);border-color:rgba(52,211,153,0.3);background:rgba(52,211,153,0.06)}
+
+        .brand-section{margin-bottom:0.25rem}
+        .brand-cat-label{
+            font-size:0.6875rem;font-weight:600;letter-spacing:0.1em;
+            color:var(--muted);text-transform:uppercase;
+            margin:1.125rem 0 0.625rem;
+        }
+        .brand-pills{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.625rem}
+        .brand-pill{
+            padding:0.4375rem 0.9375rem;border-radius:999px;
+            border:1px solid rgba(255,255,255,0.1);
+            background:var(--elevated);
+            color:rgba(238,237,242,0.5);
+            font-family:'Outfit',sans-serif;font-size:0.8125rem;font-weight:500;
+            cursor:pointer;transition:all 0.15s;
+            -webkit-tap-highlight-color:transparent;user-select:none;
+        }
+        .brand-pill:hover{border-color:rgba(255,255,255,0.18);color:rgba(238,237,242,0.75)}
+        .brand-pill.on{
+            background:rgba(124,58,237,0.14);
+            border-color:rgba(167,139,250,0.5);
+            color:var(--violet-glow);
+        }
+
+        /* ─── CUSTOM BRAND ADD ─── */
+        .brand-add-row{margin-top:0.25rem}
+        .brand-add-btn{
+            display:inline-flex;align-items:center;gap:0.3rem;
+            padding:0.375rem 0.75rem;border-radius:999px;
+            border:1px dashed rgba(255,255,255,0.14);
+            background:transparent;
+            color:var(--muted);font-family:'Outfit',sans-serif;font-size:0.75rem;font-weight:500;
+            cursor:pointer;transition:all 0.15s;
+            -webkit-tap-highlight-color:transparent;
+        }
+        .brand-add-btn:hover{border-color:rgba(167,139,250,0.4);color:var(--accent-soft)}
+        .brand-add-input-wrap{display:flex;gap:0.5rem;align-items:center;margin-top:0.375rem}
+        .brand-add-input{
+            flex:1;background:var(--elevated);border:1px solid rgba(124,92,191,0.35);
+            border-radius:10px;padding:0.5625rem 0.875rem;
+            color:var(--text);font-family:'Outfit',sans-serif;font-size:0.875rem;
+            outline:none;transition:border-color 0.2s;
+            -webkit-appearance:none;
+        }
+        .brand-add-input::placeholder{color:var(--dim)}
+        .brand-add-input:focus{border-color:rgba(167,139,250,0.6);box-shadow:0 0 0 3px rgba(124,92,191,0.08)}
+        .brand-add-confirm{
+            padding:0.5rem 0.875rem;border-radius:10px;
+            background:var(--accent);border:none;
+            color:#fff;font-family:'Outfit',sans-serif;font-size:0.8125rem;font-weight:600;
+            cursor:pointer;white-space:nowrap;transition:opacity 0.15s;
+        }
+        .brand-add-confirm:hover{opacity:0.88}
+
+        .brand-min-error{font-size:0.8125rem;color:var(--red);text-align:center;margin-top:0.625rem;display:none}
+        .brand-min-error.show{display:block}
+
+        /* ─── SUCCESS ─── */
+        .success-wrap{padding:2.25rem 1.75rem;text-align:center}
+        .success-check-ring{
+            width:3.5rem;height:3.5rem;border-radius:50%;
+            background:rgba(52,211,153,0.08);
+            border:1.5px solid rgba(52,211,153,0.35);
+            display:flex;align-items:center;justify-content:center;
+            margin:0 auto 1rem;
+            box-shadow:0 0 20px rgba(52,211,153,0.15);
+        }
+        .success-check-ring svg{color:var(--green)}
+        .success-eyebrow{font-size:0.6875rem;font-weight:600;letter-spacing:0.14em;color:var(--muted);text-transform:uppercase;margin-bottom:0.875rem}
+        .success-headline{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(1.625rem,6vw,2.25rem);line-height:1.1;letter-spacing:-0.04em;margin-bottom:0.625rem}
+        .success-sub{font-size:0.9375rem;color:var(--muted);margin-bottom:1.75rem;line-height:1.55}
+
+        /* reward strip */
+        .reward-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-bottom:1.75rem}
+        .reward-chip{
+            padding:0.875rem 0.5rem;border-radius:14px;
+            border:1px solid;text-align:center;
+        }
+        .reward-chip.gold{background:rgba(251,191,36,0.06);border-color:rgba(251,191,36,0.2)}
+        .reward-chip.violet{background:rgba(124,58,237,0.07);border-color:rgba(167,139,250,0.2)}
+        .reward-chip.green{background:rgba(52,211,153,0.06);border-color:rgba(52,211,153,0.2)}
+        .reward-num{
+            display:block;font-family:'JetBrains Mono',monospace;font-size:1.25rem;font-weight:500;
+            line-height:1;margin-bottom:0.3rem;
+        }
+        .reward-chip.gold .reward-num{color:var(--gold)}
+        .reward-chip.violet .reward-num{color:var(--violet-glow)}
+        .reward-chip.green .reward-num{color:var(--green)}
+        .reward-label{font-size:0.6875rem;color:var(--muted);line-height:1.3}
+
+        .bring-label{font-size:0.6875rem;font-weight:600;letter-spacing:0.14em;color:var(--muted);text-transform:uppercase;margin-bottom:0.875rem}
+        .btn-social{
+            width:100%;padding:0.9375rem;background:#050505;
+            color:#fff;border:1px solid rgba(255,255,255,0.1);border-radius:14px;
+            font-family:'Outfit',sans-serif;font-size:0.9375rem;font-weight:600;
+            cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.625rem;
+            margin-bottom:0.5rem;text-decoration:none;
+            transition:border-color 0.2s,background 0.15s;
+            -webkit-tap-highlight-color:transparent;
+        }
+        .btn-social:hover{background:#0f0f0f;border-color:rgba(255,255,255,0.18)}
+        .btn-share{
+            width:100%;padding:0.875rem;
+            background:var(--elevated);border:1px solid var(--border);border-radius:14px;
+            color:var(--muted);font-family:'Outfit',sans-serif;font-size:0.875rem;font-weight:500;
+            cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.5rem;
+            transition:border-color 0.2s,color 0.2s;
+            -webkit-tap-highlight-color:transparent;
+        }
+        .btn-share:hover{border-color:var(--border-hi);color:var(--text)}
+
+        /* ─── FOOTER NOTE ─── */
+        .foot-note{text-align:center;font-size:0.75rem;color:var(--dim);margin-top:1.25rem;line-height:1.55}
+
+        .hidden{display:none!important}
+    </style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<nav>
+    <a href="/for-the-people.html" class="nav-logo"><span class="my">my</span><span class="model">model</span></a>
+</nav>
+
+<div class="page">
+
+    <!-- ═══════════════════════════════ -->
+    <!-- STEP 1                          -->
+    <!-- ═══════════════════════════════ -->
+    <div class="card" id="step1">
+        <div class="progress">
+            <div class="prog-seg on"></div>
+            <div class="prog-seg"></div>
+        </div>
+        <div class="card-body">
+            <div class="step-label">Step 1 of 2 — Your Info</div>
+            <div class="badge">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9.5V2.5M3 5.5l3-3 3 3"/></svg>
+                Every signup raises the floor for everyone
+            </div>
+            <h1>The brands already have your data.<br><span class="shimmer-text">Your Stats Card is how you get paid for it.</span></h1>
+            <p class="sub">Tell us a little about yourself. We'll use it to match you with the right offers from day one.</p>
+
+            <div class="field-row">
+                <div class="field-group" style="margin-bottom:0">
+                    <label class="field-label" for="fname">First Name<span class="req">*</span></label>
+                    <input class="field-input" type="text" id="fname" placeholder="Jordan" autocomplete="given-name">
+                    <span class="field-error" id="fname-err">Required</span>
+                </div>
+                <div class="field-group" style="margin-bottom:0">
+                    <label class="field-label" for="lname">Last Name</label>
+                    <input class="field-input" type="text" id="lname" placeholder="Smith" autocomplete="family-name">
+                </div>
+            </div>
+
+            <div class="field-group" style="margin-top:0.875rem">
+                <label class="field-label" for="email">Email Address<span class="req">*</span></label>
+                <input class="field-input" type="email" id="email" placeholder="you@email.com" autocomplete="email">
+                <span class="field-error" id="email-err">Enter a valid email address</span>
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">Date of Birth<span class="req">*</span></label>
+                <div class="dob-row">
+                    <select class="dob-sel" id="dob-month">
+                        <option value="" disabled selected>Month</option>
+                        <option value="1">January</option><option value="2">February</option>
+                        <option value="3">March</option><option value="4">April</option>
+                        <option value="5">May</option><option value="6">June</option>
+                        <option value="7">July</option><option value="8">August</option>
+                        <option value="9">September</option><option value="10">October</option>
+                        <option value="11">November</option><option value="12">December</option>
+                    </select>
+                    <select class="dob-sel" id="dob-day"><option value="" disabled selected>Day</option></select>
+                    <select class="dob-sel" id="dob-year"><option value="" disabled selected>Year</option></select>
+                </div>
+                <span class="field-error" id="dob-err">Select your date of birth</span>
+            </div>
+
+            <button class="btn-primary" onclick="goToStep2()">
+                Continue
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+        </div>
+    </div>
+    <p class="foot-note" id="foot1">No payment info. No commitment. Free to join.</p>
+
+    <!-- ═══════════════════════════════ -->
+    <!-- STEP 2                          -->
+    <!-- ═══════════════════════════════ -->
+    <div class="card hidden" id="step2">
+        <div class="progress">
+            <div class="prog-seg on"></div>
+            <div class="prog-seg on"></div>
+        </div>
+        <div class="card-body">
+            <div class="step-label">Step 2 of 2 — Your Brands</div>
+            <h2>Now we get to know you.</h2>
+            <p class="step2-sub">The brands you shop with tell us who you are. Pick at least 3 — this is how we match you with offers that actually make sense for your life.</p>
+            <div class="brands-header">
+                <span class="brands-header-label">Selected</span>
+                <span class="brands-counter" id="brand-count">0 / 3 min</span>
+            </div>
+            <div id="brands-container"></div>
+            <p class="brand-min-error" id="brand-min-error">Select at least 3 brands to continue</p>
+            <div class="btn-row">
+                <button class="btn-back" onclick="goToStep1()">&#8592; Back</button>
+                <button class="btn-primary" id="claim-btn" onclick="submitForm()" style="margin-top:0;width:100%">
+                    Claim My Spot
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <p class="foot-note hidden" id="foot2">Your brand preferences are only used to match you with relevant offers.</p>
+
+    <!-- ═══════════════════════════════ -->
+    <!-- SUCCESS                         -->
+    <!-- ═══════════════════════════════ -->
+    <div class="card hidden" id="success">
+        <div class="success-wrap">
+            <div class="success-check-ring">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4.5 11.5l4.5 4.5 8.5-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="success-eyebrow">You're in.</div>
+            <div class="success-headline">The era of giving it away for free is over.</div>
+            <p class="success-sub">You just chose ownership over exploitation.</p>
+
+            <div class="reward-strip">
+                <div class="reward-chip gold">
+                    <span class="reward-num">$5+</span>
+                    <span class="reward-label">Minimum per offer</span>
+                </div>
+                <div class="reward-chip violet">
+                    <span class="reward-num">100%</span>
+                    <span class="reward-label">Your accept / decline</span>
+                </div>
+                <div class="reward-chip green">
+                    <span class="reward-num">$0</span>
+                    <span class="reward-label">Cost to join — ever</span>
+                </div>
+            </div>
+
+            <div class="bring-label">Now bring someone else.</div>
+            <a href="https://www.tiktok.com/@theantitechbro" class="btn-social" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.77a8.28 8.28 0 004.84 1.54V6.83a4.85 4.85 0 01-1.07-.14z"/></svg>
+                Follow on TikTok
+            </a>
+            <a href="https://x.com/theantitechbro" class="btn-social" target="_blank" rel="noopener">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.735-8.845L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                Follow on X
+            </a>
+            <button class="btn-share" onclick="shareWaitlist()">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span id="share-label">Share the waitlist</span>
+            </button>
+        </div>
+    </div>
+
+</div><!-- .page -->
+
+<script>
+const FORM_ENDPOINT = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+// ─── DOB OPTIONS ───
+(function() {
+    const days = document.getElementById('dob-day');
+    for (let d = 1; d <= 31; d++) days.innerHTML += `<option value="${d}">${d}</option>`;
+    const years = document.getElementById('dob-year');
+    const cur = new Date().getFullYear();
+    for (let y = cur - 13; y >= 1924; y--) years.innerHTML += `<option value="${y}">${y}</option>`;
+})();
+
+// ─── BRAND DATA ───
+const brandCategories = [
+    { name: 'Apparel & Fashion',       brands: ['Nike','Adidas','Zara','H&M','SHEIN','ASOS','Lululemon','Nordstrom','Gap / Old Navy','Urban Outfitters','Forever 21',"Levi's"] },
+    { name: 'Beauty & Personal Care',  brands: ['Sephora','Ulta','Rare Beauty','Fenty Beauty','e.l.f.','Glossier','CeraVe','Neutrogena','Dyson Beauty'] },
+    { name: 'Tech & Electronics',      brands: ['Apple','Samsung','Best Buy','Amazon','Google','Sony','Meta'] },
+    { name: 'Grocery, Food & Drink',   brands: ['Whole Foods',"Trader Joe's",'Target','Walmart','DoorDash','Uber Eats','Instacart','Starbucks'] },
+    { name: 'Fitness & Wellness',      brands: ['Peloton','Gymshark','WHOOP','Noom','Hims / Hers','GFuel / Athletic Greens'] }
+];
+
+const selected = new Set();
+
+function updateCount() {
+    const n = selected.size;
+    const el = document.getElementById('brand-count');
+    el.textContent = n + ' / 3 min';
+    el.className = 'brands-counter' + (n >= 3 ? ' met' : '');
+}
+
+// ─── BUILD BRAND UI ───
+(function buildBrands() {
+    const container = document.getElementById('brands-container');
+
+    brandCategories.forEach((cat, idx) => {
+        const section = document.createElement('div');
+        section.className = 'brand-section';
+
+        // Category label
+        const lbl = document.createElement('div');
+        lbl.className = 'brand-cat-label';
+        lbl.textContent = cat.name;
+        section.appendChild(lbl);
+
+        // Pills wrapper
+        const pillsWrap = document.createElement('div');
+        pillsWrap.className = 'brand-pills';
+        pillsWrap.id = 'pills-' + idx;
+
+        cat.brands.forEach(brand => {
+            pillsWrap.appendChild(makePill(brand));
+        });
+        section.appendChild(pillsWrap);
+
+        // Add-a-brand row
+        const addRow = document.createElement('div');
+        addRow.className = 'brand-add-row';
+
+        const addBtn = document.createElement('button');
+        addBtn.id = 'add-btn-' + idx;
+        addBtn.className = 'brand-add-btn';
+        addBtn.type = 'button';
+        addBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="5.5" y1="1" x2="5.5" y2="10"/><line x1="1" y1="5.5" x2="10" y2="5.5"/></svg> Add a brand`;
+        addBtn.addEventListener('click', () => showAdd(idx));
+        addRow.appendChild(addBtn);
+
+        const inputWrap = document.createElement('div');
+        inputWrap.id = 'add-wrap-' + idx;
+        inputWrap.className = 'brand-add-input-wrap hidden';
+
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'brand-add-input';
+        input.id = 'add-input-' + idx;
+        input.placeholder = 'Brand name\u2026';
+        input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); confirmAdd(idx); } });
+        inputWrap.appendChild(input);
+
+        const confirmBtn = document.createElement('button');
+        confirmBtn.type = 'button';
+        confirmBtn.className = 'brand-add-confirm';
+        confirmBtn.textContent = 'Add';
+        confirmBtn.addEventListener('click', () => confirmAdd(idx));
+        inputWrap.appendChild(confirmBtn);
+
+        addRow.appendChild(inputWrap);
+        section.appendChild(addRow);
+        container.appendChild(section);
+    });
+})();
+
+function makePill(brand) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'brand-pill';
+    btn.textContent = brand;
+    btn.addEventListener('click', () => {
+        if (selected.has(brand)) { selected.delete(brand); btn.classList.remove('on'); }
+        else { selected.add(brand); btn.classList.add('on'); }
+        updateCount();
+    });
+    return btn;
+}
+
+function showAdd(idx) {
+    document.getElementById('add-btn-' + idx).classList.add('hidden');
+    document.getElementById('add-wrap-' + idx).classList.remove('hidden');
+    document.getElementById('add-input-' + idx).focus();
+}
+
+function confirmAdd(idx) {
+    const input = document.getElementById('add-input-' + idx);
+    const val = input.value.trim();
+    if (!val) {
+        // close without adding
+        document.getElementById('add-wrap-' + idx).classList.add('hidden');
+        document.getElementById('add-btn-' + idx).classList.remove('hidden');
+        return;
+    }
+    const pill = makePill(val);
+    pill.classList.add('on');
+    selected.add(val);
+    document.getElementById('pills-' + idx).appendChild(pill);
+    updateCount();
+    input.value = '';
+    document.getElementById('add-wrap-' + idx).classList.add('hidden');
+    document.getElementById('add-btn-' + idx).classList.remove('hidden');
+}
+
+// ─── STEP NAVIGATION ───
+let s1 = {};
+
+function goToStep2() {
+    const fn   = document.getElementById('fname').value.trim();
+    const em   = document.getElementById('email').value.trim();
+    const mo   = document.getElementById('dob-month').value;
+    const da   = document.getElementById('dob-day').value;
+    const yr   = document.getElementById('dob-year').value;
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em);
+    const dobOk   = mo && da && yr;
+
+    setErr('fname', !fn);
+    setErr('email', !emailOk);
+    setErr('dob',   !dobOk);
+    if (!fn || !emailOk || !dobOk) return;
+
+    s1 = { firstName: fn, lastName: document.getElementById('lname').value.trim(), email: em, dob: `${mo}/${da}/${yr}` };
+    show('step2'); hide('step1');
+    show('foot2'); hide('foot1');
+}
+
+function goToStep1() {
+    show('step1'); hide('step2');
+    show('foot1'); hide('foot2');
+}
+
+// ─── SUBMIT ───
+async function submitForm() {
+    if (selected.size < 3) {
+        document.getElementById('brand-min-error').classList.add('show');
+        return;
+    }
+    document.getElementById('brand-min-error').classList.remove('show');
+
+    const btn = document.getElementById('claim-btn');
+    btn.disabled = true;
+    btn.textContent = 'Claiming your spot\u2026';
+
+    const payload = {
+        ...s1,
+        brands: [...selected].join(', '),
+        submitted_at: new Date().toISOString(),
+        source: 'join-waitlist'
+    };
+
+    try {
+        if (FORM_ENDPOINT !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+            await fetch(FORM_ENDPOINT, {
+                method: 'POST', mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+        } else {
+            console.log('dev payload:', payload);
+            await new Promise(r => setTimeout(r, 500));
+        }
+        show('success'); hide('step2'); hide('foot2');
+    } catch(e) {
+        btn.disabled = false;
+        btn.textContent = 'Claim My Spot \u2192';
+    }
+}
+
+// ─── SHARE ───
+function shareWaitlist() {
+    const url = window.location.origin + '/join.html';
+    if (navigator.share) {
+        navigator.share({ title: 'mymodel', text: 'Brands want to pay you for your data. Get your spot.', url });
+    } else {
+        navigator.clipboard?.writeText(url).then(() => {
+            const lbl = document.getElementById('share-label');
+            lbl.textContent = 'Link copied!';
+            setTimeout(() => lbl.textContent = 'Share the waitlist', 2500);
+        });
+    }
+}
+
+// ─── UTILS ───
+function show(id) { document.getElementById(id).classList.remove('hidden'); window.scrollTo(0, 0); }
+function hide(id) { document.getElementById(id).classList.add('hidden'); }
+
+function setErr(field, isErr) {
+    const map = { fname: ['fname','fname-err'], email: ['email','email-err'], dob: ['dob-month','dob-err'] };
+    const [inputId, errId] = map[field];
+    document.getElementById(inputId)?.classList[isErr ? 'add' : 'remove']('err');
+    document.getElementById(errId)?.classList[isErr ? 'add' : 'remove']('show');
+}
+
+['fname','email'].forEach(id =>
+    document.getElementById(id)?.addEventListener('input', () => setErr(id, false))
+);
+['dob-month','dob-day','dob-year'].forEach(id =>
+    document.getElementById(id)?.addEventListener('change', () => setErr('dob', false))
+);
+</script>
+</body>
+</html>

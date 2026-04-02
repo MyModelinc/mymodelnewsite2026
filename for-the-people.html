@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mymodel — Your Stats Card. Your Rules. Your Money.</title>
+    <meta name="description" content="Cookies made them billions. You got nothing. Until now. Introducing your Stats Card — the first digital persona you own and monetize.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#0c0c14;--surface:#12121c;--elevated:#1a1a28;
+            --text-primary:#eeedf2;--text-secondary:#9490a6;--text-muted:#5c5873;
+            --accent:#7c5cbf;--accent-soft:#9b82d4;--accent-muted:rgba(124,92,191,0.12);
+            --deep-violet:#5B21B6;--vivid-violet:#7C3AED;--violet-glow:#A78BFA;
+            --dark-card:#231D30;--offer-gold:#FBBF24;--success-green:#34D399;
+            --fuchsia:#E879F9;
+            --border:rgba(255,255,255,0.06);
+            --green:#22c55e;--red:#ef4444
+        }
+        html{scroll-behavior:smooth}
+        body{background:var(--bg);color:var(--text-primary);font-family:'Outfit',sans-serif;font-size:1.0625rem;line-height:1.65;overflow-x:hidden}
+
+        h1{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(2.5rem,5.5vw,4.5rem);letter-spacing:-0.05em;line-height:1.05;margin-bottom:0.25rem}
+        h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(2rem,4.5vw,3.25rem);letter-spacing:-0.04em;line-height:1.1;margin-bottom:1.25rem}
+        h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.375rem;margin-bottom:0.75rem}
+
+        /* Mid-tier statement class */
+        .statement{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(1.25rem,2.2vw,1.75rem);line-height:1.3;letter-spacing:-0.025em;color:var(--text-primary)}
+
+        .label{font-family:'Outfit',sans-serif;font-weight:500;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent-soft);margin-bottom:0.75rem}
+        .mono{font-family:'JetBrains Mono',monospace;font-weight:500}
+
+        .container{max-width:1200px;margin:0 auto;padding:0 2rem}
+        section{position:relative}
+
+        .glass{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(18,18,28,0.5);border:1px solid rgba(255,255,255,0.08);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.06),0 16px 48px rgba(0,0,0,0.4)}
+
+        .btn{padding:0.875rem 2rem;border-radius:0.875rem;font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;transition:all 0.3s ease;border:none;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:0.5rem}
+        .btn-primary{background:var(--accent);color:#fff}
+        .btn-primary:hover{background:var(--accent-soft);transform:translateY(-3px);box-shadow:0 12px 40px rgba(124,92,191,0.3)}
+        .btn-ghost{background:transparent;color:var(--text-primary);border:1px solid var(--border)}
+        .btn-ghost:hover{background:var(--surface);border-color:var(--accent)}
+
+        .highlight{color:var(--violet-glow)}
+        .bold{font-weight:700}
+        .money{color:#fff;font-family:'JetBrains Mono',monospace;font-weight:500}
+
+        /* =============================== */
+        /* NAV                             */
+        /* =============================== */
+        nav{position:fixed;top:0;left:0;right:0;z-index:1000;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(12,12,20,0.75);border-bottom:1px solid var(--border);padding:1rem 2rem}
+        .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+        .nav-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.5rem;text-decoration:none;display:flex;gap:0.15rem}
+        .nav-logo .my{color:var(--text-primary)}.nav-logo .model{color:var(--accent)}
+        .nav-links{display:flex;align-items:center;gap:2rem}
+        .nav-link{color:var(--text-secondary);text-decoration:none;font-size:0.875rem;font-weight:500;transition:color 0.2s,opacity 0.2s;opacity:0.55}
+        .nav-link:hover{color:var(--text-primary);opacity:1}
+        .nav-link.active{color:var(--text-primary);opacity:1;position:relative}
+        .nav-link.active::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--accent);border-radius:2px}
+        .nav-divider{width:1px;height:14px;background:var(--border)}
+        .nav-cta{padding:0.625rem 1.5rem;background:var(--accent);color:#fff;border:none;border-radius:999px;font-family:'Outfit',sans-serif;font-size:0.875rem;font-weight:600;cursor:pointer;transition:all 0.3s;text-decoration:none}
+        .nav-cta:hover{background:var(--accent-soft);transform:translateY(-2px)}
+        @media(max-width:768px){.nav-links{display:none}}
+
+        /* FLOATING CTA */
+        #floating-cta{position:fixed;bottom:0;left:0;right:0;z-index:999;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(12,12,20,0.88);border-top:1px solid var(--border);padding:1rem 2rem;transform:translateY(100%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1)}
+        #floating-cta.visible{transform:translateY(0)}
+        .floating-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem}
+        .floating-text{font-size:0.875rem;color:var(--text-secondary)}
+        .floating-text strong{color:var(--text-primary)}
+        @media(max-width:768px){.floating-text{display:none}.floating-inner{justify-content:center}.floating-inner .btn{width:100%}}
+
+        /* =============================== */
+        /* HERO                            */
+        /* =============================== */
+        .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding-top:5rem;padding-bottom:2rem}
+        .hero-copy{position:relative;z-index:2}
+        .hero-copy h1:nth-child(1){color:var(--text-primary)}
+        .hero-copy h1:nth-child(2){color:var(--text-secondary)}
+        .hero-copy h1.shimmer{
+            background:linear-gradient(90deg,var(--violet-glow) 0%,#e879f9 25%,var(--violet-glow) 50%,#fff 75%,var(--violet-glow) 100%);
+            background-size:200% auto;
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+            animation:shimmer 3s linear infinite;
+        }
+        @keyframes shimmer{0%{background-position:200% center}100%{background-position:-200% center}}
+
+        /* Hero subtext — split around CTAs */
+        .hero-subtext-pre{margin:1.5rem 0 0;max-width:460px}
+        .hero-subtext-pre .line{display:block;line-height:1.7;font-size:1.0625rem;color:var(--text-secondary)}
+        .hero-buttons{display:flex;gap:1rem;flex-wrap:wrap;margin:1.75rem 0}
+        @keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+        .hero-buttons.floating{animation:heroFloat 4s ease-in-out infinite}
+        .hero-subtext-post{max-width:460px;margin-bottom:0}
+        .hero-resolve-label{display:block;font-size:1.25rem;color:var(--text-primary);font-weight:600;font-family:'Outfit',sans-serif;line-height:1.7}
+        .hero-resolve-main{display:block;font-size:1.25rem;font-weight:600;color:var(--text-primary);line-height:1.5;margin-top:0.25rem}
+        .pay-you{
+            display:inline-block;
+            background:linear-gradient(90deg,var(--violet-glow) 0%,#e879f9 30%,#fff 60%,var(--violet-glow) 100%);
+            background-size:200% auto;
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+            animation:shimmer 3s linear infinite;
+            font-style:italic;
+        }
+        .hero-phone{position:relative;z-index:2;display:flex;justify-content:center;perspective:1200px}
+        @keyframes iphoneFloat{
+            0%,100%{transform:rotateY(-18deg) rotateX(5deg) rotate(-2deg) translateY(0px);filter:drop-shadow(0 28px 60px rgba(0,0,0,0.55))}
+            50%{transform:rotateY(-14deg) rotateX(3deg) rotate(-1.5deg) translateY(-10px);filter:drop-shadow(0 40px 80px rgba(0,0,0,0.65))}
+        }
+        @media(max-width:768px){
+            .hero{grid-template-columns:1fr;gap:2.5rem;min-height:auto;padding-top:6rem}
+            .hero-copy{text-align:center}
+            .hero-subtext-pre,.hero-subtext-post{margin-left:auto;margin-right:auto}
+            .hero-buttons{justify-content:center}
+        }
+
+        /* =============================== */
+        /* iPHONE MOCKUP                   */
+        /* =============================== */
+        .iphone{width:300px;height:640px;background:linear-gradient(160deg,#1c1c2e,#0e0e1a);border:2.5px solid rgba(255,255,255,0.1);border-radius:48px;position:relative;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.06);transform-style:preserve-3d;animation:iphoneFloat 7s ease-in-out infinite;will-change:transform}
+        .iphone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:126px;height:34px;background:#0c0c14;border-radius:0 0 20px 20px;z-index:10}
+        .iphone-notch::after{content:'';position:absolute;top:10px;left:50%;transform:translateX(-50%);width:60px;height:6px;background:rgba(255,255,255,0.06);border-radius:3px}
+        .iphone-status{display:flex;justify-content:space-between;align-items:center;padding:0.5rem 1.5rem;padding-top:2.5rem;font-family:-apple-system,system-ui,sans-serif;font-size:0.8125rem;font-weight:600;color:var(--text-primary)}
+        .iphone-screen{padding:0.5rem 0.75rem;height:calc(100% - 60px);overflow:hidden;position:relative;clip:rect(0,auto,auto,0)}
+        @media(max-width:768px){.iphone{width:260px;height:560px}}
+
+        /* =============================== */
+        /* iOS NOTIFICATION — REDESIGNED   */
+        /* =============================== */
+        .ios-notif{
+            position:absolute;
+            left:0.75rem;right:0.75rem;
+            padding:0.75rem 0.875rem;
+            will-change:top,opacity,transform;
+            border-radius:16px;
+            background:rgba(30,28,42,0.88);
+            backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);
+            border:1px solid rgba(255,255,255,0.10);
+            box-shadow:0 8px 32px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.07);
+            will-change:transform,opacity;
+        }
+        .ios-notif-header{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem}
+        .ios-notif-app-icon{
+            width:1.75rem;height:1.75rem;border-radius:7px;
+            background:linear-gradient(135deg,#5B21B6,#7C3AED);
+            display:flex;align-items:center;justify-content:center;
+            font-size:0.75rem;font-weight:800;font-family:'Space Grotesk',sans-serif;
+            color:#fff;flex-shrink:0;
+            box-shadow:0 2px 8px rgba(91,33,182,0.5);
+        }
+        .ios-notif-app-name{font-family:-apple-system,system-ui,sans-serif;font-size:0.6875rem;font-weight:600;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.04em;flex:1}
+        .ios-notif-time{font-family:-apple-system,system-ui,sans-serif;font-size:0.625rem;color:rgba(255,255,255,0.4);white-space:nowrap}
+        .ios-notif-title{font-family:-apple-system,system-ui,sans-serif;font-size:0.8125rem;font-weight:600;color:#fff;margin-bottom:0.2rem;line-height:1.3}
+        .ios-notif-text{font-family:-apple-system,system-ui,sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.65);line-height:1.35;margin-bottom:0.05rem}
+        .ios-notif-sub{font-family:-apple-system,system-ui,sans-serif;font-size:0.6875rem;color:rgba(255,255,255,0.4);margin-bottom:0.5rem}
+        .ios-notif-actions{display:grid;grid-template-columns:1fr 1fr 0.7fr;gap:0.3rem;margin-top:0.5rem;border-top:1px solid rgba(255,255,255,0.07);padding-top:0.5rem}
+        .ios-notif-action{
+            padding:0.45rem 0.25rem;border-radius:9px;
+            font-family:-apple-system,system-ui,sans-serif;
+            font-size:0.6875rem;font-weight:600;border:none;cursor:pointer;
+            transition:all 0.15s;text-align:center;
+        }
+        .ios-action-accept{background:var(--vivid-violet);color:#fff}
+        .ios-action-decline{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7)}
+        .ios-action-more{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.45);font-size:0.625rem}
+        .notif-amount{color:var(--offer-gold);font-weight:700;font-family:-apple-system,system-ui,sans-serif}
+
+        /* =============================== */
+        /* STATS CARD SECTION — REDESIGNED */
+        /* =============================== */
+        .statscard-section{
+            padding:8rem 0 6rem;
+            position:relative;overflow:hidden;
+        }
+        .statscard-section::before{
+            content:'';position:absolute;
+            top:50%;left:30%;transform:translate(-50%,-50%);
+            width:700px;height:700px;
+            background:radial-gradient(circle,rgba(124,58,237,0.1) 0%,transparent 65%);
+            pointer-events:none;
+        }
+        .statscard-layout{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:5rem;
+            align-items:center;
+        }
+        /* Card column — left */
+        .statscard-left{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        /* Copy column — right aligned */
+        .statscard-right{
+            text-align:right;
+        }
+        /* Stats card right — new type hierarchy */
+        .sc-introducing{
+            display:block;
+            font-family:'Outfit',sans-serif;
+            font-weight:500;
+            font-size:clamp(2rem,3.5vw,3rem);
+            color:var(--text-secondary);
+            letter-spacing:-0.01em;
+            line-height:1.1;
+            margin-bottom:0.2rem;
+        }
+        .sc-your-statscard{
+            display:block;
+            font-family:'Space Grotesk',sans-serif;
+            font-weight:700;
+            font-size:clamp(2rem,3.5vw,3rem);
+            color:var(--text-primary);
+            letter-spacing:-0.04em;
+            line-height:1.1;
+            margin-bottom:1.25rem;
+        }
+        .sc-hero-tagline{
+            font-family:'Space Grotesk',sans-serif;
+            font-weight:800;
+            font-size:clamp(2rem,4vw,3.75rem);
+            letter-spacing:-0.05em;
+            line-height:1.05;
+            margin-bottom:0;
+            background:linear-gradient(135deg,var(--fuchsia) 0%,var(--offer-gold) 52%,var(--violet-glow) 100%);
+            background-size:200% auto;
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+            animation:shimmer 5s linear infinite;
+        }
+        /* Desc caption — centered below layout */
+        @keyframes captionFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+        .statscard-caption{
+            text-align:center;
+            max-width:680px;
+            margin:0 auto;
+            padding-top:3.5rem;
+            animation:captionFloat 7s ease-in-out infinite;
+        }
+        .statscard-caption p{margin:0;line-height:1.6}
+        .statscard-caption .caption-l1{font-weight:500;font-size:1.125rem;color:var(--text-primary)}
+        .statscard-caption .caption-l2,.statscard-caption .caption-l3{font-weight:400;font-size:1rem;color:var(--text-secondary)}
+        .statscard-rule{
+            width:3rem;height:2px;
+            background:linear-gradient(90deg,transparent,var(--violet-glow));
+            margin:1.75rem 0 1.75rem auto;
+        }
+        .statscard-desc-lines{
+            display:flex;flex-direction:column;gap:0.4rem;
+        }
+        .statscard-desc-lines p{
+            font-size:clamp(0.9375rem,1.35vw,1.0625rem);
+            line-height:1.55;
+            margin:0;
+        }
+        .statscard-desc-lines p:nth-child(1){color:var(--text-primary);font-weight:500}
+        .statscard-desc-lines p:nth-child(2),.statscard-desc-lines p:nth-child(3){color:var(--text-secondary)}
+
+        @media(max-width:900px){
+            .statscard-layout{grid-template-columns:1fr;gap:3rem}
+            .statscard-right{text-align:center}
+            .statscard-rule{margin:1.75rem auto}
+            .statscard-left{order:-1}
+        }
+
+        /* =============================== */
+        /* STATS CARD — TRADING CARD DESIGN */
+        /* =============================== */
+        .card-wrapper{
+            position:relative;
+            animation:cardFloat 7s ease-in-out infinite;
+            will-change:transform;
+        }
+        @keyframes cardFloat{
+            0%,100%{transform:translateY(0px) rotate(-1.5deg);filter:drop-shadow(0 20px 50px rgba(124,58,237,0.3))}
+            50%{transform:translateY(-12px) rotate(-0.5deg);filter:drop-shadow(0 32px 70px rgba(124,58,237,0.45))}
+        }
+
+        .stats-card{
+            width:260px;
+            aspect-ratio:5/7;
+            padding:1.5rem 1.25rem 1.25rem;
+            border-radius:20px;
+            background:linear-gradient(155deg,#2a2040 0%,#1a1428 40%,#231D30 100%);
+            border:1.5px solid rgba(167,139,250,0.45);
+            position:relative;
+            overflow:hidden;
+            display:flex;
+            flex-direction:column;
+            justify-content:space-between;
+            box-shadow:
+                0 0 0 1px rgba(167,139,250,0.1),
+                0 0 40px rgba(124,58,237,0.2),
+                0 24px 60px rgba(0,0,0,0.6),
+                inset 0 1px 0 rgba(255,255,255,0.08);
+        }
+
+        /* Holographic shimmer overlay */
+        .stats-card::before{
+            content:'';
+            position:absolute;inset:0;border-radius:20px;
+            background:linear-gradient(
+                125deg,
+                transparent 20%,
+                rgba(167,139,250,0.18) 33%,
+                rgba(232,121,249,0.12) 43%,
+                rgba(251,191,36,0.07) 53%,
+                rgba(52,211,153,0.06) 60%,
+                transparent 72%
+            );
+            background-size:300% 300%;
+            animation:holoShimmer 6s ease-in-out infinite;
+            pointer-events:none;
+            z-index:2;
+            mix-blend-mode:screen;
+        }
+        /* Edge glow */
+        .stats-card::after{
+            content:'';
+            position:absolute;inset:-1px;border-radius:21px;
+            background:linear-gradient(135deg,
+                rgba(167,139,250,0.5) 0%,
+                transparent 35%,
+                transparent 65%,
+                rgba(232,121,249,0.35) 100%
+            );
+            z-index:-1;
+            pointer-events:none;
+            animation:edgeGlow 3s ease-in-out infinite alternate;
+        }
+        @keyframes holoShimmer{
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+        @keyframes edgeGlow{
+            0%{opacity:0.6;filter:blur(0px)}
+            100%{opacity:1;filter:blur(1px)}
+        }
+
+        /* Card Content */
+        .sc-card-header{
+            display:flex;align-items:flex-start;justify-content:space-between;
+            margin-bottom:0.875rem;position:relative;z-index:3;
+        }
+        .sc-avatar{
+            width:2.75rem;height:2.75rem;
+            border-radius:50%;
+            background:linear-gradient(135deg,var(--vivid-violet),var(--fuchsia));
+            display:flex;align-items:center;justify-content:center;
+            font-family:'Space Grotesk',sans-serif;font-weight:800;color:#fff;font-size:1.125rem;
+            box-shadow:0 4px 16px rgba(124,58,237,0.5);
+            flex-shrink:0;
+        }
+        .sc-header-meta{text-align:right}
+        .sc-card-label{
+            font-family:'JetBrains Mono',monospace;
+            font-size:0.5625rem;
+            font-weight:500;
+            color:rgba(167,139,250,0.6);
+            text-transform:uppercase;
+            letter-spacing:0.12em;
+        }
+        .sc-verified{
+            display:inline-flex;align-items:center;gap:0.25rem;
+            font-size:0.5rem;font-weight:600;
+            color:var(--success-green);
+            font-family:'Outfit',sans-serif;
+            text-transform:uppercase;letter-spacing:0.08em;
+            margin-top:0.25rem;
+        }
+        .sc-verified::before{content:'✓';font-size:0.5rem}
+
+        .sc-name{
+            font-family:'Space Grotesk',sans-serif;
+            font-weight:800;
+            font-size:1.25rem;
+            letter-spacing:-0.03em;
+            color:var(--text-primary);
+            line-height:1.1;
+            position:relative;z-index:3;
+        }
+        .sc-meta{
+            font-size:0.6875rem;
+            color:rgba(167,139,250,0.7);
+            margin-top:0.25rem;
+            margin-bottom:0.875rem;
+            position:relative;z-index:3;
+        }
+        .sc-divider{height:1px;background:linear-gradient(90deg,rgba(167,139,250,0.2),transparent);margin-bottom:0.75rem;position:relative;z-index:3}
+
+        /* Dynamic characteristics */
+        .sc-dynamics{
+            flex:1;
+            position:relative;z-index:3;
+            min-height:90px;
+        }
+        .sc-dynamic-set{
+            position:absolute;inset:0;
+            transition:opacity 0.7s ease, transform 0.7s ease;
+            display:flex;flex-direction:column;gap:0.4rem;
+        }
+        .sc-dynamic-set.hidden{opacity:0;transform:translateY(8px);pointer-events:none}
+        .sc-dynamic-set.visible{opacity:1;transform:translateY(0)}
+
+        .sc-trait{
+            display:flex;align-items:center;gap:0.5rem;
+            padding:0.4rem 0.6rem;
+            background:rgba(255,255,255,0.03);
+            border:1px solid rgba(167,139,250,0.1);
+            border-radius:8px;
+        }
+        .sc-trait-icon{font-size:0.75rem;flex-shrink:0}
+        .sc-trait-label{
+            font-size:0.5625rem;font-weight:600;
+            text-transform:uppercase;letter-spacing:0.08em;
+            color:var(--accent-soft);
+            font-family:'Outfit',sans-serif;
+            flex-shrink:0;
+            min-width:52px;
+        }
+        .sc-trait-value{font-size:0.6875rem;color:var(--text-primary);font-family:'Outfit',sans-serif;font-weight:500}
+
+        .sc-card-footer{
+            position:relative;z-index:3;
+        }
+        .sc-status{
+            text-align:center;
+            padding:0.5rem;
+            border-radius:8px;
+            font-size:0.5625rem;font-weight:700;
+            text-transform:uppercase;letter-spacing:0.1em;
+            background:rgba(251,191,36,0.07);
+            color:rgba(251,191,36,0.6);
+            border:1px solid rgba(251,191,36,0.15);
+            margin-bottom:0.625rem;
+        }
+        .sc-footer-row{
+            display:flex;align-items:center;justify-content:space-between;
+            padding-top:0.5rem;
+            border-top:1px solid rgba(255,255,255,0.05);
+        }
+        .sc-footer-live{
+            display:flex;align-items:center;gap:0.3rem;
+            font-size:0.5625rem;color:var(--text-muted);font-family:'Outfit',sans-serif;
+        }
+        .pulse-dot{width:5px;height:5px;background:var(--success-green);border-radius:50%;animation:pulse 2s ease-in-out infinite;flex-shrink:0}
+        @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(52,211,153,0.4)}50%{opacity:0.5;box-shadow:0 0 0 4px rgba(52,211,153,0)}}
+        .sc-footer-id{font-size:0.5rem;color:rgba(255,255,255,0.15);font-family:'JetBrains Mono',monospace}
+
+        /* =============================== */
+        /* HOW IT WORKS                    */
+        /* =============================== */
+        .steps-section{padding:6rem 0}
+        .steps-header{text-align:center;margin-bottom:4rem}
+        .steps-header p{color:var(--text-secondary);max-width:500px;margin:0 auto}
+        .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+        .step-card{padding:2.5rem 2rem;border-radius:20px;text-align:center}
+        .step-number{
+            display:inline-block;
+            font-family:'JetBrains Mono',monospace;
+            font-size:0.6875rem;
+            color:var(--accent-soft);
+            font-weight:500;
+            letter-spacing:0.08em;
+            background:var(--accent-muted);
+            border:1px solid rgba(124,92,191,0.25);
+            border-radius:999px;
+            padding:0.25rem 0.875rem;
+            margin-bottom:1rem;
+        }
+        .step-card h3{margin-bottom:0.5rem}
+        .step-card p{font-size:0.9375rem;color:var(--text-secondary);line-height:1.55}
+        .step-card p strong{color:var(--text-primary)}
+        .step-title-paid{color:#fff!important}
+        /* Step 03 — silver shimmer */
+        .step-card-paid{position:relative;overflow:hidden}
+        .step-card-paid::before{
+            content:'';
+            position:absolute;inset:0;border-radius:20px;
+            background:linear-gradient(
+                125deg,
+                transparent 20%,
+                rgba(220,220,220,0.07) 33%,
+                rgba(255,255,255,0.05) 43%,
+                rgba(200,210,220,0.04) 53%,
+                rgba(180,190,200,0.03) 60%,
+                transparent 72%
+            );
+            background-size:300% 300%;
+            animation:silverShimmer 5s ease-in-out infinite;
+            pointer-events:none;z-index:1;mix-blend-mode:screen;
+        }
+        .step-card-paid>*{position:relative;z-index:2}
+        @keyframes silverShimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+        /* Step 02 — countdown */
+        .step-countdown{
+            display:flex;align-items:center;justify-content:center;
+            margin-top:1rem;padding:0.25rem 0;
+            font-family:'JetBrains Mono',monospace;font-size:2.5rem;font-weight:700;
+            color:#fff;letter-spacing:0.08em;
+        }
+        .countdown-label{font-family:'Outfit',sans-serif;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);display:block;text-align:center;margin-top:0.25rem}
+        .countdown-actions{display:flex;gap:1.75rem;justify-content:center;margin-top:1.1rem}
+        .countdown-btn{width:2.75rem;height:2.75rem;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.125rem;font-weight:700;transition:transform 0.18s ease,box-shadow 0.18s ease;outline:none}
+        .countdown-btn:hover{transform:scale(1.14)}
+        .countdown-btn-x{background:rgba(239,68,68,0.12);color:#ef4444;border:1.5px solid rgba(239,68,68,0.28)}
+        .countdown-btn-check{background:rgba(52,211,153,0.12);color:#34d399;border:1.5px solid rgba(52,211,153,0.28)}
+        .step-paid-footer{margin-top:1.25rem;font-size:0.8125rem;color:var(--violet-glow);font-style:italic;font-weight:700;line-height:1.45;border-top:1px solid var(--border);padding-top:1rem}
+        @media(max-width:768px){.steps-grid{grid-template-columns:1fr}}
+
+        /* =============================== */
+        /* PRIVACY                         */
+        /* =============================== */
+        .privacy-section{padding:6rem 0;text-align:center}
+        .privacy-section h2{text-align:center}
+        .privacy-list{list-style:none;max-width:560px;margin:0 auto 2.5rem;text-align:left}
+        .privacy-item{
+            display:flex;align-items:center;gap:1rem;
+            margin-bottom:1rem;padding-bottom:1rem;
+            border-bottom:1px solid var(--border);
+            opacity:0;transform:translateY(-40px) scale(0.95);
+            transition:opacity 0.45s cubic-bezier(0.34,1.56,0.64,1), transform 0.45s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        .privacy-item.revealed{opacity:1;transform:translateY(0) scale(1)}
+        .privacy-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+        .privacy-x{
+            width:1.625rem;height:1.625rem;display:flex;align-items:center;justify-content:center;
+            font-size:0.75rem;flex-shrink:0;color:var(--red);font-weight:700;
+            background:rgba(239,68,68,0.1);border-radius:6px;
+            border:1px solid rgba(239,68,68,0.2);
+            transform:scale(0);
+            transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1) 0.15s;
+        }
+        .privacy-item.revealed .privacy-x{transform:scale(1)}
+        .privacy-text{font-size:1rem;color:var(--text-primary)}
+        .privacy-badge{
+            display:inline-flex;align-items:center;gap:0.5rem;
+            background:var(--accent-muted);border:1px solid rgba(124,92,191,0.3);
+            border-radius:10px;padding:0.75rem 1rem;font-size:0.875rem;color:var(--accent-soft);
+            opacity:0;transform:translateY(12px);
+            transition:opacity 0.5s ease 0.4s, transform 0.5s ease 0.4s;
+        }
+        .privacy-badge.revealed{opacity:1;transform:translateY(0)}
+
+        .privacy-30days{
+            font-family:'Space Grotesk',sans-serif;
+            font-weight:600;
+            font-size:clamp(1.25rem,2vw,1.625rem);
+            color:var(--text-primary);
+            margin-top:2.5rem;
+            letter-spacing:-0.02em;
+            opacity:0;
+            transform:translateY(12px);
+            transition:opacity 0.5s ease 0.4s,transform 0.5s ease 0.4s;
+        }
+        .privacy-30days.revealed{opacity:1;transform:translateY(0)}
+
+        /* =============================== */
+        /* MOVEMENT — ANIMATED TYPO WALL   */
+        /* =============================== */
+        .movement-section{
+            position:relative;overflow:hidden;
+            border-top:1px solid var(--border);
+        }
+
+        .movement-panel{
+            min-height:55vh;
+            display:flex;flex-direction:column;justify-content:center;
+            padding:5rem 0 4.5rem;
+            position:relative;
+            overflow:hidden;
+        }
+        .movement-panel::before{
+            content:'';position:absolute;inset:0;
+            pointer-events:none;
+        }
+        .mp-1::before{background:linear-gradient(180deg,transparent 0%,rgba(120,40,40,0.06) 50%,transparent 100%)}
+        .mp-2::before{background:linear-gradient(180deg,transparent 0%,rgba(91,33,182,0.1) 50%,transparent 100%)}
+        .mp-3::before{background:linear-gradient(180deg,transparent 0%,rgba(52,211,153,0.07) 50%,transparent 100%)}
+
+        .mp-content{position:relative;z-index:2}
+
+        .mp-eyebrow{
+            font-family:'JetBrains Mono',monospace;
+            font-size:0.6875rem;font-weight:500;
+            text-transform:uppercase;letter-spacing:0.15em;
+            color:var(--text-muted);
+            margin-bottom:1.25rem;
+        }
+        .mp-statement{
+            font-family:'Space Grotesk',sans-serif;
+            font-weight:800;
+            font-size:clamp(2.75rem,6vw,5.5rem);
+            letter-spacing:-0.04em;
+            line-height:1.0;
+            margin-bottom:1.5rem;
+        }
+        .mp-sub{
+            font-size:clamp(1rem,1.8vw,1.25rem);
+            color:var(--text-secondary);
+            max-width:560px;
+            line-height:1.65;
+            font-weight:400;
+        }
+        .mp-sub strong{color:var(--text-primary)}
+
+        .mp-1 .mp-statement{color:var(--text-secondary)}
+        .mp-1 .mp-statement .mp-key{color:var(--text-primary)}
+
+        .mp-2 .mp-statement{color:var(--text-primary)}
+        .mp-2 .mp-statement .mp-key{
+            background:linear-gradient(90deg,var(--offer-gold),var(--success-green));
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+        }
+
+        .mp-3 .mp-statement{color:var(--text-primary)}
+        .mp-3 .mp-statement .mp-key{color:var(--success-green)}
+
+        .mp-divider{
+            width:100%;height:1px;
+            background:linear-gradient(90deg,var(--border),rgba(255,255,255,0.02));
+        }
+
+        /* Animated word reveal — each word gets .word-wrap */
+        .word-wrap{
+            display:inline-block;
+            overflow:hidden;
+            vertical-align:bottom;
+        }
+        .word-inner{
+            display:inline-block;
+            transform:translateY(100%);
+            transition:transform 0.65s cubic-bezier(0.22,1,0.36,1);
+        }
+        .word-inner.word-revealed{transform:translateY(0)}
+
+        @media(max-width:768px){
+            .movement-panel{min-height:auto;padding:4rem 0}
+            .mp-statement{font-size:clamp(2.25rem,8vw,3.5rem)}
+        }
+
+        /* =============================== */
+        /* FINAL CTA                       */
+        /* =============================== */
+        .final-cta{padding:5rem 0 6rem;text-align:center;position:relative}
+        .final-cta-inner{max-width:640px;margin:0 auto;padding:3rem;border-radius:24px;border:1px solid rgba(167,139,250,0.15);background:linear-gradient(135deg,rgba(91,33,182,0.06),rgba(18,18,28,0.5));position:relative;z-index:1}
+        .final-cta h2{margin-bottom:1rem}
+        .final-cta p{color:var(--text-secondary);margin-bottom:2rem;font-size:1.0625rem}
+        .final-cta p strong{color:var(--text-primary)}
+        .social-links{display:flex;gap:1rem;justify-content:center;margin-top:1.5rem}
+        .social-link{width:2.75rem;height:2.75rem;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:50%;color:var(--text-primary);text-decoration:none;transition:all 0.3s;font-weight:600;font-size:1rem}
+        .social-link:hover{background:var(--surface);border-color:var(--accent);color:var(--accent)}
+
+        /* FOOTER */
+        footer{border-top:1px solid var(--border);padding:3rem 2rem}
+        .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+        .footer-left{display:flex;align-items:center;gap:2rem}
+        .footer-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem}
+        .footer-logo .my{color:var(--text-primary)}.footer-logo .model{color:var(--accent)}
+        .footer-copy{font-size:0.875rem;color:var(--text-secondary)}
+        .footer-links{display:flex;gap:2rem;align-items:center}
+        .footer-link{font-size:0.875rem;color:var(--text-secondary);text-decoration:none;transition:color 0.3s}
+        .footer-link:hover{color:var(--accent)}
+        .footer-founder{font-size:0.8125rem;color:var(--text-muted);display:flex;align-items:center;gap:0.5rem}
+        .footer-founder-links{display:flex;gap:1rem}
+        .footer-dot{color:var(--border);font-size:0.75rem}
+        @media(max-width:768px){.footer-inner{flex-direction:column;gap:1.5rem;text-align:center}.footer-left{flex-direction:column;gap:0.75rem}.footer-founder{flex-direction:column;gap:0.25rem}}
+
+        /* REVEAL */
+        [data-reveal]{opacity:0;transform:translateY(30px);transition:opacity 0.65s ease,transform 0.65s ease}
+        [data-reveal].revealed{opacity:1;transform:translateY(0)}
+        [data-reveal-left]{opacity:0;transform:translateX(-30px);transition:opacity 0.65s ease,transform 0.65s ease}
+        [data-reveal-left].revealed{opacity:1;transform:translateX(0)}
+        [data-reveal-right]{opacity:0;transform:translateX(30px);transition:opacity 0.65s ease,transform 0.65s ease}
+        [data-reveal-right].revealed{opacity:1;transform:translateX(0)}
+
+        /* HERO — CSS keyframe entry (no GSAP dependency) */
+        @keyframes heroLineIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes heroSubIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes heroBtnIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes heroPhoneIn{from{opacity:0;transform:translateX(40px) rotate(2deg)}to{opacity:1;transform:translateX(0) rotate(0deg)}}
+
+        /* =============================== */
+        /* CLOSING MANIFESTO               */
+        /* =============================== */
+        .manifesto-section{position:relative;padding:10rem 0 8rem;text-align:center;overflow:hidden;border-top:1px solid var(--border)}
+        .manifesto-section::before{content:'';position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);width:800px;height:600px;background:radial-gradient(ellipse,rgba(124,58,237,0.12) 0%,transparent 70%);pointer-events:none}
+        .manifesto-eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.6875rem;font-weight:500;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin-bottom:1.5rem}
+        .manifesto-headline{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(4rem,9vw,8rem);letter-spacing:-0.05em;line-height:0.95;color:var(--text-primary);margin-bottom:2rem}
+        .manifesto-body{font-size:clamp(1rem,1.6vw,1.125rem);color:var(--text-secondary);max-width:560px;margin:0 auto 2.5rem;line-height:1.65}
+        .manifesto-body em{font-style:italic;color:var(--violet-glow)}
+        .manifesto-divider{width:3rem;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:2.5rem auto}
+        /* Flywheel */
+        .flywheel-wrap{position:relative;width:480px;height:300px;margin:0 auto;overflow:visible}
+        .flywheel-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+        .flywheel-node{position:absolute;z-index:2;background:rgba(124,92,191,0.07);border:1px solid rgba(167,139,250,0.2);border-radius:999px;padding:0.65rem 1.5rem;font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:var(--accent-soft);white-space:nowrap;transform:translate(-50%,-50%);letter-spacing:0.01em}
+        .manifesto-caption{margin-top:2.5rem;font-size:1rem;color:var(--text-secondary);font-family:'Outfit',sans-serif}
+        .manifesto-cta{display:inline-block;margin-top:1.25rem;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(2rem,4vw,3.5rem);color:var(--text-primary);text-decoration:none;letter-spacing:-0.04em;line-height:1;position:relative;transition:color 0.3s ease}
+        .manifesto-cta::after{content:'';position:absolute;left:0;bottom:-4px;width:100%;height:3px;background:linear-gradient(90deg,var(--vivid-violet),var(--fuchsia));transform:scaleX(0);transform-origin:left;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1)}
+        .manifesto-cta:hover::after{transform:scaleX(1)}
+        .manifesto-cta:hover{color:var(--violet-glow)}
+        .manifesto-social{display:flex;gap:1rem;justify-content:center;margin-top:2.5rem}
+        @media(max-width:768px){.manifesto-headline{font-size:clamp(3rem,12vw,4rem)}.flywheel-wrap{transform:scale(0.85)}}
+
+        .hero-copy h1:nth-child(1){animation:heroLineIn 0.55s cubic-bezier(0.16,1,0.3,1) 0.1s both}
+        .hero-copy h1:nth-child(2){animation:heroLineIn 0.55s cubic-bezier(0.16,1,0.3,1) 0.22s both}
+        .hero-copy h1:nth-child(3){animation:heroLineIn 0.55s cubic-bezier(0.16,1,0.3,1) 0.34s both}
+        .hero-subtext-pre .line:nth-child(1){animation:heroSubIn 0.5s cubic-bezier(0.16,1,0.3,1) 0.6s both}
+        .hero-subtext-pre .line:nth-child(2){animation:heroSubIn 0.5s cubic-bezier(0.16,1,0.3,1) 0.75s both}
+        .hero-buttons{animation:heroBtnIn 0.5s cubic-bezier(0.16,1,0.3,1) 0.92s both}
+        .hero-subtext-post .hero-resolve-label{animation:heroSubIn 0.5s cubic-bezier(0.16,1,0.3,1) 1.1s both}
+        .hero-subtext-post .hero-resolve-main{animation:heroSubIn 0.5s cubic-bezier(0.16,1,0.3,1) 1.25s both}
+        .hero-phone{animation:heroPhoneIn 0.85s cubic-bezier(0.16,1,0.3,1) 0.35s both}
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="nav-logo"><span class="my">my</span><span class="model">model</span></a>
+        <div class="nav-links">
+            <a href="/for-the-people.html" class="nav-link active">For People</a>
+            <a href="/for-brands.html" class="nav-link">For Brands</a>
+        </div>
+        <a href="https://www.getmymodel.com/join" class="nav-cta">Join the waitlist</a>
+    </div>
+</nav>
+
+<!-- FLOATING CTA -->
+<div id="floating-cta">
+    <div class="floating-inner">
+        <div class="floating-text">Minimum guarantee: <strong>$5 per offer.</strong> Join now.</div>
+        <a href="https://www.getmymodel.com/join" class="btn btn-primary">Join the waitlist</a>
+    </div>
+</div>
+
+<!-- ============================== -->
+<!-- HERO                           -->
+<!-- ============================== -->
+<section class="hero container">
+    <div class="hero-copy">
+        <h1>Cookies made<br>them billions.</h1>
+        <h1>You got nothing.</h1>
+        <h1 class="shimmer">Until now.</h1>
+        <div class="hero-subtext-pre">
+            <span class="line">Every app you've ever used made money from your behavior.</span>
+            <span class="line">You signed away your cut in terms you never read.</span>
+        </div>
+        <div class="hero-buttons" id="hero-buttons">
+            <a href="https://www.getmymodel.com/join" class="btn btn-primary">Join the waitlist</a>
+            <button class="btn btn-ghost" id="watch-btn">How it works</button>
+        </div>
+        <div class="hero-subtext-post">
+            <span class="hero-resolve-label">mymodel changes that —</span>
+            <span class="hero-resolve-main"><span class="pay-you">Brands Pay You</span> directly for your consent.</span>
+        </div>
+    </div>
+    <div class="hero-phone">
+        <div class="iphone">
+            <div class="iphone-notch"></div>
+            <div class="iphone-status">
+                <span>9:41</span>
+                <span style="display:flex;gap:4px;align-items:center">
+                    <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><rect x="0" y="5" width="3" height="7" rx="1" fill="#fff"/><rect x="4.5" y="3" width="3" height="9" rx="1" fill="#fff"/><rect x="9" y="1" width="3" height="11" rx="1" fill="#fff"/><rect x="13.5" y="0" width="2.5" height="12" rx="1" fill="rgba(255,255,255,0.3)"/></svg>
+                    <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="0" y="1" width="21" height="10" rx="2" stroke="rgba(255,255,255,0.35)" stroke-width="1"/><rect x="1.5" y="2.5" width="16" height="7" rx="1" fill="#fff"/><rect x="22" y="4" width="2" height="4" rx="1" fill="rgba(255,255,255,0.35)"/></svg>
+                </span>
+            </div>
+            <div class="iphone-screen" id="hero-notifs"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- STATS CARD SECTION             -->
+<!-- ============================== -->
+<section class="statscard-section">
+    <div class="container">
+        <div class="statscard-layout">
+
+            <!-- Left: Stats Card -->
+            <div class="statscard-left" data-reveal-left>
+                <div class="card-wrapper">
+                    <div class="stats-card" id="stats-card">
+                        <!-- Header row: avatar + card label -->
+                        <div class="sc-card-header">
+                            <div class="sc-avatar">M</div>
+                            <div class="sc-header-meta">
+                                <div class="sc-card-label">Stats Card</div>
+                                <div class="sc-verified">Verified</div>
+                            </div>
+                        </div>
+
+                        <!-- Identity -->
+                        <div class="sc-name">Mara Okafor</div>
+                        <div class="sc-meta">Brooklyn, NY &middot; 27 &middot; UX Designer</div>
+                        <div class="sc-divider"></div>
+
+                        <!-- Dynamic characteristics (rotating) -->
+                        <div class="sc-dynamics" id="sc-dynamics">
+                            <div class="sc-dynamic-set visible" id="sc-set-0">
+                                <div class="sc-trait">
+                                    <span class="sc-trait-icon">🏃</span>
+                                    <span class="sc-trait-label">Activity</span>
+                                    <span class="sc-trait-value">Training for a half marathon</span>
+                                </div>
+                                <div class="sc-trait">
+                                    <span class="sc-trait-icon">☕</span>
+                                    <span class="sc-trait-label">Habit</span>
+                                    <span class="sc-trait-value">Morning coffee ritual, daily</span>
+                                </div>
+                                <div class="sc-trait">
+                                    <span class="sc-trait-icon">🗺</span>
+                                    <span class="sc-trait-label">Travel</span>
+                                    <span class="sc-trait-value">Planning a spring trip</span>
+                                </div>
+                            </div>
+                            <div class="sc-dynamic-set hidden" id="sc-set-1">
+                                <div class="sc-trait">
+                                    <span class="sc-trait-icon">✦</span>
+                                    <span class="sc-trait-label">Style</span>
+                                    <span class="sc-trait-value">Minimalist, bold choices</span>
+                                </div>
+                                <div class="sc-trait">
+                                    <span class="sc-trait-icon">🛍</span>
+                                    <span class="sc-trait-label">Loyalty</span>
+                                    <span class="sc-trait-value">Independent brands only</span>
+                                </div>
+                                <div class="sc-trait">
+                                    <span class="sc-trait-icon">🌆</span>
+                                    <span class="sc-trait-label">Lifestyle</span>
+                                    <span class="sc-trait-value">Weekend explorer, city native</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="sc-card-footer">
+                            <div class="sc-footer-row">
+                                <div class="sc-footer-live">
+                                    <div class="pulse-dot"></div>
+                                    <span>Updated live</span>
+                                </div>
+                                <div class="sc-footer-id">MM-2026-0419</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Copy -->
+            <div class="statscard-right" data-reveal-right>
+                <span class="sc-introducing">Introducing</span>
+                <span class="sc-your-statscard">Your Stats Card.</span>
+                <div class="sc-hero-tagline">The First Ever Digital Persona You Can Own and Monetize.</div>
+            </div>
+
+        </div>
+
+        <!-- Desc lines float below the layout -->
+        <div class="statscard-caption" data-reveal>
+            <p class="caption-l1">A live portrait of your consumer behavior.</p>
+            <p class="caption-l2">Your interests, your patterns, your life in motion.</p>
+            <p class="caption-l3">Visualized, updated in real time, and owned entirely by you.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- HOW IT WORKS                   -->
+<!-- ============================== -->
+<section class="steps-section" id="how-it-works">
+    <div class="container">
+        <div class="steps-header" data-reveal>
+            <h2>How it works.</h2>
+        </div>
+        <div class="steps-grid" id="steps-grid">
+            <div class="glass step-card">
+                <div class="step-number mono">01</div>
+                <h3>Download mymodel.</h3>
+                <p>Connect your Gmail — a 30-second, one-time setup. Your Stats Card will update live.</p>
+            </div>
+            <div class="glass step-card">
+                <div class="step-number mono">02</div>
+                <h3>Respond to offers.</h3>
+                <p>You'll get a push notification when a brand requests access to your Stats Card.</p>
+                <div class="step-countdown" id="step-countdown">23:47:12</div>
+                <div class="countdown-label">Left</div>
+                <div class="countdown-actions">
+                    <button class="countdown-btn countdown-btn-x" id="countdown-x" title="Decline">&#10005;</button>
+                    <button class="countdown-btn countdown-btn-check" id="countdown-check" title="Accept">&#10003;</button>
+                </div>
+            </div>
+            <div class="glass step-card step-card-paid">
+                <div class="step-number mono">03</div>
+                <h3 class="step-title-paid">Get Paid.</h3>
+                <p>Get paid out directly, minimum <span class="money">$5</span> per offer.</p>
+                <p class="step-paid-footer">Our mission is to get you paid as much as possible.<br><span style="color:var(--violet-glow)">This is just the start ;)</span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- PRIVACY                        -->
+<!-- ============================== -->
+<section class="privacy-section container">
+    <h2 data-reveal>When you accept an offer,<br>brands can access your Stats Card.<br><span class="highlight">That's it.</span></h2>
+    <p class="statement" data-reveal style="color:var(--text-secondary);margin-bottom:1.75rem;font-weight:500;transition-delay:0.1s">They cannot:</p>
+    <ul class="privacy-list" id="privacy-list">
+        <li class="privacy-item"><div class="privacy-x">&#10005;</div><span class="privacy-text">Spam you with <strong>emails, calls, or texts</strong></span></li>
+        <li class="privacy-item" style="transition-delay:0.12s"><div class="privacy-x">&#10005;</div><span class="privacy-text"><strong>Track</strong> your activity across the internet</span></li>
+        <li class="privacy-item" style="transition-delay:0.24s"><div class="privacy-x">&#10005;</div><span class="privacy-text"><strong>Re-sell or share</strong> your information with anyone</span></li>
+    </ul>
+    <p class="privacy-30days" id="privacy-badge">Their access lasts <strong>30 days</strong>. Period.</p>
+</section>
+
+<!-- ============================== -->
+<!-- CLOSING MANIFESTO              -->
+<!-- ============================== -->
+<section class="manifesto-section">
+    <div class="container">
+        <div class="manifesto-eyebrow" id="manifesto-eyebrow">The correction</div>
+        <div class="manifesto-headline" id="manifesto-headline">The internet<br>owes you.</div>
+        <p class="manifesto-body" id="manifesto-body">Every brand you've ever bought from needed your data to find you. From now on, they'll have to ask — and pay <em>you</em> what it's worth.</p>
+        <div class="manifesto-divider"></div>
+        <div class="flywheel-wrap" data-reveal>
+            <!-- Rotating circle of 3 arcs — center (240,150), radius 110 -->
+            <!-- Each arc spans 100° with 20° gaps at the label positions (top/BR/BL) -->
+            <svg class="flywheel-svg" viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="fw-head" markerWidth="2.2" markerHeight="2.2" refX="1.8" refY="1.1" orient="auto" markerUnits="strokeWidth">
+                        <path d="M0,0 L0,2.2 L2.2,1.1 Z" fill="rgba(218,208,255,0.2)"/>
+                    </marker>
+                </defs>
+                <g>
+                    <!-- Arc 1: 280°→20° (gap at top, flows toward bottom-right) -->
+                    <path d="M259,42 A110,110,0,0,1,343,188" fill="none" stroke="rgba(218,208,255,0.15)" stroke-width="16" stroke-linecap="round" marker-end="url(#fw-head)"/>
+                    <!-- Arc 2: 40°→140° (gap at bottom-right, flows toward bottom-left) -->
+                    <path d="M324,221 A110,110,0,0,1,156,221" fill="none" stroke="rgba(218,208,255,0.15)" stroke-width="16" stroke-linecap="round" marker-end="url(#fw-head)"/>
+                    <!-- Arc 3: 160°→260° (gap at bottom-left, flows toward top) -->
+                    <path d="M137,188 A110,110,0,0,1,221,42" fill="none" stroke="rgba(218,208,255,0.15)" stroke-width="16" stroke-linecap="round" marker-end="url(#fw-head)"/>
+                    <animateTransform attributeName="transform" type="rotate" from="0 240 150" to="360 240 150" dur="9s" repeatCount="indefinite"/>
+                </g>
+            </svg>
+            <!-- Labels anchored at the 3 gap positions, outside the circle -->
+            <div class="flywheel-node" style="top:0px;left:240px">More people join</div>
+            <div class="flywheel-node" style="top:228px;left:410px">Brands compete harder</div>
+            <div class="flywheel-node" style="top:228px;left:70px">Offers climb higher</div>
+        </div>
+        <p class="manifesto-caption">We're determined to get you paid as much as possible 🫡</p>
+        <a href="https://www.getmymodel.com/join" class="manifesto-cta">Join the waitlist now.</a>
+        <p style="font-size:0.8125rem;color:var(--text-muted);margin-top:1.5rem;margin-bottom:0.75rem">Follow the founder's journey — @theantitechbro</p>
+        <div class="manifesto-social">
+            <a href="https://x.com/theantitechbro" class="social-link" aria-label="X / Twitter">&#120143;</a>
+            <a href="https://tiktok.com/@theantitechbro" class="social-link" aria-label="TikTok" style="font-size:0.8rem;font-weight:700">TT</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-left">
+            <div class="footer-logo"><span class="my">my</span><span class="model">model</span></div>
+            <div class="footer-copy">myModel, Inc. &copy; 2026</div>
+        </div>
+        <div class="footer-links">
+            <div class="footer-founder">
+                <span>Follow the founder's journey</span>
+                <div class="footer-founder-links">
+                    <a href="https://x.com/theantitechbro" class="footer-link">X</a>
+                    <a href="https://tiktok.com/@theantitechbro" class="footer-link">TikTok</a>
+                </div>
+            </div>
+            <span class="footer-dot">·</span>
+            <a href="mailto:jordan@getmymodel.com" class="footer-link">Contact</a>
+            <a href="/privacy.html" class="footer-link">Privacy</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero entry animations handled by CSS keyframes (see stylesheet)
+
+    // ===========================
+    // iOS NOTIFICATION — STACKING ANIMATION
+    // ===========================
+    const notifData = [
+        { brand: 'Nike',     amount: '$12', timeAgo: 'now',     hours: '23' },
+        { brand: 'Glossier', amount: '$8',  timeAgo: '2m ago',  hours: '22' },
+        { brand: 'Airbnb',   amount: '$9',  timeAgo: '5m ago',  hours: '21' },
+        { brand: 'Patagonia',amount: '$5',  timeAgo: '11m ago', hours: '20' }
+    ];
+
+    const notifContainer = document.getElementById('hero-notifs');
+    const NOTIF_GAP = 8;
+    const MAX_VISIBLE = 3; // never show more than 3 at once
+    let activeNotifs = [];
+    let sequenceRunning = false;
+
+    function buildNotif(data) {
+        const el = document.createElement('div');
+        el.className = 'ios-notif';
+        el.style.cssText = 'top:0;opacity:0;position:absolute;left:0.75rem;right:0.75rem;';
+        el.innerHTML = `
+            <div class="ios-notif-header">
+                <div class="ios-notif-app-icon">m</div>
+                <div class="ios-notif-app-name">mymodel</div>
+                <div class="ios-notif-time">${data.timeAgo}</div>
+            </div>
+            <div class="ios-notif-title">${data.brand} sent you an offer</div>
+            <div class="ios-notif-text">30-day access to your Stats Card &middot; <span class="notif-amount">${data.amount}</span></div>
+            <div class="ios-notif-sub">${data.hours} hours to respond</div>
+            <div class="ios-notif-actions">
+                <button class="ios-notif-action ios-action-accept">Accept</button>
+                <button class="ios-notif-action ios-action-decline">Decline</button>
+                <button class="ios-notif-action ios-action-more">More</button>
+            </div>`;
+        return el;
+    }
+
+    function addNotif(data, onDone) {
+        // If at max, remove the oldest (bottom) first
+        if (activeNotifs.length >= MAX_VISIBLE) {
+            const oldest = activeNotifs.pop();
+            gsap.to(oldest.el, { opacity: 0, scale: 0.95, duration: 0.3, ease: 'power2.in', onComplete: () => oldest.el.remove() });
+        }
+
+        const el = buildNotif(data);
+        notifContainer.appendChild(el);
+        const h = el.offsetHeight || 116;
+        const shift = h + NOTIF_GAP;
+
+        // Push existing notifs down
+        activeNotifs.forEach(n => {
+            n.top += shift;
+            gsap.to(n.el, { top: n.top, duration: 0.42, ease: 'power3.out' });
+        });
+
+        // Slide new one in from top
+        gsap.fromTo(el,
+            { top: -(h + 12), opacity: 0, scale: 0.95 },
+            { top: 0, opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.5)', onComplete: onDone }
+        );
+
+        activeNotifs.unshift({ el, top: 0 });
+    }
+
+    function clearAll(onDone) {
+        if (activeNotifs.length === 0) { onDone && onDone(); return; }
+        let completed = 0;
+        const total = activeNotifs.length;
+        activeNotifs.forEach(({ el }, i) => {
+            gsap.to(el, {
+                opacity: 0, y: -16, duration: 0.32,
+                delay: i * 0.05,
+                ease: 'power2.in',
+                onComplete: () => {
+                    el.remove();
+                    if (++completed === total && onDone) onDone();
+                }
+            });
+        });
+        activeNotifs = [];
+    }
+
+    function runSequence() {
+        if (sequenceRunning) return;
+        sequenceRunning = true;
+        let idx = 0;
+
+        function next() {
+            if (idx < notifData.length) {
+                addNotif(notifData[idx], null);
+                idx++;
+                setTimeout(next, 2500);
+            } else {
+                // Hold, clear, restart
+                setTimeout(() => {
+                    clearAll(() => {
+                        sequenceRunning = false;
+                        setTimeout(runSequence, 800);
+                    });
+                }, 4500);
+            }
+        }
+        next();
+    }
+
+    setTimeout(runSequence, 1200);
+
+    // ===========================
+    // STATS CARD DYNAMIC ROTATION
+    // ===========================
+    let currentSet = 0;
+    const sets = document.querySelectorAll('.sc-dynamic-set');
+    function rotateDynamics() {
+        sets[currentSet].classList.remove('visible');
+        sets[currentSet].classList.add('hidden');
+        currentSet = (currentSet + 1) % sets.length;
+        sets[currentSet].classList.remove('hidden');
+        sets[currentSet].classList.add('visible');
+    }
+    setInterval(rotateDynamics, 4200);
+
+    // ===========================
+    // FLOATING CTA
+    // ===========================
+    const floatingBar = document.getElementById('floating-cta');
+    const heroEl = document.querySelector('.hero');
+    const footerEl = document.querySelector('footer');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        const heroBottom = heroEl.offsetTop + heroEl.offsetHeight;
+        const footerTop = footerEl.offsetTop;
+        const nearFooter = y + window.innerHeight >= footerTop;
+        if (y > heroBottom && !nearFooter) {
+            floatingBar.classList.toggle('visible', y > lastScroll);
+        } else {
+            floatingBar.classList.remove('visible');
+        }
+        lastScroll = y;
+    }, {passive: true});
+
+    // ===========================
+    // HOW IT WORKS BUTTON
+    // ===========================
+    document.getElementById('watch-btn')?.addEventListener('click', () => {
+        document.getElementById('how-it-works')?.scrollIntoView({behavior:'smooth'});
+    });
+
+    // ===========================
+    // SCROLL REVEALS (generic)
+    // ===========================
+    const revealEls = document.querySelectorAll('[data-reveal],[data-reveal-left],[data-reveal-right]');
+    const revealObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('revealed');
+                revealObs.unobserve(e.target);
+            }
+        });
+    }, {threshold: 0.25, rootMargin: '0px 0px -8% 0px'});
+    revealEls.forEach(el => revealObs.observe(el));
+
+    // ===========================
+    // STEP CARDS — dramatic pop-in
+    // ===========================
+    const stepCards = document.querySelectorAll('.step-card');
+    stepCards.forEach(c => { c.style.opacity = ''; });
+    gsap.set(stepCards, { opacity: 0, y: 50, scale: 0.96 });
+    ScrollTrigger.create({
+        trigger: '#steps-grid',
+        start: 'top 80%',
+        onEnter: () => {
+            gsap.to(stepCards, {
+                opacity: 1, y: 0, scale: 1, duration: 0.6,
+                ease: 'back.out(1.4)', stagger: 0.18
+            });
+        }
+    });
+
+    // ===========================
+    // PRIVACY — drop-in reveal
+    // ===========================
+    const privacyItems = document.querySelectorAll('.privacy-item');
+    const privacyBadge = document.getElementById('privacy-badge');
+    if (privacyItems.length) {
+        let privacyFired = false;
+        ScrollTrigger.create({
+            trigger: '.privacy-list',
+            start: 'top 72%',
+            onEnter: () => {
+                if (privacyFired) return;
+                privacyFired = true;
+                privacyItems.forEach((item, i) => {
+                    setTimeout(() => item.classList.add('revealed'), i * 200);
+                });
+                setTimeout(() => privacyBadge?.classList.add('revealed'), privacyItems.length * 200 + 150);
+            }
+        });
+    }
+
+    // ===========================
+    // CLOSING MANIFESTO — GSAP
+    // ===========================
+    const manifestoEyebrow = document.getElementById('manifesto-eyebrow');
+    const manifestoHeadline = document.getElementById('manifesto-headline');
+    const manifestoBody = document.getElementById('manifesto-body');
+    if (manifestoHeadline) {
+        gsap.set([manifestoEyebrow, manifestoHeadline, manifestoBody], { opacity: 0, y: 40 });
+        gsap.set(manifestoHeadline, { scale: 0.94 });
+        ScrollTrigger.create({
+            trigger: '.manifesto-section',
+            start: 'top 70%',
+            onEnter: () => {
+                gsap.to(manifestoEyebrow, { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' });
+                gsap.to(manifestoHeadline, { opacity: 1, y: 0, scale: 1, duration: 0.85, ease: 'power3.out', delay: 0.15 });
+                gsap.to(manifestoBody, { opacity: 1, y: 0, duration: 0.65, ease: 'power3.out', delay: 0.35 });
+            }
+        });
+    }
+
+    // ===========================
+    // COUNTDOWN — step 02
+    // ===========================
+    const countdownEl = document.getElementById('step-countdown');
+    if (countdownEl) {
+        let totalSeconds = 23 * 3600 + 47 * 60 + 12;
+        setInterval(() => {
+            totalSeconds--;
+            if (totalSeconds < 0) totalSeconds = 24 * 3600 - 1;
+            const h = Math.floor(totalSeconds / 3600);
+            const m = Math.floor((totalSeconds % 3600) / 60);
+            const s = totalSeconds % 60;
+            countdownEl.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+        }, 1000);
+    }
+
+    // ===========================
+    // CONFETTI — checkmark click
+    // ===========================
+    document.getElementById('countdown-check')?.addEventListener('click', function() {
+        const pill = this.closest('.step-card')?.querySelector('.step-number');
+        if (!pill) return;
+        const rect = pill.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const colors = ['#7C3AED','#e879f9','#FBBF24','#34D399','#a78bfa','#fff'];
+        for (let i = 0; i < 42; i++) {
+            const el = document.createElement('div');
+            const isCircle = Math.random() > 0.5;
+            el.style.cssText = `position:fixed;pointer-events:none;z-index:9999;width:${6 + Math.random()*6}px;height:${6 + Math.random()*6}px;border-radius:${isCircle ? '50%' : '2px'};background:${colors[Math.floor(Math.random()*colors.length)]};left:${cx}px;top:${cy}px;`;
+            document.body.appendChild(el);
+            const angle = (Math.random() * Math.PI * 2);
+            const dist = 50 + Math.random() * 90;
+            const tx = Math.cos(angle) * dist;
+            const ty = Math.sin(angle) * dist - 50;
+            const anim = el.animate([
+                {transform: `translate(-50%,-50%) rotate(0deg)`, opacity: 1},
+                {transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty + 100}px)) rotate(${Math.random()*540 - 270}deg)`, opacity: 0}
+            ], {duration: 700 + Math.random() * 500, easing: 'cubic-bezier(0,0.9,0.57,1)', fill: 'forwards'});
+            anim.onfinish = () => el.remove();
+        }
+    });
+
+    // ===========================
+    // HERO BUTTONS — float after entry
+    // ===========================
+    setTimeout(() => {
+        document.getElementById('hero-buttons')?.classList.add('floating');
+    }, 1600);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — mymodel</title>
+    <meta name="description" content="mymodel privacy policy. How we collect, use, and protect your data. Your rights under CCPA and California law.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --deep-violet:#5B21B6;--vivid-violet:#7C3AED;--violet-glow:#A78BFA;
+            --dark-canvas:#0F0B1A;--dark-surface:#1A1426;--dark-card:#231D30;
+            --fuchsia:#E879F9;--pink:#EC4899;
+            --bg:var(--dark-canvas);--surface:var(--dark-surface);--elevated:var(--dark-card);
+            --text-primary:#eeedf2;--text-secondary:#b0adc2;--text-muted:#7a7694;
+            --accent:var(--vivid-violet);--accent-soft:var(--violet-glow);--accent-muted:rgba(124,58,237,0.12);
+            --border:rgba(255,255,255,0.06);--success-green:#34D399
+        }
+        html{scroll-behavior:smooth}
+        body{background:var(--bg);color:var(--text-primary);font-family:'Outfit',sans-serif;font-size:1rem;line-height:1.7;overflow-x:hidden}
+        h1{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.5rem);letter-spacing:-0.04em;line-height:1.05;margin-bottom:1rem}
+        h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.375rem;letter-spacing:-0.02em;margin-top:3rem;margin-bottom:0.875rem;color:var(--text-primary)}
+        h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.0625rem;margin-top:1.75rem;margin-bottom:0.5rem;color:var(--accent-soft)}
+        p{color:var(--text-secondary);margin-bottom:1rem}
+        ul,ol{color:var(--text-secondary);padding-left:1.5rem;margin-bottom:1rem}
+        li{margin-bottom:0.375rem}
+        strong{color:var(--text-primary)}
+        a{color:var(--accent-soft);text-decoration:none;transition:color 0.2s}
+        a:hover{color:var(--violet-glow)}
+        .container{max-width:860px;margin:0 auto;padding:0 2rem}
+
+        /* NAV */
+        nav{position:fixed;top:0;left:0;right:0;z-index:1000;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(15,11,26,0.78);border-bottom:1px solid var(--border);padding:1rem 2rem}
+        .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+        .nav-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.5rem;text-decoration:none;display:flex;gap:0.15rem}
+        .nav-logo .my{color:var(--text-primary)}.nav-logo .mdl{color:var(--accent)}
+        .nav-links{display:flex;align-items:center;gap:2rem}
+        .nav-link{color:var(--text-secondary);text-decoration:none;font-size:0.875rem;font-weight:500;transition:color 0.2s,opacity 0.2s;opacity:0.55}
+        .nav-link:hover{color:var(--text-primary);opacity:1}
+        .nav-link.active{color:var(--text-primary);opacity:1}
+        @media(max-width:768px){.nav-links{display:none}}
+
+        /* HERO */
+        .hero{padding:8rem 0 4rem;border-bottom:1px solid var(--border)}
+        .hero-label{display:inline-block;padding:6px 16px;border-radius:100px;background:var(--accent-muted);border:1px solid rgba(124,58,237,0.3);font-size:0.75rem;font-weight:500;color:var(--accent-soft);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.5rem}
+        .hero-meta{display:flex;gap:2rem;margin-top:1.5rem;flex-wrap:wrap}
+        .hero-meta-item{font-size:0.8125rem;color:var(--text-muted)}
+        .hero-meta-item strong{color:var(--text-secondary)}
+
+        /* CONTENT */
+        .content{padding:4rem 0 6rem}
+        .section-divider{height:1px;background:var(--border);margin:2.5rem 0}
+
+        /* CALLOUT BOXES */
+        .callout{padding:1.25rem 1.5rem;border-radius:12px;margin:1.5rem 0;border-left:3px solid}
+        .callout-info{background:var(--accent-muted);border-color:var(--accent)}
+        .callout-info p{color:var(--text-secondary);margin-bottom:0}
+        .callout-warn{background:rgba(251,191,36,0.08);border-color:#FBBF24}
+        .callout-warn p{color:#fde68a;margin-bottom:0}
+        .callout-rights{background:rgba(52,211,153,0.08);border-color:var(--success-green)}
+        .callout-rights p{color:#6ee7b7;margin-bottom:0}
+
+        /* TABLE */
+        .data-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+        .data-table th{text-align:left;padding:0.75rem 1rem;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);border-bottom:1px solid var(--border)}
+        .data-table td{padding:0.875rem 1rem;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.03);vertical-align:top}
+        .data-table tr:last-child td{border-bottom:none}
+        .data-table tr:hover td{background:rgba(255,255,255,0.02)}
+
+        /* TOC */
+        .toc{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:3rem}
+        .toc h3{margin-top:0;margin-bottom:1rem;color:var(--text-primary);font-size:1rem}
+        .toc ol{counter-reset:toc-counter;list-style:none;padding-left:0}
+        .toc li{counter-increment:toc-counter;display:flex;align-items:baseline;gap:0.5rem;padding:0.25rem 0}
+        .toc li::before{content:counter(toc-counter,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--accent-soft);min-width:1.75rem}
+        .toc a{color:var(--text-secondary);font-size:0.9rem}
+        .toc a:hover{color:var(--accent-soft)}
+
+        /* FOOTER */
+        footer{border-top:1px solid var(--border);padding:3rem 2rem}
+        .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+        .footer-left{display:flex;align-items:center;gap:2rem}
+        .footer-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem}
+        .footer-logo .my{color:var(--text-primary)}.footer-logo .mdl{color:var(--accent)}
+        .footer-copy{font-size:0.8125rem;color:var(--text-secondary)}
+        .footer-links{display:flex;gap:2rem;align-items:center}
+        .footer-link{font-size:0.8125rem;color:var(--text-secondary);text-decoration:none;transition:color 0.3s}
+        .footer-link:hover{color:var(--accent)}
+        .footer-founder{font-size:0.8125rem;color:var(--text-muted);display:flex;align-items:center;gap:0.5rem}
+        .footer-founder-links{display:flex;gap:1rem}
+        .footer-dot{color:var(--border);font-size:0.75rem}
+        @media(max-width:768px){.footer-inner{flex-direction:column;gap:1.5rem;text-align:center}.footer-left{flex-direction:column;gap:0.75rem}.footer-founder{flex-direction:column;gap:0.25rem}}
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="/for-the-people.html" class="nav-logo"><span class="my">my</span><span class="mdl">model</span></a>
+        <div class="nav-links">
+            <a href="/for-the-people.html" class="nav-link">For People</a>
+            <a href="/for-brands.html" class="nav-link">For Brands</a>
+        </div>
+        <a href="https://www.getmymodel.com/join" class="nav-cta" style="padding:0.625rem 1.5rem;background:linear-gradient(135deg,#7C3AED,#EC4899);color:#fff;border-radius:12px;font-family:'Outfit',sans-serif;font-size:0.875rem;font-weight:600;text-decoration:none">Join the waitlist</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-label">Legal</div>
+        <h1>Privacy Policy</h1>
+        <p style="font-size:1.0625rem;color:var(--text-secondary);max-width:600px">mymodel is built on one principle: you own your data. This policy explains exactly what we collect, why, and the rights you have over it — in plain language.</p>
+        <div class="hero-meta">
+            <div class="hero-meta-item"><strong>Last updated:</strong> April 2, 2026</div>
+            <div class="hero-meta-item"><strong>Effective:</strong> April 2, 2026</div>
+            <div class="hero-meta-item"><strong>Jurisdiction:</strong> California (CCPA/CPRA) · United States</div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTENT -->
+<section class="content">
+    <div class="container">
+
+        <div class="callout callout-warn">
+            <p><strong>Legal disclaimer:</strong> This privacy policy is a good-faith disclosure of mymodel's data practices. It does not constitute legal advice. We recommend consulting a qualified data privacy attorney before relying on this document for legal compliance purposes.</p>
+        </div>
+
+        <!-- TABLE OF CONTENTS -->
+        <div class="toc">
+            <h3>Contents</h3>
+            <ol>
+                <li><a href="#who-we-are">Who We Are</a></li>
+                <li><a href="#data-we-collect">Data We Collect</a></li>
+                <li><a href="#how-we-collect">How We Collect It</a></li>
+                <li><a href="#how-we-use">How We Use Your Data</a></li>
+                <li><a href="#brand-sharing">Sharing With Brands</a></li>
+                <li><a href="#service-providers">Service Providers &amp; Third Parties</a></li>
+                <li><a href="#push-notifications">Push Notifications</a></li>
+                <li><a href="#cookies">Cookies &amp; Tracking</a></li>
+                <li><a href="#your-rights">Your Rights (CCPA)</a></li>
+                <li><a href="#data-retention">Data Retention</a></li>
+                <li><a href="#security">Security</a></li>
+                <li><a href="#children">Children's Privacy</a></li>
+                <li><a href="#changes">Changes to This Policy</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ol>
+        </div>
+
+        <!-- 1. WHO WE ARE -->
+        <div id="who-we-are">
+            <h2>1. Who We Are</h2>
+            <p>mymodel, Inc. ("mymodel," "we," "our," or "us") operates <strong>getmymodel.com</strong> and the mymodel platform. We are a two-sided data marketplace: consumers create a verified Stats Card — their owned demographic and behavioral data profile — and brands purchase consent-gated access to query and engage that audience. When a brand makes an offer, the consumer decides whether to accept and gets paid a minimum of $5 per offer they choose to accept.</p>
+            <p>This Privacy Policy applies to all data collected through getmymodel.com, our mobile applications, and any related services (collectively, the "Platform").</p>
+            <p><strong>Contact:</strong> <a href="mailto:jordan@getmymodel.com">jordan@getmymodel.com</a></p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- 2. DATA WE COLLECT -->
+        <div id="data-we-collect">
+            <h2>2. Data We Collect</h2>
+            <p>We collect two categories of data: what you give us directly, and what we observe through your use of the Platform.</p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>What It Includes</th>
+                        <th>Required?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Identity</strong></td>
+                        <td>Name, email address, date of birth, gender identity</td>
+                        <td>Yes — to create your account</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Demographics</strong></td>
+                        <td>Age, household income range, education, occupation, family status</td>
+                        <td>Yes — forms your Stats Card</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Purchase Behavior</strong></td>
+                        <td>Product categories you shop, brands you buy from, spending frequency</td>
+                        <td>Yes — core Stats Card data</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Brand Affinities</strong></td>
+                        <td>Brands you follow, prefer, or have purchased from</td>
+                        <td>Yes — core Stats Card data</td>
+                    </tr>
+                    <tr>
+                        <td><strong>App &amp; Usage Behavior</strong></td>
+                        <td>Features used, time on platform, offer interaction history</td>
+                        <td>Automatic — for platform functionality</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Location</strong></td>
+                        <td>City, state, or region (not precise GPS without explicit consent)</td>
+                        <td>Optional — improves offer matching</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Device &amp; Technical</strong></td>
+                        <td>IP address, browser type, operating system, device identifiers</td>
+                        <td>Automatic — for security and platform delivery</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Push Notification Interactions</strong></td>
+                        <td>Whether you open, dismiss, or act on offer notifications</td>
+                        <td>Only if you enable notifications</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Payment Information</strong></td>
+                        <td>Payment method for receiving offer payouts (processed via third-party payment processor; we do not store full payment account numbers)</td>
+                        <td>Required to receive payments</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="callout callout-info">
+                <p><strong>We do not collect:</strong> Social Security numbers, precise GPS location (without explicit consent), health or medical data, or biometric identifiers.</p>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- 3. HOW WE COLLECT -->
+        <div id="how-we-collect">
+            <h2>3. How We Collect It</h2>
+            <h3>Directly from you</h3>
+            <p>When you sign up, build your Stats Card, set preferences, accept or decline offers, or contact us — you give us information directly. This includes everything you enter into forms or select from options on the platform.</p>
+
+            <h3>Automatically through the Platform</h3>
+            <p>When you use the Platform, we automatically collect usage data (which features you use, how often, what you click) and technical data (IP address, browser, device). This helps us keep the platform running, secure, and improving.</p>
+
+            <h3>From third parties (limited)</h3>
+            <p>We may receive data from identity verification services to confirm your account is real, or from payment processors to confirm payout transactions. We do not purchase behavioral data about you from data brokers.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- 4. HOW WE USE -->
+        <div id="how-we-use">
+            <h2>4. How We Use Your Data</h2>
+            <ul>
+                <li><strong>Operating the Platform:</strong> Creating and maintaining your account, delivering your Stats Card, processing offer acceptances, and sending payouts.</li>
+                <li><strong>Matching you with relevant offers:</strong> We use your Stats Card data to surface offers from brands that match your profile. You always see the offer before any data is shared with the brand.</li>
+                <li><strong>Platform improvement:</strong> Analyzing how people use features to improve the experience. This analysis is done on aggregated or anonymized data wherever possible.</li>
+                <li><strong>Communication:</strong> Sending you offer notifications (if you've opted in), platform updates, and responses to your support requests.</li>
+                <li><strong>Fraud prevention and security:</strong> Detecting and preventing fake accounts, fraudulent offer claims, and unauthorized access.</li>
+                <li><strong>Legal compliance:</strong> Fulfilling legal obligations, responding to lawful requests, and enforcing our Terms of Service.</li>
+            </ul>
+            <p><strong>We do not use your data to train AI models without your explicit consent. We do not sell your personal information to third parties.</strong></p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- 5. BRAND SHARING -->
+        <div id="brand-sharing">
+            <h2>5. Sharing With Brands</h2>
+            <div class="callout callout-rights">
+                <p><strong>Your consent controls everything.</strong> A brand cannot access your individual data until you explicitly accept their offer. Before you accept, you see exactly what data the brand is requesting access to, for how long, and what they're paying. You choose yes or no — and that decision is always reversible.</p>
+            </div>
+
+            <h3>Before you accept an offer</h3>
+            <p>Brands can see <strong>aggregate, anonymized audience statistics</strong> only — for example, "there are 4,200 users in this audience segment." They cannot see any individual data, names, or contact information.</p>
+
+            <h3>After you accept an offer</h3>
+            <p>When you accept a brand's offer, you grant that brand temporary, limited access to the specific data categories you've consented to. This access is:</p>
+            <ul>
+                <li>Limited to the data types disclosed at the time of the offer</li>
+                <li>Time-bound to the offer duration specified (e.g., 30 days)</li>
+                <li>Revocable — you can withdraw consent at any time through your account settings</li>
+                <li>Non-transferable — the brand cannot sell or re-share your data with other parties</li>
+            </ul>
+
+            <h3>Brands do not receive</h3>
+            <p>Brands never receive your name, email address, phone number, payment information, or precise location data as part of an offer transaction. What they receive is the behavioral and demographic data from your Stats Card that you explicitly approved.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- 6. SERVICE PROVIDERS -->
+        <div id="service-providers">
+            <h2>6. Service Providers &amp; Third Parties</h2>
+            <p>We work with trusted service providers who access your data only to help us operate the Platform. These include:</p>
+            <ul>
+                <li><strong>Cloud infrastructure &amp; hosting</strong> — servers that store and process platform data</li>
+                <li><strong>Payment processors</strong> — to send you payouts from accepted offers</li>
+                <li><strong>Identity verification</strong> — to confirm real user accounts and prevent fraud</li>
+                <li><strong>Analytics</strong> — to understand aggregate platform usage (no individual profiling for advertising)</li>
+                <li><strong>Email &amp; notification delivery</strong> — to send you platform communications</li>
+            </ul>
+            <p>All service providers are contractually required to protect your data, use it only for the services they provide to us, and comply with applicable privacy law.</p>
+            <p>We do not share your data with advertisers, data brokers, or social media platforms except as part of an offer you've accepted (such as an audience export to Meta or Google, which only occurs with your consent as part of a brand offer).</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- 7. PUSH NOTIFICATIONS -->
+        <div id="push-notifications">
+            <h2>7. Push Notifications</h2>
+            <p>If you enable push notifications, we use them to alert you when a brand has made you an offer that matches your Stats Card. Notification data (whether you opened, dismissed, or ignored a notification) is used solely to improve offer delivery timing — it is not shared with brands.</p>
+            <p>You can disable push notifications at any time through your device settings or account preferences. Disabling notifications does not affect your ability to earn from offers — you'll still see them in the app, just without the push alert.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- 8. COOKIES -->
+        <div id="cookies">
+            <h2>8. Cookies &amp; Tracking</h2>
+            <p>We use a minimal set of cookies and tracking tools:</p>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Purpose</th>
+                        <th>Can you opt out?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Essential cookies</strong></td>
+                        <td>Keep you logged in, remember your session, enable core platform functions</td>
+                        <td>No — required for the Platform to work</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Analytics cookies</strong></td>
+                        <td>Understand how people use the Platform in aggregate (page views, feature usage)</td>
+                        <td>Yes — contact us or use browser settings</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Preference cookies</strong></td>
+                        <td>Remember your display settings and notification preferences</td>
+                        <td>Yes — but this may reset your settings</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>We do not use advertising cookies or third-party tracking pixels to build profiles for ad targeting on other platforms. You can manage cookies through your browser settings. Most browsers allow you to refuse new cookies, disable existing cookies, or be notified when a cookie is set.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- 9. YOUR RIGHTS -->
+        <div id="your-rights">
+            <h2>9. Your Rights (CCPA &amp; California Law)</h2>
+            <p>If you are a California resident, you have the following rights under the California Consumer Privacy Act (CCPA) and California Privacy Rights Act (CPRA):</p>
+
+            <div class="callout callout-rights">
+                <p><strong>These rights are free to exercise.</strong> We will not discriminate against you — in pricing, service quality, or offer availability — for exercising any privacy right.</p>
+            </div>
+
+            <h3>Right to Know</h3>
+            <p>You can request a copy of the personal information we've collected about you in the past 12 months, including what categories of data, what we used it for, and who we shared it with.</p>
+
+            <h3>Right to Delete</h3>
+            <p>You can request that we delete your personal information. We will honor this request and direct our service providers to delete your data as well, subject to limited exceptions (such as data we're legally required to retain).</p>
+
+            <h3>Right to Correct</h3>
+            <p>You can update or correct inaccurate information in your account at any time through account settings, or by contacting us.</p>
+
+            <h3>Right to Opt Out of Sale or Sharing</h3>
+            <p>We do not sell your personal information. We do not share your personal information with third parties for cross-context behavioral advertising without your consent. You can opt out of any data sharing at any time by withdrawing consent from active brand offers through your account settings.</p>
+
+            <h3>Right to Limit Use of Sensitive Personal Information</h3>
+            <p>You can limit our use of sensitive personal information (such as precise location or demographic details) to what is strictly necessary to provide the Platform. Contact us to restrict specific data uses.</p>
+
+            <h3>Right to Non-Discrimination</h3>
+            <p>Exercising any of these rights will not affect your ability to use the Platform, receive offers, or get paid.</p>
+
+            <h3>How to Exercise Your Rights</h3>
+            <p>Email us at <a href="mailto:jordan@getmymodel.com">jordan@getmymodel.com</a> with the subject line "Privacy Request." We will respond within 45 days. Complex requests may require up to 90 days with notice. We may need to verify your identity before processing your request.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- 10. DATA RETENTION -->
+        <div id="data-retention">
+            <h2>10. Data Retention</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Data Type</th>
+                        <th>Retention Period</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Account and Stats Card data</td>
+                        <td>As long as your account is active, plus 30 days after account deletion</td>
+                    </tr>
+                    <tr>
+                        <td>Offer transaction records</td>
+                        <td>7 years (required for financial/tax record-keeping)</td>
+                    </tr>
+                    <tr>
+                        <td>Platform usage logs</td>
+                        <td>12 months rolling</td>
+                    </tr>
+                    <tr>
+                        <td>Push notification interaction data</td>
+                        <td>90 days</td>
+                    </tr>
+                    <tr>
+                        <td>Support communications</td>
+                        <td>3 years from last interaction</td>
+                    </tr>
+                    <tr>
+                        <td>Data shared with brands under accepted offers</td>
+                        <td>Governed by the offer terms; brands are contractually required to delete after the offer period ends</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>When you delete your account, we begin deletion of your personal data within 30 days, except where longer retention is legally required (such as financial records).</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- 11. SECURITY -->
+        <div id="security">
+            <h2>11. Security</h2>
+            <p>We take data security seriously — it is foundational to our product. We employ industry-standard protections including:</p>
+            <ul>
+                <li>Encryption in transit (TLS) and at rest for all personal data</li>
+                <li>Access controls — only personnel with a specific need can access personal data</li>
+                <li>Regular security assessments and vulnerability testing</li>
+                <li>Contractual data security requirements for all service providers</li>
+            </ul>
+            <p>No system is 100% secure. If we become aware of a data breach that affects your personal information, we will notify you as required by applicable law, and no later than 72 hours after becoming aware of the incident.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- 12. CHILDREN -->
+        <div id="children">
+            <h2>12. Children's Privacy</h2>
+            <p>mymodel is not intended for users under the age of 18. We do not knowingly collect personal information from anyone under 18. If we become aware that we have collected data from a minor, we will delete that data promptly.</p>
+            <p>If you believe a minor has created an account on mymodel, please contact us at <a href="mailto:jordan@getmymodel.com">jordan@getmymodel.com</a>.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- 13. CHANGES -->
+        <div id="changes">
+            <h2>13. Changes to This Policy</h2>
+            <p>We will update this policy when our data practices change. For material changes — changes that significantly affect your rights or how we use your data — we will notify you by email (at the address on your account) at least 30 days before the change takes effect. You will have the opportunity to close your account or withdraw consent if you disagree with the updated terms.</p>
+            <p>Non-material changes (clarifications, typos, minor edits) will be noted by updating the "Last updated" date at the top of this page.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- 14. CONTACT -->
+        <div id="contact">
+            <h2>14. Contact Us</h2>
+            <p>For any privacy questions, data requests, or concerns:</p>
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-top:1rem">
+                <p style="margin-bottom:0.25rem"><strong>mymodel, Inc.</strong></p>
+                <p style="margin-bottom:0.25rem">Privacy inquiries: <a href="mailto:jordan@getmymodel.com">jordan@getmymodel.com</a></p>
+                <p style="margin-bottom:0.25rem">Website: <a href="https://www.getmymodel.com">getmymodel.com</a></p>
+                <p style="margin-bottom:0">We respond to all privacy requests within <strong>45 days</strong>.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-left">
+            <div class="footer-logo"><span class="my">my</span><span class="mdl">model</span></div>
+            <div class="footer-copy">mymodel, Inc. &copy; 2026</div>
+        </div>
+        <div class="footer-links">
+            <div class="footer-founder">
+                <span>Follow the founder's journey</span>
+                <div class="footer-founder-links">
+                    <a href="https://x.com/theantitechbro" class="footer-link">X</a>
+                    <a href="https://tiktok.com/@theantitechbro" class="footer-link">TikTok</a>
+                </div>
+            </div>
+            <span class="footer-dot">·</span>
+            <a href="mailto:jordan@getmymodel.com" class="footer-link">Contact</a>
+            <a href="/privacy.html" class="footer-link" style="color:var(--accent-soft)">Privacy</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
