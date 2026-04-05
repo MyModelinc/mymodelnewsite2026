@@ -9,12 +9,12 @@
     <meta property="og:site_name" content="mymodel">
     <meta property="og:title" content="Apply — mymodel Founding Design Partner">
     <meta property="og:description" content="A select cohort of brands getting early access to live, consented audience intelligence. Founding pricing locked for life.">
-    <meta property="og:url" content="https://getmymodel.com/pilot-access.html">
+    <meta property="og:url" content="https://getmymodel.com/brands/pilot-access.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@getmymodel">
     <meta name="twitter:title" content="Apply — mymodel Founding Design Partner">
     <meta name="twitter:description" content="A select cohort of brands getting early access to live, consented audience intelligence. Founding pricing locked for life.">
-    <link rel="canonical" href="https://getmymodel.com/pilot-access.html">
+    <link rel="canonical" href="https://getmymodel.com/brands/pilot-access.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -193,8 +193,8 @@
 <!-- NAV -->
 <nav>
     <div class="nav-inner">
-        <a href="/for-brands.html" class="nav-logo"><span class="my">my</span><span class="mdl">model</span></a>
-        <a href="/for-brands.html" class="nav-back">
+        <a href="/brands/" class="nav-logo"><span class="my">my</span><span class="mdl">model</span></a>
+        <a href="/brands/" class="nav-back">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span>Back to Overview</span>
         </a>
@@ -285,6 +285,10 @@
                             </div>
                         </div>
                         <div class="pa-form-group">
+                            <label class="pa-form-label" for="website-url">Brand Website</label>
+                            <input class="pa-form-input" type="url" id="website-url" name="website_url" placeholder="https://yourbrand.com" autocomplete="url"/>
+                        </div>
+                        <div class="pa-form-group">
                             <label class="pa-form-label">Business Type *</label>
                             <div class="radio-grid">
                                 <label class="radio-card"><input type="radio" name="business_type" value="DTC Brand" required/><div class="radio-card-inner">DTC Brand</div></label>
@@ -349,8 +353,8 @@
                             </div>
                         </div>
                         <div class="pa-form-group">
-                            <label class="pa-form-label" for="meta-spend">Monthly Meta Spend</label>
-                            <select class="pa-form-select" id="meta-spend" name="meta_spend">
+                            <label class="pa-form-label" for="meta-spend">Monthly Meta Spend *</label>
+                            <select class="pa-form-select" id="meta-spend" name="meta_spend" required>
                                 <option value="" disabled selected>Select your monthly budget</option>
                                 <option>Under $5,000/mo</option>
                                 <option>$5,000 &ndash; $15,000/mo</option>
@@ -431,7 +435,7 @@
             <div class="pa-success-card">
                 If selected, you'll receive a calendar invite for a <strong>15-minute Sniper Strategy session</strong> — where we map your first Audience GPT window and show you exactly who's been waiting for your brand.
             </div>
-            <a href="/for-brands.html" class="pa-success-back">
+            <a href="/brands/" class="pa-success-back">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 Back to Overview
             </a>
@@ -483,6 +487,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const successEl = document.getElementById('pa-success');
     const submitBtn = document.getElementById('pa-submit-btn');
 
+    const FORM_ENDPOINT = 'YOUR_APPS_SCRIPT_DEPLOYMENT_URL';
+
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
@@ -493,9 +499,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const market = document.getElementById('priority-market').value.trim();
         const barrier = document.getElementById('greatest-barrier').value.trim();
         const businessType = document.querySelector('input[name="business_type"]:checked');
+        const metaSpend = document.getElementById('meta-spend').value;
         const commitment = document.getElementById('ready-check').checked;
 
-        if (!name || !email || !company || !market || !barrier || !businessType || !commitment) {
+        if (!name || !email || !company || !market || !barrier || !businessType || !metaSpend || !commitment) {
             submitBtn.textContent = 'Please complete all required fields';
             submitBtn.style.background = 'linear-gradient(135deg, #6B7280, #4B5563)';
             setTimeout(() => {
@@ -507,32 +514,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Collect form data
         const insights = Array.from(document.querySelectorAll('input[name="insights"]:checked')).map(cb => cb.value);
-        const formData = {
+        const payload = {
             full_name: name,
             work_email: email,
             company_name: company,
             role_title: document.getElementById('role-title').value.trim(),
+            website_url: document.getElementById('website-url').value.trim(),
             business_type: businessType.value,
             priority_market: market,
             greatest_barrier: barrier,
             insights: insights.join(', '),
-            meta_spend: document.getElementById('meta-spend').value,
-            offer_amount: slider.value
+            meta_spend: metaSpend,
+            offer_amount: '$' + slider.value,
+            submitted_at: new Date().toISOString(),
+            source: 'design-partner-apply'
         };
 
-        // TODO: POST formData to your backend endpoint
-        // Example: fetch('/api/apply', { method: 'POST', body: JSON.stringify(formData), headers: {'Content-Type':'application/json'} })
-
-        console.log('Application submitted:', formData);
+        navigator.sendBeacon(FORM_ENDPOINT, JSON.stringify(payload));
 
         // Show success
         submitBtn.textContent = 'Submitting...';
         submitBtn.disabled = true;
-        setTimeout(() => {
-            formWrap.style.display = 'none';
-            successEl.style.display = 'block';
-            window.scrollTo({ top: successEl.offsetTop - 100, behavior: 'smooth' });
-        }, 600);
+        formWrap.style.display = 'none';
+        successEl.style.display = 'block';
+        window.scrollTo({ top: successEl.offsetTop - 100, behavior: 'smooth' });
     });
 
 });

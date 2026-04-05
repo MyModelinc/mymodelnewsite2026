@@ -88,6 +88,8 @@
         .btn-primary:hover{background:var(--accent-soft);transform:translateY(-3px);box-shadow:0 12px 40px rgba(124,92,191,0.3)}
         .btn-ghost{background:transparent;color:var(--text-primary);border:1px solid var(--border)}
         .btn-ghost:hover{background:var(--surface);border-color:var(--accent)}
+        .btn-gradient{background:linear-gradient(135deg,#7C3AED,#EC4899);border-radius:999px;color:#fff}
+        .btn-gradient:hover{opacity:0.88;transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,58,237,0.35)}
 
         .highlight{color:var(--violet-glow)}
         .bold{font-weight:700}
@@ -106,8 +108,8 @@
         .nav-link.active{color:var(--text-primary);opacity:1;position:relative}
         .nav-link.active::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--accent);border-radius:2px}
         .nav-divider{width:1px;height:14px;background:var(--border)}
-        .nav-cta{padding:0.625rem 1.5rem;background:var(--accent);color:#fff;border:none;border-radius:999px;font-family:'Manrope',sans-serif;font-size:0.875rem;font-weight:600;cursor:pointer;transition:all 0.3s;text-decoration:none}
-        .nav-cta:hover{background:var(--accent-soft);transform:translateY(-2px)}
+        .nav-cta{padding:0.625rem 1.5rem;background:linear-gradient(135deg,#7C3AED,#EC4899);color:#fff;border:none;border-radius:999px;font-family:'Manrope',sans-serif;font-size:0.875rem;font-weight:600;cursor:pointer;transition:all 0.3s;text-decoration:none}
+        .nav-cta:hover{opacity:0.88;transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,58,237,0.35)}
         @media(max-width:768px){.nav-links{display:none}}
 
         /* FLOATING CTA */
@@ -509,7 +511,7 @@
         /* =============================== */
         /* HOW IT WORKS                    */
         /* =============================== */
-        .steps-section{padding:6rem 0 10rem;position:relative;overflow:hidden}
+        .steps-section{padding:6rem 0 5rem;position:relative;overflow:hidden}
         .steps-section::before{
             content:'';position:absolute;
             top:50%;left:50%;transform:translate(-50%,-50%);
@@ -573,7 +575,7 @@
         /* =============================== */
         /* PRIVACY                         */
         /* =============================== */
-        .privacy-section{padding:10rem 0 6rem;text-align:center}
+        .privacy-section{padding:5rem 0 6rem;text-align:center}
         .privacy-section h2{text-align:center;font-weight:500;font-size:clamp(1.5rem,3vw,2.25rem);letter-spacing:-0.025em;line-height:1.3}
         .privacy-list{list-style:none;max-width:560px;margin:0 auto 2.5rem;text-align:left}
         .privacy-item{
@@ -898,12 +900,10 @@
 <!-- NAV -->
 <nav>
     <div class="nav-inner">
-        <a href="#" class="nav-logo"><span class="my">my</span><span class="model">model</span></a>
+        <a href="/" class="nav-logo"><span class="my">my</span><span class="model">model</span></a>
         <div class="nav-links">
-            <a href="/for-the-people.html" class="nav-link active">For People</a>
-            <a href="/for-brands.html" class="nav-link">For Brands</a>
         </div>
-        <a href="https://www.getmymodel.com/join" class="nav-cta">Join the waitlist</a>
+        <a href="/join.html" class="nav-cta">Join the waitlist</a>
     </div>
 </nav>
 
@@ -911,7 +911,7 @@
 <div id="floating-cta">
     <div class="floating-inner">
         <div class="floating-text">Minimum guarantee: <strong>$5 per offer.</strong> Join now.</div>
-        <a href="https://www.getmymodel.com/join" class="btn btn-primary">Join the waitlist</a>
+        <a href="join.html" class="btn btn-gradient">Join the waitlist</a>
     </div>
 </div>
 
@@ -930,6 +930,9 @@
         <div class="hero-subtext-post">
             <span class="hero-resolve-label">mymodel changes that —</span>
             <span class="hero-resolve-main"><span class="pay-you">Brands Pay You</span> directly for your consent.</span>
+        </div>
+        <div style="margin-top:2rem">
+            <a href="join.html" class="btn btn-gradient">Join the waitlist</a>
         </div>
     </div>
     <div class="hero-phone">
@@ -1105,7 +1108,7 @@
             <span class="fw-connector">↓</span>
             <div class="fw-node fw-node-bl fw-green">More money for everyone</div>
         </div>
-        <a href="https://www.getmymodel.com/join" class="manifesto-cta">Join the waitlist now.</a>
+        <a href="join.html" class="manifesto-cta">Join the waitlist now.</a>
         <p style="font-size:0.8125rem;color:var(--accent-soft);margin-top:2.5rem;margin-bottom:1rem">Follow the founder's journey — @theantitechbro</p>
         <div class="manifesto-social" style="margin-top:0">
             <a href="https://x.com/theantitechbro" class="social-link" aria-label="X / Twitter">&#120143;</a>
