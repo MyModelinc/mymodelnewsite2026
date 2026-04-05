@@ -15,42 +15,75 @@
     <meta name="twitter:title" content="mymodel — Your Stats Card. Your Rules. Your Money.">
     <meta name="twitter:description" content="Cookies made them billions. You got nothing. Until now. Introducing your Stats Card — the first digital persona you own and monetize.">
     <link rel="canonical" href="https://getmymodel.com/for-the-people.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" href="/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+    @font-face { font-family:'Geist Mono'; src:url('https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/GeistMono-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'Geist Mono'; src:url('https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/GeistMono-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+    </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         :root{
-            --bg:#0c0c14;--surface:#12121c;--elevated:#1a1a28;
-            --text-primary:#eeedf2;--text-secondary:#9490a6;--text-muted:#5c5873;
-            --accent:#7c5cbf;--accent-soft:#9b82d4;--accent-muted:rgba(124,92,191,0.12);
+            --bg:#0F0B1A;--surface:#1A1426;--elevated:#1a1a28;
+            --card:#231D30;
+            --text-primary:#eeedf2;--text-secondary:#b0adc2;--text-muted:#7a7694;
+            --accent:#A78BFA;--accent-soft:#9b82d4;--accent-muted:rgba(124,92,191,0.12);
+            --pink:#EC4899;--violet:#7C3AED;
             --deep-violet:#5B21B6;--vivid-violet:#7C3AED;--violet-glow:#A78BFA;
             --dark-card:#231D30;--offer-gold:#FBBF24;--success-green:#34D399;
             --fuchsia:#E879F9;
-            --border:rgba(255,255,255,0.06);
+            --border:rgba(255,255,255,0.07);
+            --gradient:linear-gradient(135deg, #EC4899, #7C3AED);
+            --gradient-text:linear-gradient(135deg, #EC4899 0%, #A78BFA 50%, #7C3AED 100%);
+            --font-base:'Manrope', sans-serif;
+            --font-mono:'Geist Mono', monospace;
             --green:#22c55e;--red:#ef4444
         }
         html{scroll-behavior:smooth}
-        body{background:var(--bg);color:var(--text-primary);font-family:'Outfit',sans-serif;font-size:1.0625rem;line-height:1.65;overflow-x:hidden}
+        body{background:var(--bg);color:var(--text-primary);font-family:'Manrope',sans-serif;font-size:1.0625rem;line-height:1.65;overflow-x:hidden}
 
-        h1{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(2.5rem,5.5vw,4.5rem);letter-spacing:-0.05em;line-height:1.05;margin-bottom:0.25rem}
-        h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(2rem,4.5vw,3.25rem);letter-spacing:-0.04em;line-height:1.1;margin-bottom:1.25rem}
-        h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.375rem;margin-bottom:0.75rem}
+        h1{font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(2.5rem,5.5vw,4.5rem);letter-spacing:-0.05em;line-height:1.05;margin-bottom:0.25rem}
+        h2{font-family:'Manrope',sans-serif;font-weight:700;font-size:clamp(2rem,4.5vw,3.25rem);letter-spacing:-0.04em;line-height:1.1;margin-bottom:1.25rem}
+        h3{font-family:'Manrope',sans-serif;font-weight:600;font-size:1.375rem;margin-bottom:0.75rem}
 
         /* Mid-tier statement class */
-        .statement{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(1.25rem,2.2vw,1.75rem);line-height:1.3;letter-spacing:-0.025em;color:var(--text-primary)}
+        .statement{font-family:'Manrope',sans-serif;font-weight:600;font-size:clamp(1.25rem,2.2vw,1.75rem);line-height:1.3;letter-spacing:-0.025em;color:var(--text-primary)}
 
-        .label{font-family:'Outfit',sans-serif;font-weight:500;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent-soft);margin-bottom:0.75rem}
-        .mono{font-family:'Geist',sans-serif;font-weight:500;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+        .eyebrow {
+          display: inline-flex;
+          align-items: center;
+          font-family: 'Manrope', sans-serif;
+          font-size: 0.75rem;
+          font-weight: 700;
+          letter-spacing: 0.04em;
+          color: #eeedf2;
+          background: rgba(167,139,250,0.22);
+          border: 1px solid rgba(167,139,250,0.4);
+          border-radius: 999px;
+          padding: 0.2rem 0.75rem;
+        }
+        .mono{font-family:'Geist Mono',monospace;font-weight:500}
 
         .container{max-width:1200px;margin:0 auto;padding:0 2rem}
         section{position:relative}
 
+        /* Section transition glows */
+        .hero::after,.statscard-section::after,.steps-section::after,.privacy-section::after{
+            content:'';position:absolute;bottom:0;left:0;right:0;height:140px;pointer-events:none;z-index:1;
+        }
+        .hero::after{background:radial-gradient(ellipse at 50% 100%,rgba(124,58,237,0.06) 0%,transparent 70%)}
+        .statscard-section::after{background:radial-gradient(ellipse at 50% 100%,rgba(124,58,237,0.08) 0%,transparent 70%)}
+        .steps-section::after{background:radial-gradient(ellipse at 50% 100%,rgba(255,255,255,0.02) 0%,transparent 70%)}
+        .privacy-section::after{background:radial-gradient(ellipse at 50% 100%,rgba(52,211,153,0.04) 0%,transparent 70%)}
+
         .glass{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(18,18,28,0.5);border:1px solid rgba(255,255,255,0.08);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.06),0 16px 48px rgba(0,0,0,0.4)}
 
-        .btn{padding:0.875rem 2rem;border-radius:0.875rem;font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;transition:all 0.3s ease;border:none;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:0.5rem}
+        .btn{padding:0.875rem 2rem;border-radius:0.875rem;font-family:'Manrope',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;transition:all 0.3s ease;border:none;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:0.5rem}
         .btn-primary{background:var(--accent);color:#fff}
         .btn-primary:hover{background:var(--accent-soft);transform:translateY(-3px);box-shadow:0 12px 40px rgba(124,92,191,0.3)}
         .btn-ghost{background:transparent;color:var(--text-primary);border:1px solid var(--border)}
@@ -58,14 +91,14 @@
 
         .highlight{color:var(--violet-glow)}
         .bold{font-weight:700}
-        .money{color:#fff;font-family:'Geist',sans-serif;font-weight:500}
+        .money{color:#fff;font-family:'Geist Mono',monospace;font-weight:500}
 
         /* =============================== */
         /* NAV                             */
         /* =============================== */
         nav{position:fixed;top:0;left:0;right:0;z-index:1000;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(12,12,20,0.75);border-bottom:1px solid var(--border);padding:1rem 2rem}
         .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
-        .nav-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.5rem;text-decoration:none;display:flex;gap:0.15rem}
+        .nav-logo{font-family:'Manrope',sans-serif;font-weight:700;font-size:1.5rem;text-decoration:none;display:flex;gap:0.15rem}
         .nav-logo .my{color:var(--text-primary)}.nav-logo .model{color:var(--accent)}
         .nav-links{display:flex;align-items:center;gap:2rem}
         .nav-link{color:var(--text-secondary);text-decoration:none;font-size:0.875rem;font-weight:500;transition:color 0.2s,opacity 0.2s;opacity:0.55}
@@ -73,7 +106,7 @@
         .nav-link.active{color:var(--text-primary);opacity:1;position:relative}
         .nav-link.active::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--accent);border-radius:2px}
         .nav-divider{width:1px;height:14px;background:var(--border)}
-        .nav-cta{padding:0.625rem 1.5rem;background:var(--accent);color:#fff;border:none;border-radius:999px;font-family:'Outfit',sans-serif;font-size:0.875rem;font-weight:600;cursor:pointer;transition:all 0.3s;text-decoration:none}
+        .nav-cta{padding:0.625rem 1.5rem;background:var(--accent);color:#fff;border:none;border-radius:999px;font-family:'Manrope',sans-serif;font-size:0.875rem;font-weight:600;cursor:pointer;transition:all 0.3s;text-decoration:none}
         .nav-cta:hover{background:var(--accent-soft);transform:translateY(-2px)}
         @media(max-width:768px){.nav-links{display:none}}
 
@@ -101,13 +134,10 @@
         @keyframes shimmer{0%{background-position:200% center}100%{background-position:-200% center}}
 
         /* Hero subtext — split around CTAs */
-        .hero-subtext-pre{margin:1.5rem 0 0;max-width:460px}
-        .hero-subtext-pre .line{display:block;line-height:1.7;font-size:1.0625rem;color:var(--text-secondary)}
-        .hero-buttons{display:flex;gap:1rem;flex-wrap:wrap;margin:1.75rem 0}
-        @keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-        .hero-buttons.floating{animation:heroFloat 4s ease-in-out infinite}
+        .hero-subtext-pre{margin:1.5rem 0 1.5rem}
+        .hero-subtext-pre .line{display:block;line-height:1.7;font-size:1.0625rem;color:var(--text-primary)}
         .hero-subtext-post{max-width:460px;margin-bottom:0}
-        .hero-resolve-label{display:block;font-size:1.25rem;color:var(--text-primary);font-weight:600;font-family:'Outfit',sans-serif;line-height:1.7}
+        .hero-resolve-label{display:block;font-size:1.25rem;color:var(--text-primary);font-weight:600;font-family:'Manrope',sans-serif;line-height:1.7}
         .hero-resolve-main{display:block;font-size:1.25rem;font-weight:600;color:var(--text-primary);line-height:1.5;margin-top:0.25rem}
         .pay-you{
             display:inline-block;
@@ -119,13 +149,15 @@
         }
         .hero-phone{position:relative;z-index:2;display:flex;justify-content:center;perspective:1200px}
         @keyframes iphoneFloat{
-            0%,100%{transform:rotateY(-18deg) rotateX(5deg) rotate(-2deg) translateY(0px);filter:drop-shadow(0 28px 60px rgba(0,0,0,0.55))}
-            50%{transform:rotateY(-14deg) rotateX(3deg) rotate(-1.5deg) translateY(-10px);filter:drop-shadow(0 40px 80px rgba(0,0,0,0.65))}
+            0%,100%{transform:rotateY(-6deg) rotateX(2deg) rotate(-1deg) translateY(0px);filter:drop-shadow(0 36px 80px rgba(0,0,0,0.65))}
+            50%{transform:rotateY(-4deg) rotateX(1deg) rotate(-0.5deg) translateY(-8px);filter:drop-shadow(0 48px 100px rgba(0,0,0,0.75))}
         }
         @media(max-width:768px){
             .hero{grid-template-columns:1fr;gap:2.5rem;min-height:auto;padding-top:6rem}
             .hero-copy{text-align:center}
             .hero-subtext-pre,.hero-subtext-post{margin-left:auto;margin-right:auto}
+            .hero-subtext-pre{border-left:none!important;border-image:none!important;padding-left:0!important}
+            .hero-subtext-pre .line{white-space:normal}
             .hero-buttons{justify-content:center}
         }
 
@@ -159,7 +191,7 @@
             width:1.75rem;height:1.75rem;border-radius:7px;
             background:linear-gradient(135deg,#5B21B6,#7C3AED);
             display:flex;align-items:center;justify-content:center;
-            font-size:0.75rem;font-weight:800;font-family:'Space Grotesk',sans-serif;
+            font-size:0.75rem;font-weight:800;font-family:'Manrope',sans-serif;
             color:#fff;flex-shrink:0;
             box-shadow:0 2px 8px rgba(91,33,182,0.5);
         }
@@ -213,17 +245,17 @@
         /* Stats card right — new type hierarchy */
         .sc-introducing{
             display:block;
-            font-family:'Outfit',sans-serif;
+            font-family:'Manrope',sans-serif;
             font-weight:500;
             font-size:clamp(2rem,3.5vw,3rem);
-            color:var(--text-secondary);
+            color:var(--text-primary);
             letter-spacing:-0.01em;
             line-height:1.1;
             margin-bottom:0.2rem;
         }
         .sc-your-statscard{
             display:block;
-            font-family:'Space Grotesk',sans-serif;
+            font-family:'Manrope',sans-serif;
             font-weight:700;
             font-size:clamp(2rem,3.5vw,3rem);
             color:var(--text-primary);
@@ -232,7 +264,7 @@
             margin-bottom:1.25rem;
         }
         .sc-hero-tagline{
-            font-family:'Space Grotesk',sans-serif;
+            font-family:'Manrope',sans-serif;
             font-weight:800;
             font-size:clamp(2rem,4vw,3.75rem);
             letter-spacing:-0.05em;
@@ -244,17 +276,16 @@
             animation:shimmer 5s linear infinite;
         }
         /* Desc caption — centered below layout */
-        @keyframes captionFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
         .statscard-caption{
             text-align:center;
             max-width:680px;
             margin:0 auto;
             padding-top:3.5rem;
-            animation:captionFloat 7s ease-in-out infinite;
         }
-        .statscard-caption p{margin:0;line-height:1.6}
-        .statscard-caption .caption-l1{font-weight:500;font-size:1.125rem;color:var(--text-primary)}
-        .statscard-caption .caption-l2,.statscard-caption .caption-l3{font-weight:400;font-size:1rem;color:var(--text-secondary)}
+        .statscard-caption p{margin:0;line-height:1.65}
+        .statscard-caption .caption-l1{font-weight:600;font-size:1.25rem;color:var(--text-primary)}
+        .statscard-caption .caption-l2{font-weight:400;font-size:1.125rem;color:var(--text-primary)}
+        .statscard-caption .caption-l3{font-weight:400;font-size:1.0625rem;color:var(--text-primary)}
         .statscard-rule{
             width:3rem;height:2px;
             background:linear-gradient(90deg,transparent,var(--violet-glow));
@@ -269,7 +300,7 @@
             margin:0;
         }
         .statscard-desc-lines p:nth-child(1){color:var(--text-primary);font-weight:500}
-        .statscard-desc-lines p:nth-child(2),.statscard-desc-lines p:nth-child(3){color:var(--text-secondary)}
+        .statscard-desc-lines p:nth-child(2),.statscard-desc-lines p:nth-child(3){color:var(--text-primary)}
 
         @media(max-width:900px){
             .statscard-layout{grid-template-columns:1fr;gap:3rem}
@@ -281,10 +312,22 @@
         /* =============================== */
         /* STATS CARD — TRADING CARD DESIGN */
         /* =============================== */
-        .card-wrapper{
-            position:relative;
+        .card-float-group{
+            display:flex;flex-direction:column;align-items:center;
             animation:cardFloat 7s ease-in-out infinite;
             will-change:transform;
+        }
+        .card-label-tag{
+            font-family:'Manrope',sans-serif;
+            font-size:0.75rem;font-weight:500;
+            color:rgba(167,139,250,0.7);
+            letter-spacing:0.08em;
+            text-transform:uppercase;
+            margin-bottom:0.875rem;
+            text-align:center;
+        }
+        .card-wrapper{
+            position:relative;
         }
         @keyframes cardFloat{
             0%,100%{transform:translateY(0px) rotate(-1.5deg);filter:drop-shadow(0 20px 50px rgba(124,58,237,0.3))}
@@ -363,13 +406,13 @@
             border-radius:50%;
             background:linear-gradient(135deg,var(--vivid-violet),var(--fuchsia));
             display:flex;align-items:center;justify-content:center;
-            font-family:'Space Grotesk',sans-serif;font-weight:800;color:#fff;font-size:1.125rem;
+            font-family:'Manrope',sans-serif;font-weight:800;color:#fff;font-size:1.125rem;
             box-shadow:0 4px 16px rgba(124,58,237,0.5);
             flex-shrink:0;
         }
         .sc-header-meta{text-align:right}
         .sc-card-label{
-            font-family:'Geist',sans-serif;
+            font-family:'Geist Mono',monospace;
             font-size:0.5625rem;
             font-weight:500;
             color:rgba(167,139,250,0.6);
@@ -380,14 +423,14 @@
             display:inline-flex;align-items:center;gap:0.25rem;
             font-size:0.5rem;font-weight:600;
             color:var(--success-green);
-            font-family:'Outfit',sans-serif;
+            font-family:'Manrope',sans-serif;
             text-transform:uppercase;letter-spacing:0.08em;
             margin-top:0.25rem;
         }
         .sc-verified::before{content:'✓';font-size:0.5rem}
 
         .sc-name{
-            font-family:'Space Grotesk',sans-serif;
+            font-family:'Manrope',sans-serif;
             font-weight:800;
             font-size:1.25rem;
             letter-spacing:-0.03em;
@@ -430,11 +473,11 @@
             font-size:0.5625rem;font-weight:600;
             text-transform:uppercase;letter-spacing:0.08em;
             color:var(--accent-soft);
-            font-family:'Outfit',sans-serif;
+            font-family:'Manrope',sans-serif;
             flex-shrink:0;
             min-width:52px;
         }
-        .sc-trait-value{font-size:0.6875rem;color:var(--text-primary);font-family:'Outfit',sans-serif;font-weight:500}
+        .sc-trait-value{font-size:0.6875rem;color:var(--text-primary);font-family:'Manrope',sans-serif;font-weight:500}
 
         .sc-card-footer{
             position:relative;z-index:3;
@@ -457,23 +500,30 @@
         }
         .sc-footer-live{
             display:flex;align-items:center;gap:0.3rem;
-            font-size:0.5625rem;color:var(--text-muted);font-family:'Outfit',sans-serif;
+            font-size:0.5625rem;color:var(--text-muted);font-family:'Manrope',sans-serif;
         }
         .pulse-dot{width:5px;height:5px;background:var(--success-green);border-radius:50%;animation:pulse 2s ease-in-out infinite;flex-shrink:0}
         @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(52,211,153,0.4)}50%{opacity:0.5;box-shadow:0 0 0 4px rgba(52,211,153,0)}}
-        .sc-footer-id{font-size:0.5rem;color:rgba(255,255,255,0.15);font-family:'Geist',sans-serif}
+        .sc-footer-id{font-size:0.5rem;color:rgba(255,255,255,0.15);font-family:'Geist Mono',monospace}
 
         /* =============================== */
         /* HOW IT WORKS                    */
         /* =============================== */
-        .steps-section{padding:6rem 0}
+        .steps-section{padding:6rem 0 10rem;position:relative;overflow:hidden}
+        .steps-section::before{
+            content:'';position:absolute;
+            top:50%;left:50%;transform:translate(-50%,-50%);
+            width:800px;height:600px;
+            background:radial-gradient(ellipse,rgba(124,58,237,0.08) 0%,transparent 65%);
+            pointer-events:none;
+        }
         .steps-header{text-align:center;margin-bottom:4rem}
         .steps-header p{color:var(--text-secondary);max-width:500px;margin:0 auto}
         .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
         .step-card{padding:2.5rem 2rem;border-radius:20px;text-align:center}
         .step-number{
             display:inline-block;
-            font-family:'Geist',sans-serif;
+            font-family:'Geist Mono',monospace;
             font-size:0.6875rem;
             color:var(--accent-soft);
             font-weight:500;
@@ -485,8 +535,8 @@
             margin-bottom:1rem;
         }
         .step-card h3{margin-bottom:0.5rem}
-        .step-card p{font-size:0.9375rem;color:var(--text-secondary);line-height:1.55}
-        .step-card p strong{color:var(--text-primary)}
+        .step-card p{font-size:0.9375rem;color:var(--text-secondary);line-height:1.55;font-weight:400}
+        .step-card p strong{color:var(--text-primary);font-weight:500}
         .step-title-paid{color:#fff!important}
         /* Step 03 — silver shimmer */
         .step-card-paid{position:relative;overflow:hidden}
@@ -509,26 +559,22 @@
         .step-card-paid>*{position:relative;z-index:2}
         @keyframes silverShimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
         /* Step 02 — countdown */
-        .step-countdown{
-            display:flex;align-items:center;justify-content:center;
-            margin-top:1rem;padding:0.25rem 0;
-            font-family:'Geist',sans-serif;font-size:2.5rem;font-weight:700;
-            color:#fff;letter-spacing:0.08em;
+        .steps-mission{
+            text-align:center;margin-top:3rem;
+            font-family:'Manrope',sans-serif;font-weight:500;
+            font-size:clamp(1rem,1.8vw,1.375rem);
+            color:var(--text-secondary);letter-spacing:-0.01em;
+            max-width:680px;margin-left:auto;margin-right:auto;
+            line-height:1.5;
         }
-        .countdown-label{font-family:'Outfit',sans-serif;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);display:block;text-align:center;margin-top:0.25rem}
-        .countdown-actions{display:flex;gap:1.75rem;justify-content:center;margin-top:1.1rem}
-        .countdown-btn{width:2.75rem;height:2.75rem;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.125rem;font-weight:700;transition:transform 0.18s ease,box-shadow 0.18s ease;outline:none}
-        .countdown-btn:hover{transform:scale(1.14)}
-        .countdown-btn-x{background:rgba(239,68,68,0.12);color:#ef4444;border:1.5px solid rgba(239,68,68,0.28)}
-        .countdown-btn-check{background:rgba(52,211,153,0.12);color:#34d399;border:1.5px solid rgba(52,211,153,0.28)}
-        .step-paid-footer{margin-top:1.25rem;font-size:0.8125rem;color:var(--violet-glow);font-style:italic;font-weight:700;line-height:1.45;border-top:1px solid var(--border);padding-top:1rem}
+        .steps-mission strong{color:var(--text-primary);font-weight:600}
         @media(max-width:768px){.steps-grid{grid-template-columns:1fr}}
 
         /* =============================== */
         /* PRIVACY                         */
         /* =============================== */
-        .privacy-section{padding:6rem 0;text-align:center}
-        .privacy-section h2{text-align:center}
+        .privacy-section{padding:10rem 0 6rem;text-align:center}
+        .privacy-section h2{text-align:center;font-weight:500;font-size:clamp(1.5rem,3vw,2.25rem);letter-spacing:-0.025em;line-height:1.3}
         .privacy-list{list-style:none;max-width:560px;margin:0 auto 2.5rem;text-align:left}
         .privacy-item{
             display:flex;align-items:center;gap:1rem;
@@ -540,15 +586,16 @@
         .privacy-item.revealed{opacity:1;transform:translateY(0) scale(1)}
         .privacy-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
         .privacy-x{
-            width:1.625rem;height:1.625rem;display:flex;align-items:center;justify-content:center;
-            font-size:0.75rem;flex-shrink:0;color:var(--red);font-weight:700;
+            width:1.875rem;height:1.875rem;display:flex;align-items:center;justify-content:center;
+            font-size:0.875rem;flex-shrink:0;color:var(--red);font-weight:700;
             background:rgba(239,68,68,0.1);border-radius:6px;
             border:1px solid rgba(239,68,68,0.2);
             transform:scale(0);
             transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1) 0.15s;
         }
         .privacy-item.revealed .privacy-x{transform:scale(1)}
-        .privacy-text{font-size:1rem;color:var(--text-primary)}
+        .privacy-text{font-size:clamp(1.125rem,2vw,1.375rem);color:var(--text-primary);line-height:1.45;font-weight:400}
+        .privacy-text strong{font-weight:500;color:var(--text-primary)}
         .privacy-badge{
             display:inline-flex;align-items:center;gap:0.5rem;
             background:var(--accent-muted);border:1px solid rgba(124,92,191,0.3);
@@ -559,7 +606,7 @@
         .privacy-badge.revealed{opacity:1;transform:translateY(0)}
 
         .privacy-30days{
-            font-family:'Space Grotesk',sans-serif;
+            font-family:'Manrope',sans-serif;
             font-weight:600;
             font-size:clamp(1.25rem,2vw,1.625rem);
             color:var(--text-primary);
@@ -597,14 +644,14 @@
         .mp-content{position:relative;z-index:2}
 
         .mp-eyebrow{
-            font-family:'Geist',sans-serif;
+            font-family:'Geist Mono',monospace;
             font-size:0.6875rem;font-weight:500;
             text-transform:uppercase;letter-spacing:0.15em;
             color:var(--text-muted);
             margin-bottom:1.25rem;
         }
         .mp-statement{
-            font-family:'Space Grotesk',sans-serif;
+            font-family:'Manrope',sans-serif;
             font-weight:800;
             font-size:clamp(2.75rem,6vw,5.5rem);
             letter-spacing:-0.04em;
@@ -671,7 +718,7 @@
         footer{border-top:1px solid var(--border);padding:3rem 2rem}
         .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
         .footer-left{display:flex;align-items:center;gap:2rem}
-        .footer-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem}
+        .footer-logo{font-family:'Manrope',sans-serif;font-weight:700;font-size:1rem}
         .footer-logo .my{color:var(--text-primary)}.footer-logo .model{color:var(--accent)}
         .footer-copy{font-size:0.875rem;color:var(--text-secondary)}
         .footer-links{display:flex;gap:2rem;align-items:center}
@@ -681,6 +728,85 @@
         .footer-founder-links{display:flex;gap:1rem}
         .footer-dot{color:var(--border);font-size:0.75rem}
         @media(max-width:768px){.footer-inner{flex-direction:column;gap:1.5rem;text-align:center}.footer-left{flex-direction:column;gap:0.75rem}.footer-founder{flex-direction:column;gap:0.25rem}}
+
+        /* =============================== */
+        /* HERO PHONE GLOW                 */
+        /* =============================== */
+        .hero-phone-glow{
+            position:absolute;
+            top:50%;left:50%;
+            transform:translate(-50%,-50%);
+            width:680px;height:680px;
+            background:radial-gradient(circle,rgba(124,58,237,0.32) 0%,rgba(124,58,237,0.14) 35%,rgba(124,58,237,0.04) 60%,transparent 75%);
+            pointer-events:none;
+            z-index:0;
+            border-radius:50%;
+        }
+        .hero-phone .iphone{position:relative;z-index:1}
+
+        /* =============================== */
+        /* HERO SUBTEXT ACCENT             */
+        /* =============================== */
+        .hero-subtext-pre{
+            position:relative;
+            padding-left:1rem;
+            border-left:2px solid transparent;
+            border-image:linear-gradient(180deg,var(--violet-glow),var(--accent)) 1;
+        }
+        .hero-subtext-pre .line{white-space:nowrap}
+        .line-accent{color:var(--text-primary);font-weight:400}
+
+        /* =============================== */
+        /* STEP CARDS — TINTS + WATERMARKS */
+        /* =============================== */
+        .step-card-1{background:rgba(124,92,191,0.07)!important;border-color:rgba(167,139,250,0.22)!important;box-shadow:0 0 50px rgba(124,58,237,0.2),0 0 100px rgba(124,58,237,0.09),inset 0 1px 0 rgba(255,255,255,0.06),0 16px 48px rgba(0,0,0,0.4)!important}
+        .step-card-2{border-color:rgba(167,139,250,0.14)!important;box-shadow:0 0 50px rgba(124,58,237,0.16),0 0 100px rgba(124,58,237,0.07),inset 0 1px 0 rgba(255,255,255,0.06),0 16px 48px rgba(0,0,0,0.4)!important}
+        .step-card-paid{border-color:rgba(167,139,250,0.12)!important;box-shadow:0 0 50px rgba(124,58,237,0.12),0 0 80px rgba(251,191,36,0.07),inset 0 1px 0 rgba(255,255,255,0.06),0 16px 48px rgba(0,0,0,0.4)!important}
+
+        /* =============================== */
+        /* PRIVACY SECTION TINT            */
+        /* =============================== */
+        .privacy-section{
+            background:radial-gradient(ellipse at 50% 20%,rgba(124,58,237,0.05) 0%,transparent 60%);
+        }
+
+        /* =============================== */
+        /* MANIFESTO SHIMMER HEADLINE      */
+        /* =============================== */
+        .shimmer-headline{
+            background:linear-gradient(135deg,var(--fuchsia) 0%,var(--offer-gold) 40%,var(--violet-glow) 80%,#fff 100%);
+            background-size:200% auto;
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+            animation:shimmer 6s linear infinite;
+        }
+
+        /* =============================== */
+        /* FLYWHEEL NODE COLORS            */
+        /* =============================== */
+        .fw-violet{color:var(--violet-glow)!important;border-color:rgba(167,139,250,0.45)!important;background:rgba(30,22,52,0.9)!important}
+        .fw-gold{color:var(--offer-gold)!important;border-color:rgba(251,191,36,0.4)!important;background:rgba(30,25,12,0.9)!important}
+        .fw-green{color:var(--success-green)!important;border-color:rgba(52,211,153,0.45)!important;background:rgba(10,28,22,0.92)!important;box-shadow:0 0 28px rgba(52,211,153,0.12)!important}
+
+        /* Tri-color flywheel ring via conic gradient */
+        .flywheel-ring{
+            border:none!important;
+            background:conic-gradient(
+                rgba(167,139,250,0.5) 0deg,
+                rgba(167,139,250,0.1) 80deg,
+                rgba(251,191,36,0.5) 120deg,
+                rgba(251,191,36,0.1) 200deg,
+                rgba(52,211,153,0.5) 240deg,
+                rgba(52,211,153,0.1) 320deg,
+                rgba(167,139,250,0.5) 360deg
+            );
+            -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#fff calc(100% - 2px));
+            mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#fff calc(100% - 2px));
+        }
+
+        /* Stronger section glow transitions */
+        .hero::after{background:radial-gradient(ellipse at 50% 100%,rgba(124,58,237,0.1) 0%,transparent 65%)!important}
+        .statscard-section::after{background:radial-gradient(ellipse at 50% 100%,rgba(124,58,237,0.12) 0%,transparent 65%)!important}
+        .privacy-section::after{background:radial-gradient(ellipse at 50% 100%,rgba(52,211,153,0.07) 0%,transparent 65%)!important}
 
         /* REVEAL */
         [data-reveal]{opacity:0;transform:translateY(30px);transition:opacity 0.65s ease,transform 0.65s ease}
@@ -693,7 +819,6 @@
         /* HERO — CSS keyframe entry (no GSAP dependency) */
         @keyframes heroLineIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
         @keyframes heroSubIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-        @keyframes heroBtnIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
         @keyframes heroPhoneIn{from{opacity:0;transform:translateX(40px) rotate(2deg)}to{opacity:1;transform:translateX(0) rotate(0deg)}}
 
         /* =============================== */
@@ -701,31 +826,70 @@
         /* =============================== */
         .manifesto-section{position:relative;padding:10rem 0 8rem;text-align:center;overflow:hidden;border-top:1px solid var(--border)}
         .manifesto-section::before{content:'';position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);width:800px;height:600px;background:radial-gradient(ellipse,rgba(124,58,237,0.12) 0%,transparent 70%);pointer-events:none}
-        .manifesto-eyebrow{font-family:'Geist',sans-serif;font-size:0.6875rem;font-weight:500;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin-bottom:1.5rem}
-        .manifesto-headline{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(4rem,9vw,8rem);letter-spacing:-0.05em;line-height:0.95;color:var(--text-primary);margin-bottom:2rem}
-        .manifesto-body{font-size:clamp(1rem,1.6vw,1.125rem);color:var(--text-secondary);max-width:560px;margin:0 auto 2.5rem;line-height:1.65}
+        .manifesto-eyebrow{font-family:'Geist Mono',monospace;font-size:0.6875rem;font-weight:500;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin-bottom:1.5rem}
+        .manifesto-headline{font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(4rem,9vw,8rem);letter-spacing:-0.05em;line-height:0.95;color:var(--text-primary);margin-bottom:2rem}
+        .manifesto-body{font-size:clamp(1rem,1.6vw,1.125rem);color:var(--text-primary);max-width:560px;margin:0 auto 2.5rem;line-height:1.65}
         .manifesto-body em{font-style:italic;color:var(--violet-glow)}
         .manifesto-divider{width:3rem;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:2.5rem auto}
-        /* Flywheel */
-        .flywheel-wrap{position:relative;width:480px;height:300px;margin:0 auto;overflow:visible}
-        .flywheel-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
-        .flywheel-node{position:absolute;z-index:2;background:rgba(124,92,191,0.07);border:1px solid rgba(167,139,250,0.2);border-radius:999px;padding:0.65rem 1.5rem;font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;color:var(--accent-soft);white-space:nowrap;transform:translate(-50%,-50%);letter-spacing:0.01em}
-        .manifesto-caption{margin-top:2.5rem;font-size:1rem;color:var(--text-secondary);font-family:'Outfit',sans-serif}
-        .manifesto-cta{display:inline-block;margin-top:1.25rem;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(2rem,4vw,3.5rem);color:var(--text-primary);text-decoration:none;letter-spacing:-0.04em;line-height:1;position:relative;transition:color 0.3s ease}
+        /* Flywheel — CSS triangle */
+        .flywheel{
+            position:relative;width:560px;height:420px;margin:0 auto;
+        }
+        .flywheel-ring{
+            position:absolute;
+            top:50%;left:50%;
+            width:280px;height:280px;
+            transform:translate(-50%,-50%);
+            border-radius:50%;
+            border:2px dashed rgba(167,139,250,0.25);
+            animation:fw-spin 12s linear infinite;
+            pointer-events:none;
+        }
+        @keyframes fw-spin{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+        .fw-node{
+            position:absolute;
+            background:rgba(18,16,30,0.85);
+            border:1px solid rgba(167,139,250,0.3);
+            border-radius:999px;
+            padding:0.75rem 1.75rem;
+            font-family:'Manrope',sans-serif;font-size:1.0625rem;font-weight:600;
+            color:var(--text-primary);white-space:nowrap;
+            transform:translate(-50%,-50%);
+            backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+        }
+        /* Triangle positions: top-center, bottom-right, bottom-left */
+        .fw-node-top{top:13%;left:50%}
+        .fw-node-br{top:74%;left:78%}
+        .fw-node-bl{top:74%;left:22%}
+        @media(max-width:768px){
+            .flywheel{width:auto;height:auto;margin:0 auto}
+            .flywheel-ring{display:none}
+            .fw-node{position:static;transform:none;display:block;text-align:center;margin:0 auto;width:fit-content}
+            .fw-connector{display:block;text-align:center;color:rgba(167,139,250,0.5);font-size:1.25rem;line-height:1;margin:0.625rem 0}
+        }
+        @media(min-width:769px){.fw-connector{display:none}}
+        .manifesto-mission{
+            font-family:'Manrope',sans-serif;font-weight:700;
+            font-size:clamp(1.25rem,2.5vw,1.75rem);
+            color:var(--text-primary);letter-spacing:-0.025em;
+            margin-top:2.5rem;margin-bottom:0;
+            max-width:560px;margin-left:auto;margin-right:auto;
+            line-height:1.3;
+        }
+        .manifesto-cta{display:inline-block;margin-top:1.25rem;font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(2rem,4vw,3.5rem);color:var(--text-primary);text-decoration:none;letter-spacing:-0.04em;line-height:1;position:relative;transition:color 0.3s ease}
         .manifesto-cta::after{content:'';position:absolute;left:0;bottom:-4px;width:100%;height:3px;background:linear-gradient(90deg,var(--vivid-violet),var(--fuchsia));transform:scaleX(0);transform-origin:left;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1)}
         .manifesto-cta:hover::after{transform:scaleX(1)}
         .manifesto-cta:hover{color:var(--violet-glow)}
         .manifesto-social{display:flex;gap:1rem;justify-content:center;margin-top:2.5rem}
-        @media(max-width:768px){.manifesto-headline{font-size:clamp(3rem,12vw,4rem)}.flywheel-wrap{transform:scale(0.85)}}
+        @media(max-width:768px){.manifesto-headline{font-size:clamp(3rem,12vw,4rem)}}
 
         .hero-copy h1:nth-child(1){animation:heroLineIn 0.55s cubic-bezier(0.16,1,0.3,1) 0.1s both}
         .hero-copy h1:nth-child(2){animation:heroLineIn 0.55s cubic-bezier(0.16,1,0.3,1) 0.22s both}
         .hero-copy h1:nth-child(3){animation:heroLineIn 0.55s cubic-bezier(0.16,1,0.3,1) 0.34s both}
         .hero-subtext-pre .line:nth-child(1){animation:heroSubIn 0.5s cubic-bezier(0.16,1,0.3,1) 0.6s both}
         .hero-subtext-pre .line:nth-child(2){animation:heroSubIn 0.5s cubic-bezier(0.16,1,0.3,1) 0.75s both}
-        .hero-buttons{animation:heroBtnIn 0.5s cubic-bezier(0.16,1,0.3,1) 0.92s both}
-        .hero-subtext-post .hero-resolve-label{animation:heroSubIn 0.5s cubic-bezier(0.16,1,0.3,1) 1.1s both}
-        .hero-subtext-post .hero-resolve-main{animation:heroSubIn 0.5s cubic-bezier(0.16,1,0.3,1) 1.25s both}
+        .hero-subtext-post .hero-resolve-label{animation:heroSubIn 0.5s cubic-bezier(0.16,1,0.3,1) 0.92s both}
+        .hero-subtext-post .hero-resolve-main{animation:heroSubIn 0.5s cubic-bezier(0.16,1,0.3,1) 1.05s both}
         .hero-phone{animation:heroPhoneIn 0.85s cubic-bezier(0.16,1,0.3,1) 0.35s both}
     </style>
 </head>
@@ -760,12 +924,8 @@
         <h1>You got nothing.</h1>
         <h1 class="shimmer">Until now.</h1>
         <div class="hero-subtext-pre">
-            <span class="line">Every app you've ever used made money from your behavior.</span>
-            <span class="line">You signed away your cut in terms you never read.</span>
-        </div>
-        <div class="hero-buttons" id="hero-buttons">
-            <a href="https://www.getmymodel.com/join" class="btn btn-primary">Join the waitlist</a>
-            <button class="btn btn-ghost" id="watch-btn">How it works</button>
+            <span class="line">Every app you've ever used made money from <span class="line-accent">your behavior.</span></span>
+            <span class="line">You signed away <span class="line-accent">your cut</span> in terms you never read.</span>
         </div>
         <div class="hero-subtext-post">
             <span class="hero-resolve-label">mymodel changes that —</span>
@@ -773,6 +933,7 @@
         </div>
     </div>
     <div class="hero-phone">
+        <div class="hero-phone-glow"></div>
         <div class="iphone">
             <div class="iphone-notch"></div>
             <div class="iphone-status">
@@ -796,6 +957,8 @@
 
             <!-- Left: Stats Card -->
             <div class="statscard-left" data-reveal-left>
+                <div class="card-float-group">
+                <div class="card-label-tag">Mara's Stats Card</div>
                 <div class="card-wrapper">
                     <div class="stats-card" id="stats-card">
                         <!-- Header row: avatar + card label -->
@@ -862,13 +1025,14 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </div>
 
             <!-- Right: Copy -->
             <div class="statscard-right" data-reveal-right>
                 <span class="sc-introducing">Introducing</span>
                 <span class="sc-your-statscard">Your Stats Card.</span>
-                <div class="sc-hero-tagline">The First Ever Digital Persona You Can Own and Monetize.</div>
+                <div class="sc-hero-tagline">The First Ever Digital Persona<br>You Can Own and Monetize.</div>
             </div>
 
         </div>
@@ -891,29 +1055,23 @@
             <h2>How it works.</h2>
         </div>
         <div class="steps-grid" id="steps-grid">
-            <div class="glass step-card">
+            <div class="glass step-card step-card-1">
                 <div class="step-number mono">01</div>
                 <h3>Download mymodel.</h3>
                 <p>Connect your Gmail — a 30-second, one-time setup. Your Stats Card will update live.</p>
             </div>
-            <div class="glass step-card">
+            <div class="glass step-card step-card-2">
                 <div class="step-number mono">02</div>
                 <h3>Respond to offers.</h3>
                 <p>You'll get a push notification when a brand requests access to your Stats Card.</p>
-                <div class="step-countdown" id="step-countdown">23:47:12</div>
-                <div class="countdown-label">Left</div>
-                <div class="countdown-actions">
-                    <button class="countdown-btn countdown-btn-x" id="countdown-x" title="Decline">&#10005;</button>
-                    <button class="countdown-btn countdown-btn-check" id="countdown-check" title="Accept">&#10003;</button>
-                </div>
             </div>
-            <div class="glass step-card step-card-paid">
+            <div class="glass step-card step-card-paid step-card-3">
                 <div class="step-number mono">03</div>
                 <h3 class="step-title-paid">Get Paid.</h3>
                 <p>Get paid out directly, minimum <span class="money">$5</span> per offer.</p>
-                <p class="step-paid-footer">Our mission is to get you paid as much as possible.<br><span style="color:var(--violet-glow)">This is just the start ;)</span></p>
             </div>
         </div>
+        <p class="steps-mission" data-reveal><strong>The bigger we get, the more we get you paid.</strong><br>Simple as that.</p>
     </div>
 </section>
 
@@ -921,8 +1079,8 @@
 <!-- PRIVACY                        -->
 <!-- ============================== -->
 <section class="privacy-section container">
-    <h2 data-reveal>When you accept an offer,<br>brands can access your Stats Card.<br><span class="highlight">That's it.</span></h2>
-    <p class="statement" data-reveal style="color:var(--text-secondary);margin-bottom:1.75rem;font-weight:500;transition-delay:0.1s">They cannot:</p>
+    <h2 data-reveal>When you accept an offer,<br>brands can access your Stats Card.<br><span style="color:#fff;font-style:italic">That's it.</span></h2>
+    <p class="statement" data-reveal style="color:var(--text-primary);margin-bottom:1.75rem;font-weight:500;transition-delay:0.1s">They cannot:</p>
     <ul class="privacy-list" id="privacy-list">
         <li class="privacy-item"><div class="privacy-x">&#10005;</div><span class="privacy-text">Spam you with <strong>emails, calls, or texts</strong></span></li>
         <li class="privacy-item" style="transition-delay:0.12s"><div class="privacy-x">&#10005;</div><span class="privacy-text"><strong>Track</strong> your activity across the internet</span></li>
@@ -936,40 +1094,22 @@
 <!-- ============================== -->
 <section class="manifesto-section">
     <div class="container">
-        <div class="manifesto-eyebrow" id="manifesto-eyebrow">The correction</div>
-        <div class="manifesto-headline" id="manifesto-headline">The internet<br>owes you.</div>
+        <div class="manifesto-headline shimmer-headline" id="manifesto-headline">The internet<br>owes you.</div>
         <p class="manifesto-body" id="manifesto-body">Every brand you've ever bought from needed your data to find you. From now on, they'll have to ask — and pay <em>you</em> what it's worth.</p>
         <div class="manifesto-divider"></div>
-        <div class="flywheel-wrap" data-reveal>
-            <!-- Rotating circle of 3 arcs — center (240,150), radius 110 -->
-            <!-- Each arc spans 100° with 20° gaps at the label positions (top/BR/BL) -->
-            <svg class="flywheel-svg" viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <marker id="fw-head" markerWidth="2.2" markerHeight="2.2" refX="1.8" refY="1.1" orient="auto" markerUnits="strokeWidth">
-                        <path d="M0,0 L0,2.2 L2.2,1.1 Z" fill="rgba(218,208,255,0.2)"/>
-                    </marker>
-                </defs>
-                <g>
-                    <!-- Arc 1: 280°→20° (gap at top, flows toward bottom-right) -->
-                    <path d="M259,42 A110,110,0,0,1,343,188" fill="none" stroke="rgba(218,208,255,0.15)" stroke-width="16" stroke-linecap="round" marker-end="url(#fw-head)"/>
-                    <!-- Arc 2: 40°→140° (gap at bottom-right, flows toward bottom-left) -->
-                    <path d="M324,221 A110,110,0,0,1,156,221" fill="none" stroke="rgba(218,208,255,0.15)" stroke-width="16" stroke-linecap="round" marker-end="url(#fw-head)"/>
-                    <!-- Arc 3: 160°→260° (gap at bottom-left, flows toward top) -->
-                    <path d="M137,188 A110,110,0,0,1,221,42" fill="none" stroke="rgba(218,208,255,0.15)" stroke-width="16" stroke-linecap="round" marker-end="url(#fw-head)"/>
-                    <animateTransform attributeName="transform" type="rotate" from="0 240 150" to="360 240 150" dur="9s" repeatCount="indefinite"/>
-                </g>
-            </svg>
-            <!-- Labels anchored at the 3 gap positions, outside the circle -->
-            <div class="flywheel-node" style="top:0px;left:240px">More people join</div>
-            <div class="flywheel-node" style="top:228px;left:410px">Brands compete harder</div>
-            <div class="flywheel-node" style="top:228px;left:70px">Offers climb higher</div>
+        <div class="flywheel" data-reveal>
+            <div class="flywheel-ring"></div>
+            <div class="fw-node fw-node-top fw-violet">More people join</div>
+            <span class="fw-connector">↓</span>
+            <div class="fw-node fw-node-br fw-gold">More brands onboard</div>
+            <span class="fw-connector">↓</span>
+            <div class="fw-node fw-node-bl fw-green">More money for everyone</div>
         </div>
-        <p class="manifesto-caption">We're determined to get you paid as much as possible 🫡</p>
         <a href="https://www.getmymodel.com/join" class="manifesto-cta">Join the waitlist now.</a>
-        <p style="font-size:0.8125rem;color:var(--text-muted);margin-top:1.5rem;margin-bottom:0.75rem">Follow the founder's journey — @theantitechbro</p>
-        <div class="manifesto-social">
+        <p style="font-size:0.8125rem;color:var(--accent-soft);margin-top:2.5rem;margin-bottom:1rem">Follow the founder's journey — @theantitechbro</p>
+        <div class="manifesto-social" style="margin-top:0">
             <a href="https://x.com/theantitechbro" class="social-link" aria-label="X / Twitter">&#120143;</a>
-            <a href="https://tiktok.com/@theantitechbro" class="social-link" aria-label="TikTok" style="font-size:0.8rem;font-weight:700">TT</a>
+            <a href="https://tiktok.com/@theantitechbro" class="social-link" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.79 1.53V6.77a4.85 4.85 0 0 1-1.02-.08z"/></svg></a>
         </div>
     </div>
 </section>
@@ -986,7 +1126,7 @@
                 <span>Follow the founder's journey</span>
                 <div class="footer-founder-links">
                     <a href="https://x.com/theantitechbro" class="footer-link">X</a>
-                    <a href="https://tiktok.com/@theantitechbro" class="footer-link">TikTok</a>
+                    <a href="https://tiktok.com/@theantitechbro" class="footer-link" aria-label="TikTok" style="display:inline-flex;align-items:center;gap:0.35rem"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.79 1.53V6.77a4.85 4.85 0 0 1-1.02-.08z"/></svg>TikTok</a>
                 </div>
             </div>
             <span class="footer-dot">·</span>
@@ -1144,13 +1284,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, {passive: true});
 
     // ===========================
-    // HOW IT WORKS BUTTON
-    // ===========================
-    document.getElementById('watch-btn')?.addEventListener('click', () => {
-        document.getElementById('how-it-works')?.scrollIntoView({behavior:'smooth'});
-    });
-
-    // ===========================
     // SCROLL REVEALS (generic)
     // ===========================
     const revealEls = document.querySelectorAll('[data-reveal],[data-reveal-left],[data-reveal-right]');
@@ -1205,72 +1338,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===========================
     // CLOSING MANIFESTO — GSAP
     // ===========================
-    const manifestoEyebrow = document.getElementById('manifesto-eyebrow');
     const manifestoHeadline = document.getElementById('manifesto-headline');
     const manifestoBody = document.getElementById('manifesto-body');
     if (manifestoHeadline) {
-        gsap.set([manifestoEyebrow, manifestoHeadline, manifestoBody], { opacity: 0, y: 40 });
+        gsap.set([manifestoHeadline, manifestoBody], { opacity: 0, y: 40 });
         gsap.set(manifestoHeadline, { scale: 0.94 });
         ScrollTrigger.create({
             trigger: '.manifesto-section',
             start: 'top 70%',
             onEnter: () => {
-                gsap.to(manifestoEyebrow, { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' });
-                gsap.to(manifestoHeadline, { opacity: 1, y: 0, scale: 1, duration: 0.85, ease: 'power3.out', delay: 0.15 });
-                gsap.to(manifestoBody, { opacity: 1, y: 0, duration: 0.65, ease: 'power3.out', delay: 0.35 });
+                gsap.to(manifestoHeadline, { opacity: 1, y: 0, scale: 1, duration: 0.85, ease: 'power3.out' });
+                gsap.to(manifestoBody, { opacity: 1, y: 0, duration: 0.65, ease: 'power3.out', delay: 0.2 });
             }
         });
     }
 
-    // ===========================
-    // COUNTDOWN — step 02
-    // ===========================
-    const countdownEl = document.getElementById('step-countdown');
-    if (countdownEl) {
-        let totalSeconds = 23 * 3600 + 47 * 60 + 12;
-        setInterval(() => {
-            totalSeconds--;
-            if (totalSeconds < 0) totalSeconds = 24 * 3600 - 1;
-            const h = Math.floor(totalSeconds / 3600);
-            const m = Math.floor((totalSeconds % 3600) / 60);
-            const s = totalSeconds % 60;
-            countdownEl.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-        }, 1000);
-    }
-
-    // ===========================
-    // CONFETTI — checkmark click
-    // ===========================
-    document.getElementById('countdown-check')?.addEventListener('click', function() {
-        const pill = this.closest('.step-card')?.querySelector('.step-number');
-        if (!pill) return;
-        const rect = pill.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const colors = ['#7C3AED','#e879f9','#FBBF24','#34D399','#a78bfa','#fff'];
-        for (let i = 0; i < 42; i++) {
-            const el = document.createElement('div');
-            const isCircle = Math.random() > 0.5;
-            el.style.cssText = `position:fixed;pointer-events:none;z-index:9999;width:${6 + Math.random()*6}px;height:${6 + Math.random()*6}px;border-radius:${isCircle ? '50%' : '2px'};background:${colors[Math.floor(Math.random()*colors.length)]};left:${cx}px;top:${cy}px;`;
-            document.body.appendChild(el);
-            const angle = (Math.random() * Math.PI * 2);
-            const dist = 50 + Math.random() * 90;
-            const tx = Math.cos(angle) * dist;
-            const ty = Math.sin(angle) * dist - 50;
-            const anim = el.animate([
-                {transform: `translate(-50%,-50%) rotate(0deg)`, opacity: 1},
-                {transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty + 100}px)) rotate(${Math.random()*540 - 270}deg)`, opacity: 0}
-            ], {duration: 700 + Math.random() * 500, easing: 'cubic-bezier(0,0.9,0.57,1)', fill: 'forwards'});
-            anim.onfinish = () => el.remove();
-        }
-    });
-
-    // ===========================
-    // HERO BUTTONS — float after entry
-    // ===========================
-    setTimeout(() => {
-        document.getElementById('hero-buttons')?.classList.add('floating');
-    }, 1600);
 });
 </script>
 
