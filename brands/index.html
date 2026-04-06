@@ -302,7 +302,14 @@
         .trust-panel-before .tc-verdict-dot{background:rgba(236,72,153,0.5)}
         .trust-panel-after .tc-verdict-dot{background:var(--success-green)}
 
-        @media(max-width:768px){.trust-split,.trust-card-headers{grid-template-columns:1fr}.trust-hook{font-size:clamp(1.125rem,4vw,1.5rem)}}
+        @media(max-width:768px){
+            .trust-split,.trust-card-headers{grid-template-columns:1fr}
+            .trust-hook{font-size:clamp(1.125rem,4vw,1.5rem)}
+            .trust-card-headers{display:none}
+            .tc-verdict{order:-1;margin-top:0;border-top:none;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.6875rem;padding:0.75rem 1.25rem}
+            .trust-panel-before .tc-verdict{border-bottom-color:rgba(255,255,255,0.05)}
+            .trust-panel-after .tc-verdict{border-bottom-color:rgba(124,58,237,0.18)}
+        }
 
         /* ACTIVATE + HOW IT WORKS */
         .activate-section{padding:6rem 0;border-top:1px solid var(--border)}
@@ -480,6 +487,8 @@
             .step-node{position:relative;left:auto;top:auto;transform:none;margin-bottom:1rem;width:1.75rem;height:1.75rem;font-size:0.5625rem}
             .step-content{padding-right:0}
             .b-card-title{font-size:1.5rem}
+            .step-visual{width:100%;box-sizing:border-box}
+            .b-search-ui,.b-timer-bar-wrap,.b-dash-mock{max-width:100%}
         }
 
         /* ===================== SNIPER SECTION ===================== */
@@ -511,7 +520,7 @@
         .btn-sniper{padding:1.125rem 2.75rem;background:linear-gradient(135deg,var(--vivid-violet),var(--pink));color:#fff;border:none;border-radius:14px;font-family:'Manrope',sans-serif;font-size:1.125rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.625rem;transition:transform 0.2s;box-shadow:0 0 30px rgba(124,58,237,0.35)}
         .btn-sniper:hover{transform:translateY(-3px);animation:btn-pulse-glow 1.5s ease-in-out infinite}
         @media(max-width:960px){.sniper-stats{grid-template-columns:repeat(3,1fr)}}
-        @media(max-width:600px){.sniper-stats{grid-template-columns:1fr 1fr}.sniper-bg-brands{display:none}}
+        @media(max-width:600px){.sniper-stats{grid-template-columns:1fr 1fr}.sniper-bg-brands{display:none}.sniper-stat:last-child{grid-column:span 2}}
         @media(max-width:400px){.sniper-stats{grid-template-columns:1fr}}
 
         /* apply section moved to pilot-access.html */
@@ -526,7 +535,7 @@
         <div class="nav-links">
             <a href="/" class="nav-link">For People</a>
         </div>
-        <a href="/brands/pilot-access.html" class="nav-cta"><span class="nav-cta-long">Join the Founding Cohort</span><span class="nav-cta-short">Get Access</span></a>
+        <a href="/brands/pilot-access.html" class="nav-cta"><span class="nav-cta-long">Join the Founding Cohort</span><span class="nav-cta-short">Apply</span></a>
     </div>
 </nav>
 
