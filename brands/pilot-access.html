@@ -8,73 +8,90 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="mymodel">
     <meta property="og:title" content="Apply — mymodel Founding Design Partner">
-    <meta property="og:description" content="A select cohort of brands getting early access to live, consented audience intelligence. Founding pricing locked for life.">
+    <meta property="og:description" content="3 of 10 Founding Design Partner slots remaining. The brands that move first win forever.">
     <meta property="og:url" content="https://getmymodel.com/brands/pilot-access.html">
+    <meta property="og:image" content="https://getmymodel.com/og-image-brands.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@getmymodel">
     <meta name="twitter:title" content="Apply — mymodel Founding Design Partner">
-    <meta name="twitter:description" content="A select cohort of brands getting early access to live, consented audience intelligence. Founding pricing locked for life.">
+    <meta name="twitter:description" content="3 of 10 Founding Design Partner slots remaining. The brands that move first win forever.">
+    <meta name="twitter:image" content="https://getmymodel.com/og-image-brands.png">
     <link rel="canonical" href="https://getmymodel.com/brands/pilot-access.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" href="/favicon.ico">
+    <!-- myModel Brand Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         :root{
-            --deep-violet:#5B21B6;--vivid-violet:#7C3AED;--violet-glow:#A78BFA;
-            --dark-canvas:#0F0B1A;--dark-surface:#1A1426;--dark-card:#231D30;
-            --fuchsia:#E879F9;--offer-gold:#FBBF24;--success-green:#34D399;
-            --bg:var(--dark-canvas);--surface:var(--dark-surface);--elevated:var(--dark-card);
+            /* surfaces */
+            --bg:#0F0B1A;--surface:#1A1426;--card:#231D30;
+            --border:rgba(255,255,255,0.07);
+            /* text */
             --text-primary:#eeedf2;--text-secondary:#b0adc2;--text-muted:#7a7694;
-            --accent:var(--vivid-violet);--accent-soft:var(--violet-glow);--accent-muted:rgba(124,58,237,0.12);
-            --border:rgba(255,255,255,0.06);--pink:#EC4899;--cyan:#06B6D4
+            /* brand */
+            --accent:#A78BFA;--pink:#EC4899;--violet:#7C3AED;--success-green:#34D399;
+            /* gradients */
+            --gradient:linear-gradient(135deg,#EC4899,#7C3AED);
+            --gradient-text:linear-gradient(135deg,#EC4899 0%,#A78BFA 50%,#7C3AED 100%);
+            --gradient-soft:linear-gradient(135deg,rgba(236,72,153,0.15),rgba(124,58,237,0.15));
+            /* fonts */
+            --font-base:'Manrope',sans-serif;--font-mono:'Geist Mono',monospace;
+            /* legacy aliases kept for backward compat */
+            --vivid-violet:#7C3AED;--violet-glow:#A78BFA;
+            --dark-canvas:#0F0B1A;--dark-surface:#1A1426;--dark-card:#231D30;
+            --accent-soft:#A78BFA;--accent-muted:rgba(124,58,237,0.12);
         }
         html{scroll-behavior:smooth}
-        body{background:var(--bg);color:var(--text-primary);font-family:'Outfit',sans-serif;font-size:1.0625rem;line-height:1.65;overflow-x:hidden}
-        h1{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(2.5rem,6vw,5rem);letter-spacing:-0.04em;line-height:1.05;margin-bottom:1.25rem}
-        h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(1.5rem,3vw,2.25rem);letter-spacing:-0.03em;line-height:1.1;margin-bottom:0.75rem}
-        h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.125rem;margin-bottom:0.5rem}
-        .desc{font-size:1.0625rem;color:var(--text-secondary);line-height:1.6}
+        body{background:var(--bg);color:var(--text-primary);font-family:'Manrope',sans-serif;font-size:1.0625rem;line-height:1.65;overflow-x:hidden}
+        h1{font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(2.5rem,6vw,5rem);letter-spacing:-0.04em;line-height:1.05;margin-bottom:1.25rem}
+        h2{font-family:'Manrope',sans-serif;font-weight:700;font-size:clamp(1.5rem,3vw,2.25rem);letter-spacing:-0.03em;line-height:1.1;margin-bottom:0.75rem}
+        h3{font-family:'Manrope',sans-serif;font-weight:600;font-size:1.125rem;margin-bottom:0.5rem}
+        .desc{font-size:1.0625rem;color:var(--text-primary);line-height:1.6}
         .caption{font-size:0.8125rem;color:var(--text-muted);line-height:1.5}
         .label{font-weight:500;font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent-soft)}
-        .mono{font-family:'Geist',sans-serif;font-weight:500;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+        .mono{font-family:'Manrope',sans-serif;font-weight:500;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
         .container{max-width:760px;margin:0 auto;padding:0 2rem}
         .container-wide{max-width:1100px;margin:0 auto;padding:0 2rem}
-        .gradient-text{background:linear-gradient(135deg,var(--vivid-violet),var(--pink),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .gradient-text{background:var(--gradient-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
         strong{color:var(--text-primary)}
 
         /* NAV */
         nav{position:fixed;top:0;left:0;right:0;z-index:1000;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(15,11,26,0.85);border-bottom:1px solid var(--border);padding:1rem 2rem}
         .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
-        .nav-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.5rem;text-decoration:none;display:flex;gap:0.15rem}
+        .nav-logo{font-family:'Manrope',sans-serif;font-weight:700;font-size:1.5rem;text-decoration:none;display:flex;gap:0.15rem}
         .nav-logo .my{color:var(--text-primary)}.nav-logo .mdl{color:var(--accent)}
-        .nav-back{font-size:0.875rem;color:var(--text-secondary);text-decoration:none;display:flex;align-items:center;gap:0.375rem;opacity:0.6;transition:opacity 0.2s}
-        .nav-back:hover{opacity:1}
-        .nav-slots{font-family:'Geist',sans-serif;font-size:0.6875rem;color:var(--accent-soft);font-weight:500;letter-spacing:0.06em;padding:0.375rem 0.875rem;border-radius:100px;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.25)}
+        .nav-back{font-size:0.875rem;color:var(--text-secondary);text-decoration:none;display:flex;align-items:center;gap:0.375rem;transition:color 0.2s}
+        .nav-back:hover{color:var(--text-primary)}
+        .nav-slots{font-family:'Manrope',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.04em;color:#eeedf2;padding:0.2rem 0.875rem;border-radius:999px;background:rgba(167,139,250,0.22);border:1px solid rgba(167,139,250,0.4)}
         @media(max-width:560px){.nav-back span{display:none}}
 
         /* HERO */
         .pa-hero{padding:8rem 0 5rem;position:relative;overflow:hidden;text-align:center}
         .pa-hero-orb-1{position:absolute;width:600px;height:600px;top:-200px;left:50%;transform:translateX(-50%);background:var(--vivid-violet);opacity:0.07;border-radius:50%;filter:blur(130px);pointer-events:none}
         .pa-hero-orb-2{position:absolute;width:400px;height:400px;bottom:-100px;right:-100px;background:var(--pink);opacity:0.05;border-radius:50%;filter:blur(100px);pointer-events:none}
-        .pa-hero-badge{display:inline-block;padding:0.5rem 1.25rem;border-radius:100px;background:rgba(232,121,249,0.1);border:1px solid rgba(232,121,249,0.25);font-size:0.6875rem;font-weight:500;color:var(--fuchsia);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.75rem}
+        .pa-hero-badge{display:inline-flex;align-items:center;padding:0.2rem 0.875rem;border-radius:999px;background:rgba(167,139,250,0.22);border:1px solid rgba(167,139,250,0.4);font-family:'Manrope',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.04em;color:#eeedf2;margin-bottom:1.75rem}
         .pa-hero h1{max-width:820px;margin:0 auto 1.25rem}
-        .pa-hero-sub{font-size:1.125rem;color:var(--text-secondary);max-width:560px;margin:0 auto 2.5rem;line-height:1.6}
+        .pa-hero-sub{font-size:1.125rem;color:var(--text-primary);max-width:560px;margin:0 auto 2.5rem;line-height:1.6}
 
         /* Scarcity bar */
         .scarcity-wrap{max-width:400px;margin:0 auto 0.5rem}
-        .scarcity-label{font-size:0.75rem;color:var(--text-muted);font-family:'Geist',sans-serif;letter-spacing:0.06em;margin-bottom:0.5rem;display:flex;justify-content:space-between}
-        .scarcity-label span:last-child{color:var(--fuchsia);font-weight:500}
+        .scarcity-label{font-size:0.75rem;color:var(--text-muted);font-family:'Manrope',sans-serif;letter-spacing:0.06em;margin-bottom:0.5rem;display:flex;justify-content:space-between}
+        .scarcity-label span:last-child{color:var(--pink);font-weight:500}
         .scarcity-track{height:6px;background:rgba(255,255,255,0.07);border-radius:3px;overflow:hidden}
-        .scarcity-fill{height:100%;width:70%;background:linear-gradient(90deg,var(--vivid-violet),var(--fuchsia));border-radius:3px;position:relative}
-        .scarcity-fill::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:10px;height:10px;border-radius:50%;background:var(--fuchsia);box-shadow:0 0 10px rgba(232,121,249,0.8);margin-right:-5px}
+        .scarcity-fill{height:100%;width:70%;background:linear-gradient(90deg,var(--vivid-violet),var(--pink));border-radius:3px;position:relative}
+        .scarcity-fill::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:10px;height:10px;border-radius:50%;background:var(--pink);box-shadow:0 0 10px rgba(236,72,153,0.8);margin-right:-5px}
 
         /* Stakes */
         .pa-stakes{padding:3rem 0 5rem;border-top:1px solid var(--border)}
         .stakes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;max-width:860px;margin:0 auto}
         .stake-card{padding:1.5rem;border-radius:16px;background:rgba(35,29,48,0.5);border:1px solid rgba(255,255,255,0.06);text-align:center}
-        .stake-number{font-family:'Geist',sans-serif;font-size:clamp(2.75rem,5vw,3.75rem);font-weight:500;margin-bottom:0.5rem;line-height:1;background:linear-gradient(135deg,var(--pink),var(--vivid-violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .stake-label{font-size:0.8125rem;color:var(--text-secondary);line-height:1.45}
+        .stake-number{font-family:'Manrope',sans-serif;font-size:clamp(2.75rem,5vw,3.75rem);font-weight:800;margin-bottom:0.5rem;line-height:1;background:linear-gradient(135deg,var(--pink),var(--vivid-violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .stake-label{font-size:0.8125rem;color:var(--text-primary);line-height:1.45}
         .stake-label strong{color:var(--text-primary)}
         @media(max-width:640px){.stakes-grid{grid-template-columns:1fr}}
 
@@ -86,8 +103,8 @@
 
         /* Part headers */
         .pa-part-header{padding:2rem 2.5rem 0}
-        .pa-part-num{font-family:'Geist',sans-serif;font-size:0.5625rem;font-weight:500;color:var(--accent-soft);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.375rem;display:block}
-        .pa-part-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.25rem;color:var(--text-primary);letter-spacing:-0.02em}
+        .pa-part-num{font-family:'Manrope',sans-serif;font-size:0.5625rem;font-weight:500;color:var(--accent-soft);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.375rem;display:block}
+        .pa-part-title{font-family:'Manrope',sans-serif;font-weight:700;font-size:1.25rem;color:var(--text-primary);letter-spacing:-0.02em}
         .pa-part-divider{height:1px;background:rgba(255,255,255,0.06);margin:0 2.5rem}
 
         /* Form body */
@@ -95,7 +112,7 @@
         .pa-field-row{display:grid;grid-template-columns:1fr 1fr;gap:1.125rem}
         .pa-form-group{margin-bottom:1.125rem}
         .pa-form-label{display:block;font-size:0.8125rem;font-weight:600;color:var(--text-secondary);margin-bottom:0.45rem;letter-spacing:0.01em}
-        .pa-form-input,.pa-form-select,.pa-form-textarea{width:100%;padding:0.875rem 1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:12px;color:var(--text-primary);font-family:'Outfit',sans-serif;font-size:0.9375rem;transition:border-color 0.2s,box-shadow 0.2s;appearance:none;-webkit-appearance:none}
+        .pa-form-input,.pa-form-select,.pa-form-textarea{width:100%;padding:0.875rem 1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:12px;color:var(--text-primary);font-family:'Manrope',sans-serif;font-size:0.9375rem;transition:border-color 0.2s,box-shadow 0.2s;appearance:none;-webkit-appearance:none}
         .pa-form-input:focus,.pa-form-select:focus,.pa-form-textarea:focus{outline:none;border-color:rgba(124,58,237,0.5);box-shadow:0 0 0 3px rgba(124,58,237,0.1)}
         .pa-form-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b0adc2' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;cursor:pointer}
         .pa-form-select option{background:var(--dark-canvas)}
@@ -111,32 +128,27 @@
         .radio-card:hover .radio-card-inner{border-color:rgba(124,58,237,0.25);color:var(--text-primary)}
         @media(max-width:560px){.radio-grid{grid-template-columns:repeat(2,1fr)}}
 
-        /* Insight sources checkbox grid */
+        /* Challenge checkbox grid */
         .check-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.625rem;margin-top:0.5rem}
         .check-card{position:relative;cursor:pointer}
+        .check-card--full{grid-column:1/-1}
         .check-card input{position:absolute;opacity:0;width:0;height:0}
-        .check-card-inner{padding:0.75rem 1rem;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);font-size:0.8125rem;font-weight:500;color:var(--text-secondary);transition:all 0.2s;cursor:pointer;display:flex;align-items:center;gap:0.625rem}
-        .check-card-inner::before{content:'';width:16px;height:16px;border-radius:4px;border:1.5px solid rgba(255,255,255,0.18);flex-shrink:0;transition:all 0.2s;background:transparent}
-        .check-card input:checked + .check-card-inner{background:rgba(124,58,237,0.12);border-color:rgba(124,58,237,0.4);color:var(--violet-glow)}
-        .check-card input:checked + .check-card-inner::before{background:var(--vivid-violet);border-color:var(--vivid-violet);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='8' viewBox='0 0 10 8'%3E%3Cpath d='M1 4l3 3 5-6' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
-        .check-card:hover .check-card-inner{border-color:rgba(124,58,237,0.25);color:var(--text-primary)}
+        .check-card-inner{padding:0.875rem 1rem;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);color:var(--text-secondary);transition:all 0.2s;cursor:pointer;display:flex;align-items:flex-start;gap:0.75rem}
+        .check-card-inner::before{content:'';width:16px;height:16px;border-radius:4px;border:1.5px solid rgba(255,255,255,0.18);flex-shrink:0;transition:all 0.2s;background:transparent;margin-top:2px}
+        .check-card input:checked + .check-card-inner{background:rgba(124,58,237,0.12);border-color:rgba(124,58,237,0.4)}
+        .check-card input:checked + .check-card-inner::before{background:var(--vivid-violet);border-color:var(--vivid-violet);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2020/svg' width='10' height='8' viewBox='0 0 10 8'%3E%3Cpath d='M1 4l3 3 5-6' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
+        .check-card:hover .check-card-inner{border-color:rgba(124,58,237,0.25)}
+        .check-card-content{display:flex;flex-direction:column;gap:0.2rem}
+        .check-card-title{font-size:0.8125rem;font-weight:600;color:var(--text-primary);line-height:1.3;transition:color 0.2s}
+        .check-card-sub{font-size:0.6875rem;color:var(--text-secondary);line-height:1.4;font-weight:400}
+        .check-card input:checked + .check-card-inner .check-card-title{color:var(--violet-glow)}
+        .check-card:hover .check-card-inner .check-card-title{color:var(--text-primary)}
 
-        /* Challenge copy between sections */
-        .form-challenge{padding:1.5rem 2.5rem;background:rgba(124,58,237,0.06);border-top:1px solid rgba(124,58,237,0.12);border-bottom:1px solid rgba(124,58,237,0.12)}
-        .form-challenge-text{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;color:var(--text-primary);line-height:1.5;text-align:center}
-        .form-challenge-text .hl{color:var(--fuchsia)}
-
-        /* Offer slider */
-        .offer-display{text-align:center;margin-bottom:1.25rem}
-        .offer-amount{font-family:'Geist',sans-serif;font-size:3.5rem;font-weight:500;background:linear-gradient(135deg,var(--vivid-violet),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;display:block}
-        .offer-tier-badge{display:inline-block;margin-top:0.375rem;padding:0.25rem 0.875rem;border-radius:100px;font-size:0.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent-soft);background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.25)}
-        .offer-slider-wrap{padding:0.5rem 0 0.25rem}
-        .offer-slider{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:3px;background:rgba(255,255,255,0.1);outline:none;cursor:pointer;transition:background 0.15s}
-        .offer-slider::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--vivid-violet),var(--pink));cursor:pointer;box-shadow:0 0 14px rgba(124,58,237,0.55);transition:transform 0.15s}
-        .offer-slider::-webkit-slider-thumb:hover{transform:scale(1.15)}
-        .offer-labels{display:flex;justify-content:space-between;font-size:0.5625rem;color:var(--text-muted);margin-top:0.5rem;font-family:'Geist',sans-serif;letter-spacing:0.03em}
-        .offer-tooltip{margin-top:1rem;padding:0.875rem 1rem;border-radius:10px;background:rgba(124,58,237,0.06);border:1px solid rgba(124,58,237,0.15);font-size:0.8125rem;color:var(--text-secondary);line-height:1.55}
-        .offer-tooltip strong{color:var(--accent-soft)}
+        /* Founding perks list */
+        .founding-perks{list-style:none;padding:0;margin:0 0 1.5rem}
+        .founding-perk{display:flex;align-items:flex-start;gap:0.75rem;padding:0.75rem 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.9375rem;color:var(--text-primary);line-height:1.5}
+        .founding-perk:last-child{border-bottom:none}
+        .founding-perk-dot{width:6px;height:6px;border-radius:50%;background:var(--violet-glow);flex-shrink:0;margin-top:9px}
 
         /* Commitment checkbox */
         .commitment-wrap{display:flex;align-items:flex-start;gap:0.875rem;padding:1.375rem;border-radius:14px;background:rgba(124,58,237,0.07);border:1px solid rgba(124,58,237,0.18);cursor:pointer;transition:all 0.2s;margin-bottom:1.5rem}
@@ -146,7 +158,7 @@
 
         /* Submit */
         .pa-submit-wrap{text-align:center;padding:0 2.5rem 2.5rem}
-        .pa-submit-btn{width:100%;padding:1.125rem 2rem;background:linear-gradient(135deg,var(--vivid-violet),var(--pink));border:none;border-radius:14px;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:1.125rem;font-weight:700;cursor:pointer;transition:all 0.25s;box-shadow:0 0 40px rgba(124,58,237,0.3);letter-spacing:-0.01em}
+        .pa-submit-btn{width:100%;padding:1.125rem 2rem;background:linear-gradient(135deg,var(--vivid-violet),var(--pink));border:none;border-radius:14px;color:#fff;font-family:'Manrope',sans-serif;font-size:1.125rem;font-weight:700;cursor:pointer;transition:all 0.25s;box-shadow:0 0 40px rgba(124,58,237,0.3);letter-spacing:-0.01em}
         .pa-submit-btn:hover{transform:translateY(-3px);box-shadow:0 0 60px rgba(124,58,237,0.45)}
         .pa-submit-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
         .pa-submit-note{margin-top:0.75rem;font-size:0.75rem;color:var(--text-muted);text-align:center}
@@ -154,29 +166,29 @@
         /* Success state */
         .pa-success{display:none;text-align:center;padding:5rem 2rem}
         .pa-success-icon{width:80px;height:80px;border-radius:50%;background:rgba(52,211,153,0.1);border:2px solid rgba(52,211,153,0.4);display:flex;align-items:center;justify-content:center;margin:0 auto 2rem;font-size:2.25rem;box-shadow:0 0 40px rgba(52,211,153,0.2)}
-        .pa-success-label{font-family:'Geist',sans-serif;font-size:0.625rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--success-green);margin-bottom:0.75rem;display:block}
-        .pa-success-title{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(1.75rem,4vw,2.75rem);letter-spacing:-0.03em;color:var(--text-primary);margin-bottom:0.75rem}
-        .pa-success-body{font-size:1.0625rem;color:var(--text-secondary);line-height:1.7;max-width:500px;margin:0 auto 2rem}
+        .pa-success-label{font-family:'Manrope',sans-serif;font-size:0.625rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--success-green);margin-bottom:0.75rem;display:block}
+        .pa-success-title{font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(1.75rem,4vw,2.75rem);letter-spacing:-0.03em;color:var(--text-primary);margin-bottom:0.75rem}
+        .pa-success-body{font-size:1.0625rem;color:var(--text-primary);line-height:1.7;max-width:500px;margin:0 auto 2rem}
         .pa-success-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:560px;margin:0 auto 2rem}
         .pa-success-stat{padding:1.25rem 1rem;border-radius:14px;text-align:center}
         .pa-success-stat--green{background:rgba(52,211,153,0.06);border:1px solid rgba(52,211,153,0.18)}
         .pa-success-stat--violet{background:rgba(124,58,237,0.06);border:1px solid rgba(124,58,237,0.18)}
         .pa-success-stat--pink{background:rgba(236,72,153,0.06);border:1px solid rgba(236,72,153,0.18)}
-        .pa-success-stat-num{font-family:'Geist',sans-serif;font-size:1.875rem;font-weight:500;line-height:1;display:block;margin-bottom:0.375rem}
+        .pa-success-stat-num{font-family:'Manrope',sans-serif;font-size:1.875rem;font-weight:700;line-height:1;display:block;margin-bottom:0.375rem}
         .pa-success-stat--green .pa-success-stat-num{color:var(--success-green)}
         .pa-success-stat--violet .pa-success-stat-num{color:var(--violet-glow)}
         .pa-success-stat--pink .pa-success-stat-num{color:var(--pink)}
-        .pa-success-stat-label{font-size:0.75rem;color:var(--text-muted);line-height:1.4}
-        .pa-success-card{max-width:500px;margin:0 auto;padding:1.5rem 2rem;border-radius:16px;background:rgba(52,211,153,0.05);border:1px solid rgba(52,211,153,0.18);font-size:0.9375rem;color:var(--text-secondary);line-height:1.7}
+        .pa-success-stat-label{font-size:0.75rem;color:var(--text-secondary);line-height:1.4}
+        .pa-success-card{max-width:500px;margin:0 auto;padding:1.5rem 2rem;border-radius:16px;background:rgba(52,211,153,0.05);border:1px solid rgba(52,211,153,0.18);font-size:0.9375rem;color:var(--text-primary);line-height:1.7}
         .pa-success-card strong{color:var(--success-green)}
-        .pa-success-back{display:inline-flex;align-items:center;gap:0.5rem;margin-top:2rem;color:var(--text-muted);text-decoration:none;font-size:0.875rem;transition:color 0.2s}
+        .pa-success-back{display:inline-flex;align-items:center;gap:0.5rem;margin-top:2rem;color:var(--text-secondary);text-decoration:none;font-size:0.875rem;transition:color 0.2s}
         .pa-success-back:hover{color:var(--text-primary)}
         @media(max-width:560px){.pa-success-stats{grid-template-columns:1fr}}
 
         /* FOOTER */
         footer{border-top:1px solid var(--border);padding:2.5rem 2rem}
         .footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
-        .footer-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem}
+        .footer-logo{font-family:'Manrope',sans-serif;font-weight:700;font-size:1rem}
         .footer-logo .my{color:var(--text-primary)}.footer-logo .mdl{color:var(--accent)}
         .footer-copy{font-size:0.8125rem;color:var(--text-secondary)}
         .footer-link{font-size:0.8125rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s}
@@ -216,7 +228,7 @@
         <div class="scarcity-wrap">
             <div class="scarcity-label">
                 <span>Founding Partner Slots</span>
-                <span style="color:var(--fuchsia)">Filling Fast</span>
+                <span style="color:var(--pink)">Filling Fast</span>
             </div>
             <div class="scarcity-track">
                 <div class="scarcity-fill"></div>
@@ -242,7 +254,7 @@
             </div>
             <div class="stake-card" data-reveal>
                 <div class="stake-number">99.6%</div>
-                <div class="stake-label">willingness-to-consent rate on matched cohorts — <strong>your competitors don't have this</strong></div>
+                <div class="stake-label">of consumers will share data for the right incentive — <strong>no one has built that system. Until now.</strong></div>
             </div>
         </div>
     </div>
@@ -260,7 +272,7 @@
 
                     <!-- PART 1: THE BRIEF -->
                     <div class="pa-part-header">
-                        <span class="pa-part-num">Part 1 of 4</span>
+                        <span class="pa-part-num">Part 1 of 3</span>
                         <div class="pa-part-title">The Brief — Who Are You?</div>
                     </div>
                     <div class="pa-form-body">
@@ -299,59 +311,6 @@
                                 <label class="radio-card"><input type="radio" name="business_type" value="Other"/><div class="radio-card-inner">Other</div></label>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="pa-part-divider"></div>
-
-                    <!-- Challenge 1 -->
-                    <div class="form-challenge">
-                        <p class="form-challenge-text">The brands still guessing who to target are burning <span class="hl">$9k/mo</span> on the wrong people. The brands that know exactly who they're after are about to take their market share.</p>
-                    </div>
-
-                    <div class="pa-part-divider"></div>
-
-                    <!-- PART 2: YOUR TARGET -->
-                    <div class="pa-part-header" style="padding-top:1.75rem">
-                        <span class="pa-part-num">Part 2 of 4</span>
-                        <div class="pa-part-title">Your Target — Who Are You After?</div>
-                    </div>
-                    <div class="pa-form-body">
-                        <div class="pa-form-group">
-                            <label class="pa-form-label" for="priority-market">Describe Your Priority Market *</label>
-                            <textarea class="pa-form-textarea" id="priority-market" name="priority_market" placeholder='e.g., "Women 25–34 in LA and NYC who spend $50+/mo on skincare and follow @glossier, @rhode, and @cerave — but haven&apos;t found us yet." Be specific. This becomes your first Audience GPT query.' required></textarea>
-                        </div>
-                        <div class="pa-form-group">
-                            <label class="pa-form-label" for="greatest-barrier">Greatest Barrier to Reaching Your Audience *</label>
-                            <textarea class="pa-form-textarea" id="greatest-barrier" name="greatest_barrier" placeholder='e.g., "Meta keeps serving our ads to people who already know us. We can&apos;t find the people who should love us but don&apos;t know we exist."' required style="min-height:110px"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="pa-part-divider"></div>
-
-                    <!-- Challenge 2 -->
-                    <div class="form-challenge">
-                        <p class="form-challenge-text">Your competitor just described their sniper audience. <span class="hl">Will you?</span> The first brand in your category to deploy this wins the cohort. There is no second place.</p>
-                    </div>
-
-                    <div class="pa-part-divider"></div>
-
-                    <!-- PART 3: YOUR STACK -->
-                    <div class="pa-part-header" style="padding-top:1.75rem">
-                        <span class="pa-part-num">Part 3 of 4</span>
-                        <div class="pa-part-title">Your Stack — What Are You Relying On?</div>
-                    </div>
-                    <div class="pa-form-body">
-                        <div class="pa-form-group">
-                            <label class="pa-form-label">Current Marketing Intelligence Sources *</label>
-                            <div class="check-grid">
-                                <label class="check-card"><input type="checkbox" name="insights" value="Meta Ads"/><div class="check-card-inner">Meta Ads</div></label>
-                                <label class="check-card"><input type="checkbox" name="insights" value="Google Ads"/><div class="check-card-inner">Google Ads</div></label>
-                                <label class="check-card"><input type="checkbox" name="insights" value="Market Research Firms"/><div class="check-card-inner">Market Research Firms</div></label>
-                                <label class="check-card"><input type="checkbox" name="insights" value="Consultants"/><div class="check-card-inner">Consultants</div></label>
-                                <label class="check-card"><input type="checkbox" name="insights" value="Data Brokers"/><div class="check-card-inner">Data Brokers</div></label>
-                                <label class="check-card"><input type="checkbox" name="insights" value="Surveys &amp; Focus Groups"/><div class="check-card-inner">Surveys &amp; Focus Groups</div></label>
-                            </div>
-                        </div>
                         <div class="pa-form-group">
                             <label class="pa-form-label" for="meta-spend">Monthly Meta Spend *</label>
                             <select class="pa-form-select" id="meta-spend" name="meta_spend" required>
@@ -367,43 +326,94 @@
 
                     <div class="pa-part-divider"></div>
 
-                    <!-- Challenge 3 -->
-                    <div class="form-challenge">
-                        <p class="form-challenge-text">Every source you just checked is <span class="hl">probabilistic, stale, or compliant-risk</span>. You're about to replace it with deterministic, consent-first intelligence. For the cost of a coffee per user.</p>
+                    <!-- PART 2: YOUR CHALLENGES -->
+                    <div class="pa-part-header" style="padding-top:1.75rem">
+                        <span class="pa-part-num">Part 2 of 3</span>
+                        <div class="pa-part-title">Where Are You Losing?</div>
+                    </div>
+                    <div class="pa-form-body">
+                        <div class="pa-form-group">
+                            <label class="pa-form-label">Select all that apply *</label>
+                            <div class="check-grid">
+                                <label class="check-card">
+                                    <input type="checkbox" name="challenges" value="Audience quality"/>
+                                    <div class="check-card-inner"><div class="check-card-content"><span class="check-card-title">Audience quality</span><span class="check-card-sub">Declining lookalike or third-party segment performance</span></div></div>
+                                </label>
+                                <label class="check-card">
+                                    <input type="checkbox" name="challenges" value="Net-new customer acquisition"/>
+                                    <div class="check-card-inner"><div class="check-card-content"><span class="check-card-title">Net-new customer acquisition</span><span class="check-card-sub">Finding high-intent people who don't know you yet</span></div></div>
+                                </label>
+                                <label class="check-card">
+                                    <input type="checkbox" name="challenges" value="Seed audience quality"/>
+                                    <div class="check-card-inner"><div class="check-card-content"><span class="check-card-title">Seed audience quality</span><span class="check-card-sub">Low match rates or declining custom audience performance</span></div></div>
+                                </label>
+                                <label class="check-card">
+                                    <input type="checkbox" name="challenges" value="Audience intelligence"/>
+                                    <div class="check-card-inner"><div class="check-card-content"><span class="check-card-title">Audience intelligence</span><span class="check-card-sub">Limited visibility into who your best customer actually is</span></div></div>
+                                </label>
+                                <label class="check-card">
+                                    <input type="checkbox" name="challenges" value="Data vendor ROI"/>
+                                    <div class="check-card-inner"><div class="check-card-content"><span class="check-card-title">Data vendor ROI</span><span class="check-card-sub">No measurable lift from tools, brokers, or agencies</span></div></div>
+                                </label>
+                                <label class="check-card">
+                                    <input type="checkbox" name="challenges" value="Ad fatigue and retargeting saturation"/>
+                                    <div class="check-card-inner"><div class="check-card-content"><span class="check-card-title">Ad fatigue &amp; retargeting saturation</span><span class="check-card-sub">Overserving existing customers, failing to expand reach</span></div></div>
+                                </label>
+                                <label class="check-card">
+                                    <input type="checkbox" name="challenges" value="Signal loss"/>
+                                    <div class="check-card-inner"><div class="check-card-content"><span class="check-card-title">Signal loss</span><span class="check-card-sub">Post-iOS 14 or cookie deprecation making optimization harder</span></div></div>
+                                </label>
+                                <label class="check-card">
+                                    <input type="checkbox" name="challenges" value="Creative and content strategy"/>
+                                    <div class="check-card-inner"><div class="check-card-content"><span class="check-card-title">Creative &amp; content strategy</span><span class="check-card-sub">Guessing on creators, formats, or channels before spending</span></div></div>
+                                </label>
+                                <label class="check-card">
+                                    <input type="checkbox" name="challenges" value="Privacy and compliance exposure"/>
+                                    <div class="check-card-inner"><div class="check-card-content"><span class="check-card-title">Privacy &amp; compliance exposure</span><span class="check-card-sub">Legal risk from third-party data relationships</span></div></div>
+                                </label>
+                                <label class="check-card">
+                                    <input type="checkbox" name="challenges" value="Competitor conquest"/>
+                                    <div class="check-card-inner"><div class="check-card-content"><span class="check-card-title">Competitor conquest</span><span class="check-card-sub">Reaching known buyers of competing brands</span></div></div>
+                                </label>
+                                <label class="check-card check-card--full">
+                                    <input type="checkbox" name="challenges" value="None of the above"/>
+                                    <div class="check-card-inner"><div class="check-card-content"><span class="check-card-title">None of the above</span></div></div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="pa-form-group">
+                            <label class="pa-form-label" for="challenge-detail">Tell us more <span style="font-weight:400;color:var(--text-muted)">(optional)</span></label>
+                            <textarea class="pa-form-textarea" id="challenge-detail" name="challenge_detail" placeholder="Any context helps. The more specific, the better we can prepare for our first conversation." style="min-height:100px"></textarea>
+                        </div>
                     </div>
 
                     <div class="pa-part-divider"></div>
 
-                    <!-- PART 4: THE STAKE -->
+                    <!-- PART 3: WHAT YOU'RE GETTING -->
                     <div class="pa-part-header" style="padding-top:1.75rem">
-                        <span class="pa-part-num">Part 4 of 4</span>
-                        <div class="pa-part-title">The Stake — How Serious Are You?</div>
+                        <span class="pa-part-num">Part 3 of 3</span>
+                        <div class="pa-part-title">What You're Getting Into</div>
                     </div>
                     <div class="pa-form-body">
-                        <div class="pa-form-group">
-                            <label class="pa-form-label">Your per-user offer amount</label>
-                            <div class="offer-display">
-                                <span class="offer-amount" id="offer-amount">$5</span>
-                                <span class="offer-tier-badge" id="offer-tier">Standard</span>
-                            </div>
-                            <div class="offer-slider-wrap">
-                                <input type="range" class="offer-slider" id="offer-slider" name="offer_amount" min="5" max="20" step="1" value="5"/>
-                                <div class="offer-labels"><span>$5 &middot; Standard</span><span>$20 &middot; Extreme Priority</span></div>
-                            </div>
-                            <div class="offer-tooltip"><strong>Why this matters:</strong> Higher offers increase your brand's priority in the matching queue and attract higher-LTV consented users. Brands at $12+ see 2.3&times; the consent rate on premium cohorts — and get served first.</div>
-                        </div>
+                        <p class="desc" style="margin-bottom:1.25rem">Founding partners aren't customers — they're collaborators. Here's what that means for your brand:</p>
+                        <ul class="founding-perks">
+                            <li class="founding-perk"><span class="founding-perk-dot"></span>Direct input on the product roadmap — your use cases get prioritized and built first</li>
+                            <li class="founding-perk"><span class="founding-perk-dot"></span>Early platform access before public launch — in before your competitors</li>
+                            <li class="founding-perk"><span class="founding-perk-dot"></span>A dedicated onboarding and strategy session to map your first audience window</li>
+                            <li class="founding-perk"><span class="founding-perk-dot"></span>Founding partner pricing, locked for the life of your account</li>
+                        </ul>
 
                         <label class="commitment-wrap" for="ready-check">
                             <input type="checkbox" class="commitment-checkbox" id="ready-check" name="commitment" required/>
-                            <span class="commitment-label">I am ready to help shape the future of DTC intelligence — and I understand that founding pricing is locked in permanently for my brand once selected.</span>
+                            <span class="commitment-label">I'm ready to be part of the founding cohort and help shape how this works.</span>
                         </label>
                     </div>
 
                     <div class="pa-submit-wrap">
                         <button type="submit" class="pa-submit-btn" id="pa-submit-btn">
-                            Claim My Founding Slot &rarr;
+                            Apply for a Founding Slot &rarr;
                         </button>
-                        <p class="pa-submit-note">No payment collected. No commitment until you've seen the platform. This is a qualification.</p>
+                        <p class="pa-submit-note">No payment collected. No commitment until you've seen the platform.</p>
                     </div>
 
                 </div><!-- /pa-form-card -->
@@ -424,11 +434,11 @@
                 </div>
                 <div class="pa-success-stat pa-success-stat--violet">
                     <span class="pa-success-stat-num">99.6%</span>
-                    <span class="pa-success-stat-label">Consent rate on matched cohorts</span>
+                    <span class="pa-success-stat-label">of consumers will share data for the right incentive</span>
                 </div>
                 <div class="pa-success-stat pa-success-stat--pink">
-                    <span class="pa-success-stat-num">$199</span>
-                    <span class="pa-success-stat-label">Founder rate — locked permanently</span>
+                    <span class="pa-success-stat-num">&lt;24hrs</span>
+                    <span class="pa-success-stat-label">Response time if your brand is a fit</span>
                 </div>
             </div>
 
@@ -464,23 +474,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 });
     document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
 
-    // Offer slider
-    const slider = document.getElementById('offer-slider');
-    const amountEl = document.getElementById('offer-amount');
-    const tierEl = document.getElementById('offer-tier');
-    const tiers = [[5,'Standard'],[8,'Priority'],[12,'High Priority'],[16,'Elite'],[20,'Extreme Priority']];
-
-    function updateSlider() {
-        const v = parseInt(slider.value);
-        amountEl.textContent = '$' + v;
-        const tier = tiers.reduce((a, b) => Math.abs(b[0] - v) < Math.abs(a[0] - v) ? b : a);
-        tierEl.textContent = tier[1];
-        const pct = ((v - 5) / 15) * 100;
-        slider.style.background = `linear-gradient(to right, var(--vivid-violet) 0%, var(--vivid-violet) ${pct}%, rgba(255,255,255,0.1) ${pct}%)`;
-    }
-    slider.addEventListener('input', updateSlider);
-    updateSlider();
-
     // Form submission
     const form = document.getElementById('pa-form');
     const formWrap = document.getElementById('pa-form-wrap');
@@ -492,28 +485,24 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        // Basic validation
         const name = document.getElementById('full-name').value.trim();
         const email = document.getElementById('work-email').value.trim();
         const company = document.getElementById('company-name').value.trim();
-        const market = document.getElementById('priority-market').value.trim();
-        const barrier = document.getElementById('greatest-barrier').value.trim();
         const businessType = document.querySelector('input[name="business_type"]:checked');
         const metaSpend = document.getElementById('meta-spend').value;
+        const challenges = Array.from(document.querySelectorAll('input[name="challenges"]:checked')).map(cb => cb.value);
         const commitment = document.getElementById('ready-check').checked;
 
-        if (!name || !email || !company || !market || !barrier || !businessType || !metaSpend || !commitment) {
+        if (!name || !email || !company || !businessType || !metaSpend || challenges.length === 0 || !commitment) {
             submitBtn.textContent = 'Please complete all required fields';
             submitBtn.style.background = 'linear-gradient(135deg, #6B7280, #4B5563)';
             setTimeout(() => {
-                submitBtn.textContent = 'Claim My Founding Slot →';
+                submitBtn.textContent = 'Apply for a Founding Slot →';
                 submitBtn.style.background = '';
             }, 3000);
             return;
         }
 
-        // Collect form data
-        const insights = Array.from(document.querySelectorAll('input[name="insights"]:checked')).map(cb => cb.value);
         const payload = {
             full_name: name,
             work_email: email,
@@ -521,18 +510,15 @@ document.addEventListener('DOMContentLoaded', () => {
             role_title: document.getElementById('role-title').value.trim(),
             website_url: document.getElementById('website-url').value.trim(),
             business_type: businessType.value,
-            priority_market: market,
-            greatest_barrier: barrier,
-            insights: insights.join(', '),
             meta_spend: metaSpend,
-            offer_amount: '$' + slider.value,
+            challenges: challenges.join(', '),
+            challenge_detail: document.getElementById('challenge-detail').value.trim(),
             submitted_at: new Date().toISOString(),
             source: 'design-partner-apply'
         };
 
         navigator.sendBeacon(FORM_ENDPOINT, JSON.stringify(payload));
 
-        // Show success
         submitBtn.textContent = 'Submitting...';
         submitBtn.disabled = true;
         formWrap.style.display = 'none';
