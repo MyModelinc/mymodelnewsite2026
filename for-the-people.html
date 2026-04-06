@@ -10,7 +10,11 @@
     <meta property="og:title" content="mymodel — Your Stats Card. Your Rules. Your Money.">
     <meta property="og:description" content="Cookies made them billions. You got nothing. Until now. Introducing your Stats Card — the first digital persona you own and monetize.">
     <meta property="og:url" content="https://getmymodel.com/for-the-people.html">
+    <meta property="og:image" content="https://getmymodel.com/og-image-people.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://getmymodel.com/og-image-people.png">
     <meta name="twitter:site" content="@getmymodel">
     <meta name="twitter:title" content="mymodel — Your Stats Card. Your Rules. Your Money.">
     <meta name="twitter:description" content="Cookies made them billions. You got nothing. Until now. Introducing your Stats Card — the first digital persona you own and monetize.">
@@ -44,7 +48,7 @@
             --font-mono:'Geist Mono', monospace;
             --green:#22c55e;--red:#ef4444
         }
-        html{scroll-behavior:smooth}
+        html{scroll-behavior:smooth;overflow-x:hidden}
         body{background:var(--bg);color:var(--text-primary);font-family:'Manrope',sans-serif;font-size:1.0625rem;line-height:1.65;overflow-x:hidden}
 
         h1{font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(2.5rem,5.5vw,4.5rem);letter-spacing:-0.05em;line-height:1.05;margin-bottom:0.25rem}
@@ -755,7 +759,7 @@
             border-left:2px solid transparent;
             border-image:linear-gradient(180deg,var(--violet-glow),var(--accent)) 1;
         }
-        .hero-subtext-pre .line{white-space:nowrap}
+        @media(min-width:769px){.hero-subtext-pre .line{white-space:nowrap}}
         .line-accent{color:var(--text-primary);font-weight:400}
 
         /* =============================== */
