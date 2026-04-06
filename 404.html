@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4PJY0SFBZB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4PJY0SFBZB');
+    </script>
+    <title>Page Not Found — mymodel</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#0F0B1A;--surface:#1A1426;--card:#231D30;
+            --text-primary:#eeedf2;--text-secondary:#b0adc2;--text-muted:#7a7694;
+            --accent:#A78BFA;--pink:#EC4899;--violet:#7C3AED;
+            --border:rgba(255,255,255,0.07);
+            --gradient:linear-gradient(135deg,#EC4899,#7C3AED);
+            --gradient-text:linear-gradient(135deg,#EC4899 0%,#A78BFA 50%,#7C3AED 100%);
+        }
+        html,body{height:100%}
+        body{
+            background:var(--bg);color:var(--text-primary);
+            font-family:'Manrope',sans-serif;
+            display:flex;flex-direction:column;align-items:center;justify-content:center;
+            min-height:100vh;padding:2rem;text-align:center;
+            -webkit-font-smoothing:antialiased;
+            overflow:hidden;
+        }
+
+        .orb-1{position:fixed;border-radius:50%;pointer-events:none;width:700px;height:700px;top:-300px;right:-200px;background:radial-gradient(circle,rgba(124,58,237,0.18),transparent 65%);filter:blur(80px)}
+        .orb-2{position:fixed;border-radius:50%;pointer-events:none;width:500px;height:500px;bottom:-200px;left:-100px;background:radial-gradient(circle,rgba(236,72,153,0.1),transparent 65%);filter:blur(80px)}
+
+        .content{position:relative;z-index:1;max-width:480px}
+
+        .logo{font-size:1.25rem;font-weight:800;letter-spacing:-0.04em;text-decoration:none;display:inline-flex;align-items:baseline;margin-bottom:3rem}
+        .logo .my{color:var(--text-primary)}.logo .mdl{color:var(--accent)}
+
+        .code{
+            font-size:7rem;font-weight:800;letter-spacing:-0.06em;line-height:1;
+            background:var(--gradient-text);
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+            margin-bottom:1rem;
+        }
+
+        h1{font-size:1.625rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:0.75rem;color:var(--text-primary)}
+        p{font-size:1rem;color:var(--text-secondary);line-height:1.6;margin-bottom:2rem}
+
+        .actions{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+        .btn{padding:0.75rem 1.75rem;border-radius:12px;font-family:'Manrope',sans-serif;font-size:0.9375rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:all 0.2s}
+        .btn-primary{background:var(--gradient);color:#fff;box-shadow:0 0 24px rgba(124,58,237,0.3)}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(124,58,237,0.45)}
+        .btn-ghost{background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text-secondary)}
+        .btn-ghost:hover{background:rgba(255,255,255,0.09);color:var(--text-primary)}
+    </style>
+</head>
+<body>
+    <div class="orb-1"></div>
+    <div class="orb-2"></div>
+    <div class="content">
+        <a href="/" class="logo"><span class="my">my</span><span class="mdl">model</span></a>
+        <div class="code">404</div>
+        <h1>This page doesn't exist.</h1>
+        <p>The link might be broken, or the page may have moved. Either way, you're not missing much here.</p>
+        <div class="actions">
+            <a href="/for-the-people.html" class="btn btn-primary">Go home</a>
+            <a href="/brands/" class="btn btn-ghost">For brands</a>
+        </div>
+    </div>
+</body>
+</html>
