@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /og-image.html
+Disallow: /og-image-people.html
+Disallow: /og-image-brands.html
+Disallow: /brand-assets.html
+Disallow: /brand-system.html
+Disallow: /font-compare.html
+Disallow: /font-decision.html
+Disallow: /logo-mockup.html
+Disallow: /number-compare.html
+Disallow: /trust-card-mockup.html
+
+Sitemap: https://getmymodel.com/sitemap.xml
