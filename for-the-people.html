@@ -29,6 +29,8 @@
     <link rel="canonical" href="https://getmymodel.com/for-the-people.html">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
     <link rel="icon" type="image/png" href="/favicon.png?v=3">
+    <link rel="apple-touch-icon" href="/logo-1024.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -38,6 +40,17 @@
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "mymodel",
+      "url": "https://getmymodel.com",
+      "logo": "https://getmymodel.com/logo-1024.png",
+      "description": "The platform where brands pay you directly for your consent. Replacing cookies with consent transactions that work for everyone.",
+      "sameAs": ["https://twitter.com/getmymodel"]
+    }
+    </script>
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         :root{
@@ -167,7 +180,7 @@
             50%{transform:rotateY(-4deg) rotateX(1deg) rotate(-0.5deg) translateY(-8px);filter:drop-shadow(0 48px 100px rgba(0,0,0,0.75))}
         }
         @media(max-width:768px){
-            .hero{grid-template-columns:1fr;gap:2.5rem;min-height:auto;padding-top:6rem;padding-bottom:0}
+            .hero{grid-template-columns:1fr;gap:2.5rem;min-height:auto;padding-top:6rem;padding-bottom:0;padding-left:1rem;padding-right:1rem}
             .hero-copy{text-align:center}
             .hero-subtext-pre,.hero-subtext-post{margin-left:auto;margin-right:auto}
             .hero-subtext-pre{border-left:none!important;border-image:none!important;padding-left:0!important}
@@ -176,6 +189,11 @@
             .hero-phone{display:none}
             .hero-subtext-pre,.hero-subtext-post{display:none}
             .hero-cta-wrap{display:none}
+            .hero-headline-primary{font-size:3.25rem;letter-spacing:-0.06em}
+        }
+        @media(max-width:360px){
+            .hero-copy h1{font-size:2rem}
+            .hero-headline-primary{font-size:2.5rem;letter-spacing:-0.05em}
         }
 
         /* =============================== */
@@ -549,7 +567,7 @@
         /* =============================== */
         /* HOW IT WORKS                    */
         /* =============================== */
-        .steps-section{padding:6rem 0 5rem;position:relative;overflow:hidden}
+        .steps-section{padding:6rem 0 7rem;position:relative;overflow:hidden}
         .steps-section::before{
             content:'';position:absolute;
             top:50%;left:50%;transform:translate(-50%,-50%);
@@ -608,6 +626,20 @@
             line-height:1.5;
         }
         .steps-mission strong{color:var(--text-primary);font-weight:600}
+        .btn-ghost-gradient{
+            display:inline-block;
+            font-family:'Manrope',sans-serif;font-weight:600;font-size:1rem;
+            padding:0.875rem 2rem;border-radius:999px;
+            background:linear-gradient(#0F0B1A,#0F0B1A),linear-gradient(135deg,#7C3AED,#EC4899);
+            background-origin:padding-box,border-box;
+            background-clip:padding-box,border-box;
+            border:2px solid transparent;
+            color:#fff;text-decoration:none;
+            opacity:0.75;
+            transition:opacity 0.25s ease,transform 0.25s ease;
+        }
+        .btn-ghost-gradient:hover{opacity:1;transform:translateY(-2px)}
+        .steps-cta-wrap{text-align:center;margin-top:2.5rem}
         @media(max-width:768px){
             .privacy-section{padding:2.5rem 0 3rem}
             .privacy-text{font-size:1rem}
@@ -617,7 +649,7 @@
         }
 
         @media(max-width:768px){
-            .steps-section{padding:3.5rem 0 3rem}
+            .steps-section{padding:3.5rem 0 4.5rem}
             .steps-header{margin-bottom:2rem}
             .steps-grid{grid-template-columns:1fr;gap:0.75rem}
             .step-card{padding:1.25rem 1.5rem;border-radius:14px}
@@ -1054,7 +1086,7 @@
 <!-- ============================== -->
 <section class="hero container">
     <div class="hero-copy">
-        <h1>Cookies made<br>them billions.</h1>
+        <h1 class="hero-headline-primary">Cookies made<br>them billions.</h1>
         <h1>You got nothing.</h1>
         <h1 class="shimmer">Until now.</h1>
         <div class="hero-subtext-pre">
@@ -1228,6 +1260,9 @@
             </div>
         </div>
         <p class="steps-mission" data-reveal><strong>The bigger we get, the more we get you paid.</strong><br>Simple as that.</p>
+        <div class="steps-cta-wrap" data-reveal>
+            <a href="join.html" class="btn-ghost-gradient">Join the waitlist</a>
+        </div>
     </div>
 </section>
 
