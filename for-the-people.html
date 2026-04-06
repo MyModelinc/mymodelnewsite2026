@@ -27,7 +27,7 @@
     <meta name="twitter:title" content="Get Paid for What Brands Pay Billions to Access — mymodel">
     <meta name="twitter:description" content="The platform where brands pay you directly for your consent. Replacing cookies with consent transactions that work for everyone.">
     <link rel="canonical" href="https://getmymodel.com/for-the-people.html">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="icon" href="/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -336,14 +336,16 @@
                 text-align:center;
                 font-family:'Manrope',sans-serif;
                 font-weight:800;
-                font-size:clamp(1.25rem,4.5vw,2.25rem);
+                font-size:clamp(1.75rem,6.5vw,2.75rem);
                 letter-spacing:-0.04em;
                 line-height:1.1;
-                margin-top:1.5rem;
+                margin-top:3rem;
+                padding:0 0.5rem;
                 background:linear-gradient(135deg,var(--fuchsia) 0%,var(--offer-gold) 52%,var(--violet-glow) 100%);
                 background-size:200% auto;
                 -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
                 animation:shimmer 5s linear infinite;
+                filter:drop-shadow(0 2px 16px rgba(124,58,237,0.35));
             }
         }
 
@@ -610,7 +612,7 @@
             .privacy-section{padding:2.5rem 0 3rem}
             .privacy-text{font-size:1rem}
             .privacy-30days{font-size:1.0625rem;margin-top:1.5rem}
-            .privacy-list{margin-bottom:1.5rem}
+            .privacy-list{margin-bottom:1.5rem;padding:0 1.25rem}
         }
 
         @media(max-width:768px){
@@ -1013,9 +1015,10 @@
         }
         @media(max-width:768px){
             .offer-demo-section{
-                display:block;padding:4rem 0 4.5rem;
+                display:block;padding:1.75rem 0 2rem;
                 background:radial-gradient(ellipse 60% 40% at 50% 30%, rgba(124,58,237,0.12) 0%, transparent 70%);
             }
+            .offer-demo-card-wrap{min-height:0}
         }
     </style>
 </head>
@@ -1491,7 +1494,8 @@ document.addEventListener('DOMContentLoaded', () => {
         function runNextOffer() {
             const offer = offers[offerIdx];
             cardEl.classList.remove('offer-accepted');
-            cardEl.style.opacity = '';
+            // Set start state BEFORE innerHTML so GSAP owns the transform before DOM mutation
+            gsap.set(cardEl, { y: -28, opacity: 0, scale: 0.98, clearProps: 'none' });
             gsap.set(confirmEl, { opacity: 0, y: 6 });
             cardEl.innerHTML = `
                 <div class="ios-notif-header">
@@ -1505,12 +1509,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     <button class="ios-notif-action ios-action-accept" id="demo-accept-btn">Accept</button>
                     <button class="ios-notif-action ios-action-decline">Decline</button>
                 </div>`;
-
-            gsap.fromTo(cardEl,
-                { y: -32, opacity: 0, scale: 0.99 },
-                { y: 0, opacity: 1, scale: 1, duration: 0.38, ease: 'power3.out',
-                  onComplete: () => setTimeout(() => pulseAccept(offer), 1800) }
-            );
+            // Wait one frame for browser to settle layout, then animate
+            requestAnimationFrame(() => {
+                gsap.to(cardEl,
+                    { y: 0, opacity: 1, scale: 1, duration: 0.4, ease: 'power3.out',
+                      onComplete: () => setTimeout(() => pulseAccept(offer), 1800) }
+                );
+            });
         }
 
         function pulseAccept(offer) {
@@ -1539,7 +1544,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 gsap.to([cardEl, confirmEl], { opacity: 0, y: -4, duration: 0.25, ease: 'power2.in',
                     onComplete: () => {
                         offerIdx = (offerIdx + 1) % offers.length;
-                        gsap.set(cardEl, { opacity: 1, y: 0 });
                         setTimeout(runNextOffer, 700);
                     }
                 });
