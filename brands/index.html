@@ -48,7 +48,7 @@
             --gradient-text:linear-gradient(135deg,#EC4899 0%,#A78BFA 50%,#7C3AED 100%);
             --font-base:'Manrope',sans-serif
         }
-        html{scroll-behavior:smooth}
+        html{scroll-behavior:smooth;overflow-x:hidden}
         body{background:var(--bg);color:var(--text-primary);font-family:'Manrope',sans-serif;font-size:1.0625rem;line-height:1.65;overflow-x:hidden}
         /* 3-tier type scale: h1 > h2 > h3 > .desc > body > .caption */
         h1{font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(2.5rem,6vw,5rem);letter-spacing:-0.04em;line-height:1.05;margin-bottom:1.25rem}
@@ -403,7 +403,7 @@
         .b-search-ui{width:100%;max-width:320px}
         .b-search-bar{background:rgba(255,255,255,0.04);border:1px solid rgba(167,139,250,0.22);border-radius:12px;padding:0.875rem 1.125rem;display:flex;align-items:center;gap:0.625rem;margin-bottom:1.125rem}
         .b-search-icon{color:var(--accent-soft);flex-shrink:0;opacity:0.65}
-        .b-search-typed{font-family:'Manrope',sans-serif;font-size:0.875rem;color:var(--text-primary);white-space:nowrap;overflow:hidden}
+        .b-search-typed{font-family:'Manrope',sans-serif;font-size:0.875rem;color:var(--text-primary);white-space:nowrap;overflow:hidden;flex:1;min-width:0}
         .b-cursor{display:inline-block;width:2px;height:1.1em;background:var(--accent-soft);vertical-align:middle;margin-left:1px;animation:b-blink 0.85s step-end infinite}
         @keyframes b-blink{0%,100%{opacity:1}50%{opacity:0}}
         /* Step 01 — search results: loading → match */
@@ -613,7 +613,7 @@
     <div class="orb orb-g"></div>
     <div class="container">
         <div class="gd-header" data-reveal>
-            <h2>We have invented a completely new category.</h2>
+            <h2>We have invented a new category.</h2>
             <p class="gd-big-label">We call it <span class="statement-shimmer" style="font-size:inherit">Granted Data</span>:</p>
             <p class="desc">live behavioral insights that users have <strong>actively permissioned</strong> brands to access.</p>
             <p class="desc" style="margin-top:0.75rem;color:var(--text-secondary)">Here is how it stacks up.</p>
