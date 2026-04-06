@@ -345,7 +345,7 @@
                 background-size:200% auto;
                 -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
                 animation:shimmer 5s linear infinite;
-                filter:drop-shadow(0 2px 16px rgba(124,58,237,0.35));
+                filter:drop-shadow(0 3px 8px rgba(0,0,0,0.9)) drop-shadow(0 6px 20px rgba(0,0,0,0.7));
             }
         }
 
@@ -612,7 +612,8 @@
             .privacy-section{padding:2.5rem 0 3rem}
             .privacy-text{font-size:1rem}
             .privacy-30days{font-size:1.0625rem;margin-top:1.5rem}
-            .privacy-list{margin-bottom:1.5rem;padding:0 1.25rem}
+            .privacy-list{margin-bottom:1.5rem;padding:0 1.75rem}
+            .privacy-x{width:1.5rem;height:1.5rem;font-size:0.75rem}
         }
 
         @media(max-width:768px){
@@ -624,6 +625,11 @@
             .step-card h3{font-size:1rem;margin-bottom:0.25rem}
             .step-card p{font-size:0.875rem;line-height:1.5}
             .steps-mission{margin-top:2rem;font-size:0.9375rem}
+            .steps-mission strong{
+                background:linear-gradient(90deg,var(--fuchsia) 0%,var(--offer-gold) 100%);
+                background-size:200% auto;
+                -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+            }
         }
 
         /* =============================== */
@@ -1015,10 +1021,11 @@
         }
         @media(max-width:768px){
             .offer-demo-section{
-                display:block;padding:1.75rem 0 2rem;
+                display:block;padding:1.75rem 0 1.75rem;
                 background:radial-gradient(ellipse 60% 40% at 50% 30%, rgba(124,58,237,0.12) 0%, transparent 70%);
             }
             .offer-demo-card-wrap{min-height:0}
+            .offer-demo-close{margin-top:1.25rem}
         }
     </style>
 </head>
@@ -1184,7 +1191,7 @@
         </div>
 
         <!-- Tagline below card — mobile only -->
-        <div class="sc-tagline-mobile" aria-hidden="true">The First Ever Digital Persona<br>You Can Own and Monetize.</div>
+        <div class="sc-tagline-mobile" aria-hidden="true">The First Digital<br>Persona You Can Own<br>and Monetize.</div>
 
         <!-- Desc lines float below the layout -->
         <div class="statscard-caption" data-reveal>
