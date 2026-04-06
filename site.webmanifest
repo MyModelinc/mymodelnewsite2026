@@ -1,0 +1,21 @@
+{
+  "name": "mymodel",
+  "short_name": "mymodel",
+  "description": "The platform where brands pay you directly for your consent.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0F0B1A",
+  "theme_color": "#7C3AED",
+  "icons": [
+    {
+      "src": "/logo-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo-400.png",
+      "sizes": "400x400",
+      "type": "image/png"
+    }
+  ]
+}
