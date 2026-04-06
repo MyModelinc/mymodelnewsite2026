@@ -105,7 +105,7 @@
         nav{position:fixed;top:0;left:0;right:0;z-index:1000;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(12,12,20,0.75);border-bottom:1px solid var(--border);padding:1rem 2rem}
         .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
         .nav-logo{font-family:'Manrope',sans-serif;font-weight:800;font-size:1.375rem;letter-spacing:-0.04em;text-decoration:none;display:inline-flex;align-items:baseline;gap:0}
-        .nav-logo .my{color:var(--text-primary)}.nav-logo .mdl{color:var(--accent)}
+        .nav-logo .my{color:var(--text-primary)}.nav-logo .mdl{color:#7C3AED}
         .nav-links{display:flex;align-items:center;gap:2rem}
         .nav-link{color:var(--text-secondary);text-decoration:none;font-size:0.875rem;font-weight:500;transition:color 0.2s,opacity 0.2s;opacity:0.55}
         .nav-link:hover{color:var(--text-primary);opacity:1}
@@ -165,6 +165,7 @@
             .hero-subtext-pre{border-left:none!important;border-image:none!important;padding-left:0!important}
             .hero-subtext-pre .line{white-space:normal}
             .hero-buttons{justify-content:center}
+            .hero-phone{display:none}
         }
 
         /* =============================== */
@@ -727,7 +728,7 @@
         .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
         .footer-left{display:flex;align-items:center;gap:2rem}
         .footer-logo{font-family:'Manrope',sans-serif;font-weight:800;font-size:1rem;letter-spacing:-0.04em;display:inline-flex;align-items:baseline;gap:0}
-        .footer-logo .my{color:var(--text-primary)}.footer-logo .mdl{color:var(--accent)}
+        .footer-logo .my{color:var(--text-primary)}.footer-logo .mdl{color:#7C3AED}
         .footer-copy{font-size:0.875rem;color:var(--text-secondary)}
         .footer-links{display:flex;gap:2rem;align-items:center}
         .footer-link{font-size:0.875rem;color:var(--text-secondary);text-decoration:none;transition:color 0.3s}
@@ -899,6 +900,38 @@
         .hero-subtext-post .hero-resolve-label{animation:heroSubIn 0.5s cubic-bezier(0.16,1,0.3,1) 0.92s both}
         .hero-subtext-post .hero-resolve-main{animation:heroSubIn 0.5s cubic-bezier(0.16,1,0.3,1) 1.05s both}
         .hero-phone{animation:heroPhoneIn 0.85s cubic-bezier(0.16,1,0.3,1) 0.35s both}
+
+        /* =============================== */
+        /* OFFER DEMO (mobile only)        */
+        /* =============================== */
+        .offer-demo-section{display:none;padding:2.5rem 0 2rem;text-align:center}
+        .offer-demo-inner{max-width:340px;margin:0 auto;padding:0 1.5rem}
+        .offer-demo-inner .eyebrow{margin-bottom:1.5rem}
+        .offer-demo-card-wrap{min-height:140px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
+        .offer-notif-card{
+            position:relative;width:100%;
+            padding:0.75rem 0.875rem;border-radius:16px;
+            background:rgba(30,28,42,0.88);
+            backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);
+            border:1px solid rgba(255,255,255,0.10);
+            box-shadow:0 8px 32px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.07);
+            transition:background 0.25s ease,border-color 0.25s ease;
+        }
+        .offer-demo-actions{
+            display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;
+            margin-top:0.625rem;border-top:1px solid rgba(255,255,255,0.07);padding-top:0.5rem;
+        }
+        .offer-confirm-inner{display:flex;align-items:center;gap:0.75rem;padding:0.25rem 0}
+        .offer-confirm-icon{
+            width:2rem;height:2rem;background:rgba(52,211,153,0.15);border-radius:50%;
+            display:flex;align-items:center;justify-content:center;
+            font-size:1rem;color:var(--success-green);flex-shrink:0;
+        }
+        .offer-confirm-brand{font-weight:600;color:#fff;font-size:0.875rem;text-align:left}
+        .offer-confirm-amount{color:var(--success-green);font-family:'Geist Mono',monospace;font-weight:600;font-size:1rem;margin-top:0.15rem;text-align:left}
+        .offer-demo-total-line{font-size:0.875rem;color:var(--text-secondary)}
+        #offer-demo-total{color:var(--success-green);font-family:'Geist Mono',monospace;font-weight:600}
+        @media(max-width:768px){.offer-demo-section{display:block}}
     </style>
 </head>
 <body>
@@ -953,6 +986,21 @@
                 </span>
             </div>
             <div class="iphone-screen" id="hero-notifs"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================== -->
+<!-- OFFER DEMO (mobile only)       -->
+<!-- ============================== -->
+<section class="offer-demo-section" id="offer-demo-section">
+    <div class="offer-demo-inner">
+        <span class="eyebrow">What an offer looks like</span>
+        <div class="offer-demo-card-wrap">
+            <div class="offer-notif-card" id="offer-demo-notif"></div>
+        </div>
+        <div class="offer-demo-total-line">
+            Earned so far: <span id="offer-demo-total">$0</span>
         </div>
     </div>
 </section>
@@ -1177,8 +1225,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="ios-notif-app-name">mymodel</div>
                 <div class="ios-notif-time">${data.timeAgo}</div>
             </div>
-            <div class="ios-notif-title">${data.brand} sent you an offer</div>
-            <div class="ios-notif-text">30-day access to your Stats Card &middot; <span class="notif-amount">${data.amount}</span></div>
+            <div class="ios-notif-title">${data.brand} sent you a <span class="notif-amount">${data.amount}</span> offer</div>
+            <div class="ios-notif-text">30-day access to your Stats Card</div>
             <div class="ios-notif-sub">${data.hours} hours to respond</div>
             <div class="ios-notif-actions">
                 <button class="ios-notif-action ios-action-accept">Accept</button>
@@ -1343,6 +1391,105 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ===========================
+    // OFFER DEMO — mobile inline
+    // ===========================
+    (function initOfferDemo() {
+        const section = document.getElementById('offer-demo-section');
+        const cardEl  = document.getElementById('offer-demo-notif');
+        const totalEl = document.getElementById('offer-demo-total');
+        if (!section || !cardEl || !totalEl) return;
+
+        const offers = [
+            { brand: 'Nike',      icon: 'N', amount: 7,  desc: '30-day audience access' },
+            { brand: 'Glossier',  icon: 'G', amount: 5,  desc: 'Campaign match: skincare' },
+            { brand: 'Airbnb',    icon: 'A', amount: 11, desc: 'Travel segment: weekend trips' },
+            { brand: 'Patagonia', icon: 'P', amount: 8,  desc: 'Outdoor lifestyle audience' },
+        ];
+
+        let totalEarned = 0;
+        let offerIdx = 0;
+        let demoRunning = false;
+
+        function countUp(from, to, el, ms) {
+            const t0 = performance.now();
+            (function tick(now) {
+                const p = Math.min((now - t0) / ms, 1);
+                const ease = 1 - Math.pow(1 - p, 3);
+                el.textContent = '$' + Math.round(from + (to - from) * ease);
+                if (p < 1) requestAnimationFrame(tick);
+            })(performance.now());
+        }
+
+        function runNextOffer() {
+            const offer = offers[offerIdx];
+            cardEl.style.background = '';
+            cardEl.style.borderColor = '';
+            cardEl.innerHTML = `
+                <div class="ios-notif-header">
+                    <div class="ios-notif-app-icon">${offer.icon}</div>
+                    <div class="ios-notif-app-name">${offer.brand}</div>
+                    <div class="ios-notif-time">now</div>
+                </div>
+                <div class="ios-notif-title">${offer.brand} sent you an offer</div>
+                <div class="ios-notif-text">${offer.desc} &middot; <span class="notif-amount">$${offer.amount}</span></div>
+                <div class="offer-demo-actions">
+                    <button class="ios-notif-action ios-action-accept" id="demo-accept-btn">Accept</button>
+                    <button class="ios-notif-action ios-action-decline">Decline</button>
+                </div>`;
+
+            gsap.fromTo(cardEl,
+                { y: -20, opacity: 0, scale: 0.97 },
+                { y: 0, opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(1.4)',
+                  onComplete: () => setTimeout(() => pulseAccept(offer), 1800) }
+            );
+        }
+
+        function pulseAccept(offer) {
+            const btn = document.getElementById('demo-accept-btn');
+            if (!btn) { showConfirm(offer); return; }
+            gsap.timeline()
+                .to(btn, { scale: 1.07, duration: 0.14, ease: 'power2.out' })
+                .to(btn, { scale: 1, duration: 0.12, ease: 'power2.in',
+                    onComplete: () => showConfirm(offer) });
+        }
+
+        function showConfirm(offer) {
+            cardEl.style.background = 'rgba(34,197,94,0.1)';
+            cardEl.style.borderColor = 'rgba(52,211,153,0.35)';
+            cardEl.innerHTML = `
+                <div class="offer-confirm-inner">
+                    <div class="offer-confirm-icon">&#10003;</div>
+                    <div>
+                        <div class="offer-confirm-brand">${offer.brand} &mdash; Payment confirmed</div>
+                        <div class="offer-confirm-amount">+$${offer.amount}</div>
+                    </div>
+                </div>`;
+            const newTotal = totalEarned + offer.amount;
+            countUp(totalEarned, newTotal, totalEl, 500);
+            totalEarned = newTotal;
+
+            setTimeout(() => {
+                gsap.to(cardEl, { opacity: 0, y: -8, duration: 0.3, ease: 'power2.in',
+                    onComplete: () => {
+                        offerIdx = (offerIdx + 1) % offers.length;
+                        if (offerIdx === 0) { totalEarned = 0; totalEl.textContent = '$0'; }
+                        gsap.set(cardEl, { opacity: 1, y: 0 });
+                        setTimeout(runNextOffer, 700);
+                    }
+                });
+            }, 1400);
+        }
+
+        const obs = new IntersectionObserver(entries => {
+            if (entries[0].isIntersecting && !demoRunning) {
+                demoRunning = true;
+                runNextOffer();
+            }
+        }, { threshold: 0.4 });
+        obs.observe(section);
+    })();
 
     // ===========================
     // CLOSING MANIFESTO — GSAP
