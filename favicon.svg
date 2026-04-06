@@ -7,7 +7,5 @@
     </linearGradient>
   </defs>
   <rect width="100" height="100" rx="22" fill="url(#g)"/>
-  <text x="50" y="76" text-anchor="middle"
-        font-family="Manrope, Inter, system-ui, sans-serif"
-        font-weight="800" font-size="76" fill="white">m</text>
+  <path d="M14,72 L14,46 C14,25 44,25 44,46 L56,46 C56,25 86,25 86,46 L86,72 L74,72 L74,46 C74,38 56,38 56,46 L56,72 L44,72 L44,46 C44,38 26,38 26,46 L26,72 Z" fill="white"/>
 </svg>
