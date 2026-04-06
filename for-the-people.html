@@ -212,7 +212,7 @@
             color:#fff;flex-shrink:0;
             box-shadow:0 2px 8px rgba(91,33,182,0.5);
         }
-        .ios-notif-app-name{font-family:-apple-system,system-ui,sans-serif;font-size:0.6875rem;font-weight:600;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.04em;flex:1}
+        .ios-notif-app-name{font-family:-apple-system,system-ui,sans-serif;font-size:0.6875rem;font-weight:500;color:rgba(255,255,255,0.5);flex:1}
         .ios-notif-time{font-family:-apple-system,system-ui,sans-serif;font-size:0.625rem;color:rgba(255,255,255,0.4);white-space:nowrap}
         .ios-notif-title{font-family:-apple-system,system-ui,sans-serif;font-size:0.8125rem;font-weight:600;color:#fff;margin-bottom:0.2rem;line-height:1.3}
         .ios-notif-text{font-family:-apple-system,system-ui,sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.65);line-height:1.35;margin-bottom:0.05rem}
@@ -320,13 +320,31 @@
         .statscard-desc-lines p:nth-child(1){color:var(--text-primary);font-weight:500}
         .statscard-desc-lines p:nth-child(2),.statscard-desc-lines p:nth-child(3){color:var(--text-primary)}
 
+        .sc-tagline-mobile{display:none}
+
         @media(max-width:900px){
-            .statscard-layout{grid-template-columns:1fr;gap:2rem}
+            .statscard-layout{grid-template-columns:1fr;gap:1.5rem}
             .statscard-right{text-align:center;order:-1}
             .statscard-rule{margin:1.75rem auto}
             .statscard-section{padding:4rem 0 3rem}
-            .caption-l2,.caption-l3{display:none}
-            .statscard-caption{padding-top:1.75rem}
+            .statscard-caption{display:none}
+            .sc-your-statscard{margin-bottom:0}
+            /* Tagline: hide from right column, show below card instead */
+            .sc-hero-tagline{display:none}
+            .sc-tagline-mobile{
+                display:block;
+                text-align:center;
+                font-family:'Manrope',sans-serif;
+                font-weight:800;
+                font-size:clamp(1.25rem,4.5vw,2.25rem);
+                letter-spacing:-0.04em;
+                line-height:1.1;
+                margin-top:1.5rem;
+                background:linear-gradient(135deg,var(--fuchsia) 0%,var(--offer-gold) 52%,var(--violet-glow) 100%);
+                background-size:200% auto;
+                -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+                animation:shimmer 5s linear infinite;
+            }
         }
 
         /* =============================== */
@@ -588,13 +606,29 @@
             line-height:1.5;
         }
         .steps-mission strong{color:var(--text-primary);font-weight:600}
-        @media(max-width:768px){.steps-grid{grid-template-columns:1fr}}
+        @media(max-width:768px){
+            .privacy-section{padding:2.5rem 0 3rem}
+            .privacy-text{font-size:1rem}
+            .privacy-30days{font-size:1.0625rem;margin-top:1.5rem}
+            .privacy-list{margin-bottom:1.5rem}
+        }
+
+        @media(max-width:768px){
+            .steps-section{padding:3.5rem 0 3rem}
+            .steps-header{margin-bottom:2rem}
+            .steps-grid{grid-template-columns:1fr;gap:0.75rem}
+            .step-card{padding:1.25rem 1.5rem;border-radius:14px}
+            .step-number{margin-bottom:0.625rem}
+            .step-card h3{font-size:1rem;margin-bottom:0.25rem}
+            .step-card p{font-size:0.875rem;line-height:1.5}
+            .steps-mission{margin-top:2rem;font-size:0.9375rem}
+        }
 
         /* =============================== */
         /* PRIVACY                         */
         /* =============================== */
         .privacy-section{padding:5rem 0 6rem;text-align:center;border-top:1px solid var(--border)}
-        .privacy-section h2{text-align:center;font-weight:500;font-size:clamp(1.5rem,3vw,2.25rem);letter-spacing:-0.025em;line-height:1.3}
+        .privacy-section h2{text-align:center;font-weight:500;font-size:clamp(1.25rem,3vw,2.25rem);letter-spacing:-0.025em;line-height:1.3}
         .privacy-list{list-style:none;max-width:560px;margin:0 auto 2.5rem;text-align:left}
         .privacy-item{
             display:flex;align-items:center;gap:1rem;
@@ -1146,6 +1180,9 @@
 
         </div>
 
+        <!-- Tagline below card — mobile only -->
+        <div class="sc-tagline-mobile" aria-hidden="true">The First Ever Digital Persona<br>You Can Own and Monetize.</div>
+
         <!-- Desc lines float below the layout -->
         <div class="statscard-caption" data-reveal>
             <p class="caption-l1">A live portrait of your consumer behavior.</p>
@@ -1210,16 +1247,11 @@
             <div class="flywheel-ring"></div>
             <div class="fw-node fw-node-top fw-violet">More people join</div>
             <span class="fw-connector">↓</span>
-            <div class="fw-node fw-node-br fw-gold">More brands onboard</div>
+            <div class="fw-node fw-node-br fw-violet">More brands onboard</div>
             <span class="fw-connector">↓</span>
             <div class="fw-node fw-node-bl fw-green">More money for everyone</div>
         </div>
         <a href="join.html" class="manifesto-cta">Join the waitlist now.</a>
-        <p style="font-size:0.8125rem;color:var(--accent-soft);margin-top:2.5rem;margin-bottom:1rem">Follow the founder's journey — @theantitechbro</p>
-        <div class="manifesto-social" style="margin-top:0">
-            <a href="https://x.com/theantitechbro" class="social-link" aria-label="X / Twitter">&#120143;</a>
-            <a href="https://tiktok.com/@theantitechbro" class="social-link" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.79 1.53V6.77a4.85 4.85 0 0 1-1.02-.08z"/></svg></a>
-        </div>
     </div>
 </section>
 
@@ -1231,14 +1263,6 @@
             <div class="footer-copy">myModel, Inc. &copy; 2026</div>
         </div>
         <div class="footer-links">
-            <div class="footer-founder">
-                <span>Follow the founder's journey</span>
-                <div class="footer-founder-links">
-                    <a href="https://x.com/theantitechbro" class="footer-link">X</a>
-                    <a href="https://tiktok.com/@theantitechbro" class="footer-link" aria-label="TikTok" style="display:inline-flex;align-items:center;gap:0.35rem"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.79 1.53V6.77a4.85 4.85 0 0 1-1.02-.08z"/></svg>TikTok</a>
-                </div>
-            </div>
-            <span class="footer-dot">·</span>
             <a href="mailto:jordan@getmymodel.com" class="footer-link">Contact</a>
             <a href="/privacy.html" class="footer-link">Privacy</a>
         </div>
@@ -1483,8 +1507,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>`;
 
             gsap.fromTo(cardEl,
-                { y: -20, opacity: 0, scale: 0.97 },
-                { y: 0, opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(1.4)',
+                { y: -32, opacity: 0, scale: 0.99 },
+                { y: 0, opacity: 1, scale: 1, duration: 0.38, ease: 'power3.out',
                   onComplete: () => setTimeout(() => pulseAccept(offer), 1800) }
             );
         }
@@ -1512,7 +1536,7 @@ document.addEventListener('DOMContentLoaded', () => {
             gsap.to(confirmEl, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
 
             setTimeout(() => {
-                gsap.to([cardEl, confirmEl], { opacity: 0, y: -8, duration: 0.3, ease: 'power2.in',
+                gsap.to([cardEl, confirmEl], { opacity: 0, y: -4, duration: 0.25, ease: 'power2.in',
                     onComplete: () => {
                         offerIdx = (offerIdx + 1) % offers.length;
                         gsap.set(cardEl, { opacity: 1, y: 0 });
