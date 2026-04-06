@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>OG Image — mymodel (People)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    background: #0F0B1A;
+    font-family: 'Manrope', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+  }
+
+  .orb-1 {
+    position: absolute; border-radius: 50%; pointer-events: none;
+    width: 800px; height: 800px;
+    top: -320px; right: -180px;
+    background: radial-gradient(circle, rgba(124,58,237,0.2), transparent 65%);
+    filter: blur(80px);
+  }
+  .orb-2 {
+    position: absolute; border-radius: 50%; pointer-events: none;
+    width: 600px; height: 600px;
+    bottom: -260px; left: -100px;
+    background: radial-gradient(circle, rgba(236,72,153,0.13), transparent 65%);
+    filter: blur(80px);
+  }
+  .orb-3 {
+    position: absolute; border-radius: 50%; pointer-events: none;
+    width: 400px; height: 400px;
+    top: 50%; right: 200px;
+    transform: translateY(-50%);
+    background: radial-gradient(circle, rgba(124,58,237,0.12), transparent 65%);
+    filter: blur(60px);
+  }
+
+  .layout {
+    position: relative; z-index: 1;
+    width: 1200px; height: 630px;
+    display: flex;
+  }
+
+  /* LEFT */
+  .left {
+    width: 610px;
+    padding: 52px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .logo .wordmark {
+    font-size: 32px; font-weight: 800;
+    letter-spacing: -0.04em; line-height: 1;
+  }
+  .logo .my { color: #eeedf2; }
+  .logo .mdl { color: #A78BFA; }
+  .logo-tag {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: #A78BFA;
+    background: rgba(167,139,250,0.12);
+    border: 1px solid rgba(167,139,250,0.28);
+    border-radius: 999px;
+    padding: 3px 10px;
+  }
+
+  .headline {
+    font-size: 64px; font-weight: 800;
+    letter-spacing: -0.04em; line-height: 1.0;
+    color: #eeedf2;
+  }
+  .headline .gradient {
+    background: linear-gradient(135deg, #EC4899 0%, #A78BFA 55%, #7C3AED 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subline {
+    font-size: 16px; font-weight: 500;
+    color: #b0adc2; line-height: 1.55;
+    margin-top: 18px;
+  }
+
+  .bottom {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pill {
+    display: flex; align-items: center; gap: 7px;
+    background: rgba(167,139,250,0.08);
+    border: 1px solid rgba(167,139,250,0.18);
+    border-radius: 8px;
+    padding: 7px 13px;
+  }
+  .pill .num { font-size: 14px; font-weight: 800; color: #A78BFA; }
+  .pill .lbl { font-size: 11px; font-weight: 500; color: #7a7694; }
+  .domain {
+    font-size: 13px; font-weight: 500;
+    color: #7a7694; letter-spacing: 0.01em;
+    margin-left: auto;
+  }
+
+  /* RIGHT — Stats Card mockup */
+  .right {
+    width: 590px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-glow {
+    position: absolute;
+    width: 440px; height: 440px;
+    background: radial-gradient(circle, rgba(124,58,237,0.22), transparent 65%);
+    filter: blur(70px);
+    border-radius: 50%;
+  }
+
+  .stats-card {
+    position: relative; z-index: 2;
+    width: 310px;
+    background: linear-gradient(160deg, #1E1630 0%, #150f22 100%);
+    border: 1px solid rgba(167,139,250,0.22);
+    border-radius: 22px;
+    padding: 22px;
+    box-shadow:
+      0 0 0 1px rgba(167,139,250,0.06) inset,
+      0 0 60px rgba(124,58,237,0.18),
+      0 28px 80px rgba(0,0,0,0.55);
+  }
+
+  .card-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, #EC4899, #7C3AED);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 800; color: white;
+    flex-shrink: 0;
+  }
+  .card-name { font-size: 15px; font-weight: 700; color: #eeedf2; }
+  .card-sub { font-size: 11px; font-weight: 500; color: #7a7694; margin-top: 2px; }
+  .verified-badge {
+    margin-left: auto; flex-shrink: 0;
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: #A78BFA;
+    background: rgba(167,139,250,0.12);
+    border: 1px solid rgba(167,139,250,0.25);
+    border-radius: 999px;
+    padding: 3px 8px;
+  }
+
+  .section-label {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 0.09em; text-transform: uppercase;
+    color: #7a7694; margin-bottom: 10px;
+  }
+
+  .bar-row {
+    display: flex; align-items: center; gap: 9px;
+    margin-bottom: 9px;
+  }
+  .bar-name { font-size: 11px; font-weight: 500; color: #b0adc2; width: 68px; flex-shrink: 0; }
+  .bar-track {
+    flex: 1; height: 5px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 999px; overflow: hidden;
+  }
+  .bar-fill { height: 100%; border-radius: 999px; }
+  .bar-fill.v { background: linear-gradient(90deg, #7C3AED, #A78BFA); }
+  .bar-fill.p { background: linear-gradient(90deg, #EC4899, #F472B6); }
+  .bar-fill.m { background: linear-gradient(90deg, #EC4899, #A78BFA); }
+  .bar-pct { font-size: 10px; font-weight: 700; color: #A78BFA; width: 28px; text-align: right; }
+
+  .tags {
+    display: flex; flex-wrap: wrap; gap: 5px;
+    margin: 14px 0;
+  }
+  .tag {
+    font-size: 10px; font-weight: 600; color: #b0adc2;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 5px;
+    padding: 3px 8px;
+  }
+
+  .offer-row {
+    background: rgba(167,139,250,0.08);
+    border: 1px solid rgba(167,139,250,0.2);
+    border-radius: 12px;
+    padding: 11px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .offer-lbl { font-size: 10px; font-weight: 600; color: #7a7694; margin-bottom: 2px; }
+  .offer-amt { font-size: 20px; font-weight: 800; color: #A78BFA; letter-spacing: -0.02em; }
+  .offer-btn {
+    font-size: 11px; font-weight: 700;
+    background: linear-gradient(135deg, #7C3AED, #EC4899);
+    color: white;
+    border-radius: 8px;
+    padding: 7px 13px;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+  <div class="orb-1"></div>
+  <div class="orb-2"></div>
+  <div class="orb-3"></div>
+  <div class="layout">
+
+    <div class="left">
+      <div class="logo">
+        <svg width="48" height="48" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="lg-p" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#7C3AED"/>
+              <stop offset="80%" stop-color="#7C3AED"/>
+              <stop offset="100%" stop-color="#EC4899"/>
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" rx="22" fill="#0F0B1A"/>
+          <text x="50" y="76" text-anchor="middle" font-family="Manrope, Inter, system-ui, sans-serif" font-weight="800" font-size="76" fill="url(#lg-p)">m</text>
+        </svg>
+        <span class="wordmark"><span class="my">my</span><span class="mdl">model</span></span>
+        <span class="logo-tag">Stats Card</span>
+      </div>
+
+      <div>
+        <div class="headline">
+          Cookies made<br>
+          them billions.<br>
+          <span class="gradient">You got nothing.<br>Until now.</span>
+        </div>
+        <div class="subline">
+          Brands pay you directly for your consent.<br>
+          Minimum $5 per offer. You stay in control.
+        </div>
+      </div>
+
+      <div class="bottom">
+        <div class="pill">
+          <span class="num">$5+</span>
+          <span class="lbl">per offer</span>
+        </div>
+        <div class="pill">
+          <span class="num">100%</span>
+          <span class="lbl">your data</span>
+        </div>
+        <div class="domain">getmymodel.com</div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="card-glow"></div>
+      <div class="stats-card">
+        <div class="card-header">
+          <div class="avatar">J</div>
+          <div>
+            <div class="card-name">Jordan S.</div>
+            <div class="card-sub">Stats Card · Live</div>
+          </div>
+          <div class="verified-badge">Verified</div>
+        </div>
+
+        <div class="section-label">Consumer Profile</div>
+        <div class="bar-row">
+          <span class="bar-name">Fashion</span>
+          <div class="bar-track"><div class="bar-fill p" style="width:88%"></div></div>
+          <span class="bar-pct">88%</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-name">Tech</span>
+          <div class="bar-track"><div class="bar-fill v" style="width:74%"></div></div>
+          <span class="bar-pct">74%</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-name">Wellness</span>
+          <div class="bar-track"><div class="bar-fill m" style="width:61%"></div></div>
+          <span class="bar-pct">61%</span>
+        </div>
+
+        <div class="tags">
+          <span class="tag">DTC Shopper</span>
+          <span class="tag">Subscriber</span>
+          <span class="tag">25–34</span>
+          <span class="tag">Urban</span>
+        </div>
+
+        <div class="offer-row">
+          <div>
+            <div class="offer-lbl">New Offer</div>
+            <div class="offer-amt">$12.00</div>
+          </div>
+          <div class="offer-btn">Accept →</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
