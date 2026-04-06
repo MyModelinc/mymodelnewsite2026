@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apply — mymodel Founding Design Partner</title>
-    <meta name="description" content="3 of 10 Founding Design Partner slots remaining. The brands that move first win forever.">
+    <title>Early Access — mymodel</title>
+    <meta name="description" content="Apply as a Founding Partner or stay in the loop. Consent-verified audience intelligence built for brands that want to win.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="mymodel">
-    <meta property="og:title" content="Apply — mymodel Founding Design Partner">
-    <meta property="og:description" content="3 of 10 Founding Design Partner slots remaining. The brands that move first win forever.">
+    <meta property="og:title" content="Early Access — mymodel">
+    <meta property="og:description" content="Apply as a Founding Partner or stay in the loop. Consent-verified audience intelligence built for brands that want to win.">
     <meta property="og:url" content="https://getmymodel.com/brands/pilot-access.html">
     <meta property="og:image" content="https://getmymodel.com/og-image-brands.png">
     <meta property="og:image:width" content="1200">
@@ -64,7 +64,7 @@
         nav{position:fixed;top:0;left:0;right:0;z-index:1000;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(15,11,26,0.85);border-bottom:1px solid var(--border);padding:1rem 2rem}
         .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
         .nav-logo{font-family:'Manrope',sans-serif;font-weight:800;font-size:1.375rem;letter-spacing:-0.04em;text-decoration:none;display:inline-flex;align-items:baseline;gap:0}
-        .nav-logo .my{color:var(--text-primary)}.nav-logo .mdl{color:var(--accent)}
+        .nav-logo .my{color:var(--text-primary)}.nav-logo .mdl{color:#7C3AED}
         .nav-back{font-size:0.875rem;color:var(--text-secondary);text-decoration:none;display:flex;align-items:center;gap:0.375rem;transition:color 0.2s}
         .nav-back:hover{color:var(--text-primary)}
         .nav-slots{font-family:'Manrope',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.04em;color:#eeedf2;padding:0.2rem 0.875rem;border-radius:999px;background:rgba(167,139,250,0.22);border:1px solid rgba(167,139,250,0.4)}
@@ -189,7 +189,7 @@
         footer{border-top:1px solid var(--border);padding:2.5rem 2rem}
         .footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
         .footer-logo{font-family:'Manrope',sans-serif;font-weight:800;font-size:1rem;letter-spacing:-0.04em;display:inline-flex;align-items:baseline;gap:0}
-        .footer-logo .my{color:var(--text-primary)}.footer-logo .mdl{color:var(--accent)}
+        .footer-logo .my{color:var(--text-primary)}.footer-logo .mdl{color:#7C3AED}
         .footer-copy{font-size:0.8125rem;color:var(--text-secondary)}
         .footer-link{font-size:0.8125rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s}
         .footer-link:hover{color:var(--accent)}
@@ -198,6 +198,20 @@
 
         [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease}
         [data-reveal].revealed{opacity:1;transform:translateY(0)}
+
+        /* Tab bar */
+        .pa-tabs{display:flex;align-items:flex-end;padding:1.5rem 2.5rem 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+        .pa-tab{padding:0.75rem 0;margin-right:2rem;font-family:'Manrope',sans-serif;font-size:0.9375rem;font-weight:600;color:var(--text-muted);background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer;transition:all 0.2s;letter-spacing:-0.01em}
+        .pa-tab.active{color:var(--text-primary);border-bottom-color:var(--accent)}
+        .pa-tab--secondary{font-size:0.8125rem;font-weight:500}
+        .pa-tab--secondary.active{color:var(--text-secondary);border-bottom-color:rgba(255,255,255,0.2)}
+        /* Notify tab panel */
+        .pa-notify-body{padding:2rem 2.5rem}
+        .pa-notify-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.875rem;margin-bottom:1.125rem}
+        @media(max-width:600px){.pa-notify-grid{grid-template-columns:1fr}}
+        .pa-notify-btn{width:100%;padding:1rem 2rem;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);border-radius:14px;color:var(--violet-glow);font-family:'Manrope',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.2s;letter-spacing:-0.01em}
+        .pa-notify-btn:hover{background:rgba(124,58,237,0.25);border-color:rgba(124,58,237,0.5)}
+        .pa-notify-success{display:none;text-align:center;padding:3rem 2.5rem}
     </style>
 </head>
 <body>
@@ -221,9 +235,9 @@
     <div class="pa-hero-orb-1"></div>
     <div class="pa-hero-orb-2"></div>
     <div class="container-wide">
-        <div class="pa-hero-badge">Founding Design Partner Application</div>
+        <div class="pa-hero-badge">Early Access</div>
         <h1>The Brands That Move First<br><span class="gradient-text">Win Forever.</span></h1>
-        <p class="pa-hero-sub">Everyone else is guessing who to target, burning $9k/mo on audiences that don't convert. You're about to stop.</p>
+        <p class="pa-hero-sub">Everyone else is guessing who to target,<br>burning $9k/mo on audiences that don't convert.</p>
 
         <div class="scarcity-wrap">
             <div class="scarcity-label">
@@ -267,8 +281,13 @@
     <div class="container">
 
         <div id="pa-form-wrap">
-            <form id="pa-form" novalidate>
-                <div class="pa-form-card">
+            <div class="pa-form-card">
+                <div class="pa-tabs">
+                    <button class="pa-tab active" data-tab="apply">Founding Partner Application</button>
+                    <button class="pa-tab pa-tab--secondary" data-tab="notify">Notify when we launch</button>
+                </div>
+                <div id="tab-apply">
+                <form id="pa-form" novalidate>
 
                     <!-- PART 1: THE BRIEF -->
                     <div class="pa-part-header">
@@ -416,8 +435,30 @@
                         <p class="pa-submit-note">No payment collected. No commitment until you've seen the platform.</p>
                     </div>
 
-                </div><!-- /pa-form-card -->
-            </form>
+                </form>
+                </div><!-- /tab-apply -->
+                <div id="tab-notify" style="display:none">
+                    <div id="pa-notify-wrap">
+                        <div class="pa-notify-body">
+                            <p style="font-size:1rem;color:var(--text-secondary);margin-bottom:1.5rem;line-height:1.5">Leave your details. We'll reach out when early access opens.</p>
+                            <form id="pa-notify-form" novalidate>
+                                <div class="pa-notify-grid">
+                                    <div><label class="pa-form-label" for="notify-name">Name *</label><input class="pa-form-input" type="text" id="notify-name" placeholder="Jordan Smith" required autocomplete="name"/></div>
+                                    <div><label class="pa-form-label" for="notify-email">Work Email *</label><input class="pa-form-input" type="email" id="notify-email" placeholder="jordan@yourbrand.com" required autocomplete="email"/></div>
+                                    <div><label class="pa-form-label" for="notify-company">Company *</label><input class="pa-form-input" type="text" id="notify-company" placeholder="Your Brand, Inc." required/></div>
+                                </div>
+                                <button type="submit" class="pa-notify-btn" id="pa-notify-btn">Notify Me at Launch &rarr;</button>
+                                <p class="pa-submit-note" style="margin-top:0.625rem">No spam. Unsubscribe anytime.</p>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="pa-notify-success" id="pa-notify-success">
+                        <div style="font-size:2rem;margin-bottom:0.75rem">&#10003;</div>
+                        <div style="font-weight:700;font-size:1.25rem;margin-bottom:0.375rem">You're on the list.</div>
+                        <p style="font-size:0.9375rem;color:var(--text-secondary)">We'll reach out when early access opens.</p>
+                    </div>
+                </div><!-- /tab-notify -->
+            </div><!-- /pa-form-card -->
         </div><!-- /pa-form-wrap -->
 
         <!-- Success state -->
@@ -474,13 +515,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 });
     document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
 
-    // Form submission
+    const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxj457jD3DUd_wBokb2ltfWkp2y__DU-tEkiELRrRI_djJnWG8GIvaQCuwcEm_lz70Z/exec';
+
+    // Tab switching
+    document.querySelectorAll('.pa-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.pa-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            const target = tab.dataset.tab;
+            document.getElementById('tab-apply').style.display = target === 'apply' ? '' : 'none';
+            document.getElementById('tab-notify').style.display = target === 'notify' ? '' : 'none';
+        });
+    });
+
+    // Notify form
+    const notifyForm = document.getElementById('pa-notify-form');
+    const notifyWrap = document.getElementById('pa-notify-wrap');
+    const notifySuccess = document.getElementById('pa-notify-success');
+    const notifyBtn = document.getElementById('pa-notify-btn');
+
+    notifyForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('notify-name').value.trim();
+        const email = document.getElementById('notify-email').value.trim();
+        const company = document.getElementById('notify-company').value.trim();
+        if (!name || !email || !company) {
+            notifyBtn.textContent = 'Please fill in all fields';
+            setTimeout(() => { notifyBtn.textContent = 'Notify Me at Launch →'; }, 3000);
+            return;
+        }
+        navigator.sendBeacon(FORM_ENDPOINT, JSON.stringify({ full_name: name, work_email: email, company_name: company, submitted_at: new Date().toISOString(), source: 'general-interest' }));
+        notifyWrap.style.display = 'none';
+        notifySuccess.style.display = 'block';
+    });
+
+    // Founding partner form
     const form = document.getElementById('pa-form');
     const formWrap = document.getElementById('pa-form-wrap');
     const successEl = document.getElementById('pa-success');
     const submitBtn = document.getElementById('pa-submit-btn');
-
-    const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxj457jD3DUd_wBokb2ltfWkp2y__DU-tEkiELRrRI_djJnWG8GIvaQCuwcEm_lz70Z/exec';
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
