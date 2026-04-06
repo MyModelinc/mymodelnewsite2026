@@ -166,6 +166,7 @@
             .hero-subtext-pre .line{white-space:normal}
             .hero-buttons{justify-content:center}
             .hero-phone{display:none}
+            .hero-subtext-pre,.hero-subtext-post{display:none}
         }
 
         /* =============================== */
@@ -929,8 +930,14 @@
         }
         .offer-confirm-brand{font-weight:600;color:#fff;font-size:0.875rem;text-align:left}
         .offer-confirm-amount{color:var(--success-green);font-family:'Geist Mono',monospace;font-weight:600;font-size:1rem;margin-top:0.15rem;text-align:left}
-        .offer-demo-total-line{font-size:0.875rem;color:var(--text-secondary)}
+        .offer-demo-total-line{font-size:0.875rem;color:var(--text-secondary);margin-bottom:1.5rem}
         #offer-demo-total{color:var(--success-green);font-family:'Geist Mono',monospace;font-weight:600}
+        .offer-demo-close{
+            font-family:'Manrope',sans-serif;font-weight:600;
+            font-size:1.125rem;line-height:1.45;
+            color:var(--text-primary);
+            letter-spacing:-0.015em;
+        }
         @media(max-width:768px){.offer-demo-section{display:block}}
     </style>
 </head>
@@ -995,13 +1002,13 @@
 <!-- ============================== -->
 <section class="offer-demo-section" id="offer-demo-section">
     <div class="offer-demo-inner">
-        <span class="eyebrow">What an offer looks like</span>
         <div class="offer-demo-card-wrap">
             <div class="offer-notif-card" id="offer-demo-notif"></div>
         </div>
         <div class="offer-demo-total-line">
             Earned so far: <span id="offer-demo-total">$0</span>
         </div>
+        <p class="offer-demo-close">We replaced the cookie with a push notification.<br>Now brands have to ask — and pay you.</p>
     </div>
 </section>
 
