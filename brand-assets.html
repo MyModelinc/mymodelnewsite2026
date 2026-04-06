@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mymodel — Brand Assets</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #0B0715;
+      --card:   #0f0d1e;
+      --card2:  #181630;
+      --border: rgba(167,139,250,0.1);
+      --white:  #eeedf2;
+      --muted:  #7a7694;
+      --dim:    #b0adc2;
+      --accent: #A78BFA;
+      --violet: #7C3AED;
+      --pink:   #EC4899;
+    }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      padding: 52px 40px 100px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .header {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 44px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .header-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .header-tag {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      opacity: 0.4;
+    }
+
+    .section { margin-bottom: 6px; }
+    .section-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.45;
+      margin-bottom: 10px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-bottom: 1px solid var(--border);
+    }
+    .card-num {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      opacity: 0.4;
+    }
+    .card-name {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .card-body { padding: 30px 24px; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .grid-w  { display: grid; grid-template-columns: 3fr 2fr; gap: 6px; }
+
+    .lbl {
+      display: block;
+      font-size: 0.54rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.34;
+    }
+    .lbl-t { margin-bottom: 9px; }
+    .lbl-b { margin-top: 7px; }
+
+    .wm {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      display: inline-flex;
+      align-items: baseline;
+    }
+    .wm .my  { color: var(--white); }
+    .wm .mdl { color: #8B5CF6; }
+
+    .vr { width: 1px; background: var(--border); align-self: stretch; }
+
+    .swatches {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .swatch {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 13px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .swatch-lbl {
+      font-size: 0.53rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.34;
+    }
+
+    .note {
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: var(--muted);
+      opacity: 0.5;
+      line-height: 1.6;
+      margin-top: 16px;
+      padding: 12px 16px;
+      background: var(--card2);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .note strong { color: var(--accent); opacity: 0.8; font-weight: 700; }
+
+    .browser {
+      background: #13122a;
+      border-radius: 11px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .browser-bar {
+      background: #0c0b20;
+      padding: 7px 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .b-dots { display:flex; gap:4px; }
+    .b-dot { width:7px; height:7px; border-radius:50%; }
+    .b-tab {
+      background: #13122a;
+      border-radius: 5px 5px 0 0;
+      padding: 3px 10px 3px 7px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.6rem;
+      color: var(--dim);
+      margin-left: 6px;
+    }
+    .browser-body {
+      padding: 20px 18px;
+      display: flex;
+      align-items: flex-end;
+      gap: 20px;
+    }
+
+    .og {
+      width: 100%;
+      aspect-ratio: 1200 / 630;
+      background: #090712;
+      border-radius: 13px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .og-glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 55% at 50% 38%, rgba(167,139,250,0.15) 0%, transparent 70%),
+        radial-gradient(ellipse 22% 30% at 27% 65%, rgba(236,72,153,0.06) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .og-body {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .og-wm {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: clamp(13px, 3.7vw, 42px);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-top: clamp(5px, 1vw, 12px);
+    }
+    .og-wm .my  { color: #eeedf2; }
+    .og-wm .mdl { color: #8B5CF6; }
+    .og-sub {
+      font-size: clamp(5px, 0.82vw, 10px);
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #7a7694;
+      margin-top: clamp(3px, 0.65vw, 8px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <span class="header-title">mymodel — brand assets</span>
+    <span class="header-tag">2026</span>
+  </div>
+
+  <!-- ── Row 1: Icon Mark + Favicon ─────────────────────── -->
+  <div class="grid-2" style="margin-bottom:6px;">
+
+    <!-- 01 Icon Mark -->
+    <div class="section">
+      <div class="section-label">Icon Mark</div>
+      <div class="card">
+        <div class="card-top">
+          <span class="card-num">01</span>
+          <span class="card-name">Canonical — gradient 70% hold</span>
+        </div>
+        <div class="card-body">
+          <div style="display:flex; align-items:flex-end; gap:20px; flex-wrap:wrap;">
+            <div>
+              <svg width="24" height="24" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g01-24" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7C3AED"/><stop offset="70%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#EC4899"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="url(#g01-24)"/><text x="50" y="76" text-anchor="middle" font-family="Manrope,Inter,system-ui,sans-serif" font-weight="800" font-size="76" fill="white">m</text></svg>
+              <span class="lbl lbl-b">24</span>
+            </div>
+            <div>
+              <svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g01-40" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7C3AED"/><stop offset="70%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#EC4899"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="url(#g01-40)"/><text x="50" y="76" text-anchor="middle" font-family="Manrope,Inter,system-ui,sans-serif" font-weight="800" font-size="76" fill="white">m</text></svg>
+              <span class="lbl lbl-b">40</span>
+            </div>
+            <div>
+              <svg width="64" height="64" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g01-64" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7C3AED"/><stop offset="70%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#EC4899"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="url(#g01-64)"/><text x="50" y="76" text-anchor="middle" font-family="Manrope,Inter,system-ui,sans-serif" font-weight="800" font-size="76" fill="white">m</text></svg>
+              <span class="lbl lbl-b">64</span>
+            </div>
+            <div>
+              <svg width="96" height="96" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g01-96" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7C3AED"/><stop offset="70%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#EC4899"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="url(#g01-96)"/><text x="50" y="76" text-anchor="middle" font-family="Manrope,Inter,system-ui,sans-serif" font-weight="800" font-size="76" fill="white">m</text></svg>
+              <span class="lbl lbl-b">96</span>
+            </div>
+          </div>
+
+          <div class="swatches">
+            <div class="swatch">
+              <span class="swatch-lbl">canonical</span>
+              <svg width="52" height="52" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g01-52" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7C3AED"/><stop offset="70%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#EC4899"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="url(#g01-52)"/><text x="50" y="76" text-anchor="middle" font-family="Manrope,Inter,system-ui,sans-serif" font-weight="800" font-size="76" fill="white">m</text></svg>
+            </div>
+          </div>
+
+          <div class="note">
+            <strong>Canonical:</strong> gradient 70% violet hold — use at all sizes (nav, favicon, app icon, hero, OG). One icon, one spec.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 Favicon -->
+    <div class="section">
+      <div class="section-label">Favicon</div>
+      <div class="card">
+        <div class="card-top">
+          <span class="card-num">02</span>
+          <span class="card-name">Browser tab · 16 / 32 / 48px</span>
+        </div>
+        <div class="card-body">
+          <div class="browser">
+            <div class="browser-bar">
+              <div class="b-dots">
+                <div class="b-dot" style="background:#FF5F57"></div>
+                <div class="b-dot" style="background:#FEBC2E"></div>
+                <div class="b-dot" style="background:#28C840"></div>
+              </div>
+              <div class="b-tab">
+                <svg width="14" height="14" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g02-tab" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7C3AED"/><stop offset="70%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#EC4899"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="url(#g02-tab)"/><text x="50" y="76" text-anchor="middle" font-family="Manrope,Inter,system-ui,sans-serif" font-weight="800" font-size="76" fill="white">m</text></svg>
+                <span>mymodel</span>
+              </div>
+            </div>
+            <div class="browser-body">
+              <div>
+                <svg width="16" height="16" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g02-16" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7C3AED"/><stop offset="70%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#EC4899"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="url(#g02-16)"/><text x="50" y="76" text-anchor="middle" font-family="Manrope,Inter,system-ui,sans-serif" font-weight="800" font-size="76" fill="white">m</text></svg>
+                <span class="lbl lbl-b">16px</span>
+              </div>
+              <div>
+                <svg width="32" height="32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g02-32" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7C3AED"/><stop offset="70%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#EC4899"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="url(#g02-32)"/><text x="50" y="76" text-anchor="middle" font-family="Manrope,Inter,system-ui,sans-serif" font-weight="800" font-size="76" fill="white">m</text></svg>
+                <span class="lbl lbl-b">32px</span>
+              </div>
+              <div>
+                <svg width="48" height="48" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g02-48" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7C3AED"/><stop offset="70%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#EC4899"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="url(#g02-48)"/><text x="50" y="76" text-anchor="middle" font-family="Manrope,Inter,system-ui,sans-serif" font-weight="800" font-size="76" fill="white">m</text></svg>
+                <span class="lbl lbl-b">48px</span>
+              </div>
+            </div>
+          </div>
+          <div class="note" style="margin-top:14px;">
+            Gradient 70% violet hold. White m on gradient container — consistent at all tab sizes.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Row 2: Wordmark + Lockup ───────────────────────── -->
+  <div class="grid-w" style="margin-bottom:6px;">
+
+    <!-- 03 Wordmark -->
+    <div class="section">
+      <div class="section-label">Wordmark</div>
+      <div class="card">
+        <div class="card-top">
+          <span class="card-num">03</span>
+          <span class="card-name">Manrope 800 · all lowercase · color split</span>
+        </div>
+        <div class="card-body">
+          <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
+            <div>
+              <span class="lbl lbl-t">14 · nav mobile</span>
+              <div class="wm" style="font-size:14px;"><span class="my">my</span><span class="mdl">model</span></div>
+            </div>
+            <div class="vr"></div>
+            <div>
+              <span class="lbl lbl-t">20 · nav desktop</span>
+              <div class="wm" style="font-size:20px;"><span class="my">my</span><span class="mdl">model</span></div>
+            </div>
+            <div class="vr"></div>
+            <div>
+              <span class="lbl lbl-t">32 · hero</span>
+              <div class="wm" style="font-size:32px;"><span class="my">my</span><span class="mdl">model</span></div>
+            </div>
+            <div class="vr"></div>
+            <div>
+              <span class="lbl lbl-t">48 · display</span>
+              <div class="wm" style="font-size:48px;"><span class="my">my</span><span class="mdl">model</span></div>
+            </div>
+          </div>
+          <div class="swatches">
+            <div class="swatch">
+              <span class="swatch-lbl">on card</span>
+              <div class="wm" style="font-size:20px;"><span class="my">my</span><span class="mdl">model</span></div>
+            </div>
+            <div class="swatch" style="background:#dddae8; border-color:rgba(0,0,0,0.07);">
+              <span class="swatch-lbl" style="color:#5a5870;opacity:0.55;">on light</span>
+              <div class="wm" style="font-size:20px;">
+                <span class="my" style="color:#0B0715;">my</span><span class="mdl" style="color:#7C3AED;">model</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 Lockup -->
+    <div class="section">
+      <div class="section-label">Lockup</div>
+      <div class="card">
+        <div class="card-top">
+          <span class="card-num">04</span>
+          <span class="card-name">Icon + wordmark</span>
+        </div>
+        <div class="card-body" style="display:flex; flex-direction:column; gap:26px;">
+          <div>
+            <span class="lbl lbl-t">nav</span>
+            <div style="display:flex; align-items:center; gap:9px;">
+              <svg width="26" height="26" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g04-nav" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7C3AED"/><stop offset="70%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#EC4899"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="url(#g04-nav)"/><text x="50" y="76" text-anchor="middle" font-family="Manrope,Inter,system-ui,sans-serif" font-weight="800" font-size="76" fill="white">m</text></svg>
+              <div class="wm" style="font-size:18px;"><span class="my">my</span><span class="mdl">model</span></div>
+            </div>
+          </div>
+          <div>
+            <span class="lbl lbl-t">hero</span>
+            <div style="display:flex; align-items:center; gap:14px;">
+              <svg width="52" height="52" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g04-hero" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7C3AED"/><stop offset="70%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#EC4899"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="url(#g04-hero)"/><text x="50" y="76" text-anchor="middle" font-family="Manrope,Inter,system-ui,sans-serif" font-weight="800" font-size="76" fill="white">m</text></svg>
+              <div class="wm" style="font-size:34px;"><span class="my">my</span><span class="mdl">model</span></div>
+            </div>
+          </div>
+          <div>
+            <span class="lbl lbl-t">icon only</span>
+            <svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g04-icon" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7C3AED"/><stop offset="70%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#EC4899"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="url(#g04-icon)"/><text x="50" y="76" text-anchor="middle" font-family="Manrope,Inter,system-ui,sans-serif" font-weight="800" font-size="76" fill="white">m</text></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Row 3: Universal Thumbnail ─────────────────────── -->
+  <div class="section">
+    <div class="section-label">Universal Thumbnail</div>
+    <div class="card">
+      <div class="card-top">
+        <span class="card-num">05</span>
+        <span class="card-name">OG Image · 1200 × 630 · meta / social sharing</span>
+      </div>
+      <div style="padding:14px;">
+        <div class="og">
+          <div class="og-glow"></div>
+          <div class="og-body">
+            <svg style="width:clamp(48px,9.5%,108px);height:auto;display:block;"
+                 viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="g05-og" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%"   stop-color="#7C3AED"/>
+                  <stop offset="70%"  stop-color="#7C3AED"/>
+                  <stop offset="100%" stop-color="#EC4899"/>
+                </linearGradient>
+              </defs>
+              <rect width="100" height="100" rx="22" fill="url(#g05-og)"/>
+              <text x="50" y="76" text-anchor="middle"
+                    font-family="Manrope, Inter, system-ui, sans-serif"
+                    font-weight="800" font-size="76" fill="white">m</text>
+            </svg>
+            <div class="og-wm">
+              <span class="my">my</span><span class="mdl">model</span>
+            </div>
+            <div class="og-sub">getmymodel.com</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
