@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4PJY0SFBZB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4PJY0SFBZB');
+    </script>
     <title>mymodel — Your Stats Card. Your Rules. Your Money.</title>
     <meta name="description" content="Cookies made them billions. You got nothing. Until now. Introducing your Stats Card — the first digital persona you own and monetize.">
     <meta property="og:type" content="website">
@@ -159,7 +167,7 @@
             50%{transform:rotateY(-4deg) rotateX(1deg) rotate(-0.5deg) translateY(-8px);filter:drop-shadow(0 48px 100px rgba(0,0,0,0.75))}
         }
         @media(max-width:768px){
-            .hero{grid-template-columns:1fr;gap:2.5rem;min-height:auto;padding-top:6rem}
+            .hero{grid-template-columns:1fr;gap:2.5rem;min-height:auto;padding-top:6rem;padding-bottom:0}
             .hero-copy{text-align:center}
             .hero-subtext-pre,.hero-subtext-post{margin-left:auto;margin-right:auto}
             .hero-subtext-pre{border-left:none!important;border-image:none!important;padding-left:0!important}
@@ -167,6 +175,7 @@
             .hero-buttons{justify-content:center}
             .hero-phone{display:none}
             .hero-subtext-pre,.hero-subtext-post{display:none}
+            .hero-cta-wrap{display:none}
         }
 
         /* =============================== */
@@ -906,9 +915,9 @@
         /* OFFER DEMO (mobile only)        */
         /* =============================== */
         .offer-demo-section{display:none;padding:2.5rem 0 2rem;text-align:center}
-        .offer-demo-inner{max-width:340px;margin:0 auto;padding:0 1.5rem}
+        .offer-demo-inner{max-width:none;margin:0 auto;padding:0 1.25rem}
         .offer-demo-inner .eyebrow{margin-bottom:1.5rem}
-        .offer-demo-card-wrap{min-height:140px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
+        .offer-demo-card-wrap{min-height:140px;max-width:340px;width:100%;margin:0 auto 1.25rem;display:flex;align-items:center;justify-content:center}
         .offer-notif-card{
             position:relative;width:100%;
             padding:0.75rem 0.875rem;border-radius:16px;
@@ -930,15 +939,16 @@
         }
         .offer-confirm-brand{font-weight:600;color:#fff;font-size:0.875rem;text-align:left}
         .offer-confirm-amount{color:var(--success-green);font-family:'Geist Mono',monospace;font-weight:600;font-size:1rem;margin-top:0.15rem;text-align:left}
-        .offer-demo-total-line{font-size:0.875rem;color:var(--text-secondary);margin-bottom:1.5rem}
-        #offer-demo-total{color:var(--success-green);font-family:'Geist Mono',monospace;font-weight:600}
         .offer-demo-close{
-            font-family:'Manrope',sans-serif;font-weight:600;
-            font-size:1.125rem;line-height:1.45;
+            font-family:'Manrope',sans-serif;font-weight:700;
+            font-size:clamp(1rem,4.5vw,1.5rem);
+            line-height:1.3;letter-spacing:-0.025em;
             color:var(--text-primary);
-            letter-spacing:-0.015em;
+            max-width:400px;margin:1.5rem auto 0;
         }
-        @media(max-width:768px){.offer-demo-section{display:block}}
+        @media(max-width:768px){
+            .offer-demo-section{display:block;padding:0 0 3rem}
+        }
     </style>
 </head>
 <body>
@@ -977,7 +987,7 @@
             <span class="hero-resolve-label">mymodel changes that —</span>
             <span class="hero-resolve-main"><span class="pay-you">Brands Pay You</span> directly for your consent.</span>
         </div>
-        <div style="margin-top:2rem">
+        <div class="hero-cta-wrap" style="margin-top:2rem">
             <a href="join.html" class="btn btn-gradient">Join the waitlist</a>
         </div>
     </div>
@@ -1005,10 +1015,7 @@
         <div class="offer-demo-card-wrap">
             <div class="offer-notif-card" id="offer-demo-notif"></div>
         </div>
-        <div class="offer-demo-total-line">
-            Earned so far: <span id="offer-demo-total">$0</span>
-        </div>
-        <p class="offer-demo-close">We replaced the cookie with a push notification.<br>Now brands have to ask — and pay you.</p>
+        <p class="offer-demo-close">We're replacing cookies<br>with push notifications that pay you.</p>
     </div>
 </section>
 
@@ -1405,29 +1412,17 @@ document.addEventListener('DOMContentLoaded', () => {
     (function initOfferDemo() {
         const section = document.getElementById('offer-demo-section');
         const cardEl  = document.getElementById('offer-demo-notif');
-        const totalEl = document.getElementById('offer-demo-total');
-        if (!section || !cardEl || !totalEl) return;
+        if (!section || !cardEl) return;
 
         const offers = [
-            { brand: 'Nike',      icon: 'N', amount: 7,  desc: '30-day audience access' },
-            { brand: 'Glossier',  icon: 'G', amount: 5,  desc: 'Campaign match: skincare' },
-            { brand: 'Airbnb',    icon: 'A', amount: 11, desc: 'Travel segment: weekend trips' },
-            { brand: 'Patagonia', icon: 'P', amount: 8,  desc: 'Outdoor lifestyle audience' },
+            { brand: 'Nike',      amount: 7,  desc: '30-day audience access' },
+            { brand: 'Glossier',  amount: 5,  desc: 'Campaign match: skincare' },
+            { brand: 'Airbnb',    amount: 11, desc: 'Travel segment: weekend trips' },
+            { brand: 'Patagonia', amount: 8,  desc: 'Outdoor lifestyle audience' },
         ];
 
-        let totalEarned = 0;
         let offerIdx = 0;
         let demoRunning = false;
-
-        function countUp(from, to, el, ms) {
-            const t0 = performance.now();
-            (function tick(now) {
-                const p = Math.min((now - t0) / ms, 1);
-                const ease = 1 - Math.pow(1 - p, 3);
-                el.textContent = '$' + Math.round(from + (to - from) * ease);
-                if (p < 1) requestAnimationFrame(tick);
-            })(performance.now());
-        }
 
         function runNextOffer() {
             const offer = offers[offerIdx];
@@ -1473,15 +1468,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="offer-confirm-amount">+$${offer.amount}</div>
                     </div>
                 </div>`;
-            const newTotal = totalEarned + offer.amount;
-            countUp(totalEarned, newTotal, totalEl, 500);
-            totalEarned = newTotal;
 
             setTimeout(() => {
                 gsap.to(cardEl, { opacity: 0, y: -8, duration: 0.3, ease: 'power2.in',
                     onComplete: () => {
                         offerIdx = (offerIdx + 1) % offers.length;
-                        if (offerIdx === 0) { totalEarned = 0; totalEl.textContent = '$0'; }
                         gsap.set(cardEl, { opacity: 1, y: 0 });
                         setTimeout(runNextOffer, 700);
                     }

@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4PJY0SFBZB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4PJY0SFBZB');
+    </script>
     <title>Early Access — mymodel</title>
     <meta name="description" content="Apply as a Founding Partner or stay in the loop. Consent-verified audience intelligence built for brands that want to win.">
     <meta property="og:type" content="website">
@@ -604,6 +612,7 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.disabled = true;
         formWrap.style.display = 'none';
         successEl.style.display = 'block';
+        gtag('event', 'pilot_application', { event_category: 'conversion', event_label: 'brand_pilot' });
         window.scrollTo({ top: successEl.offsetTop - 100, behavior: 'smooth' });
     });
 

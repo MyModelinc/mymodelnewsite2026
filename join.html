@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4PJY0SFBZB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4PJY0SFBZB');
+    </script>
     <title>Join the Waitlist — mymodel</title>
     <meta name="description" content="The mission: get people paid $1 billion by 2028. mymodel is how we get there. Claim your spot on the waitlist.">
     <meta property="og:type" content="website">
@@ -621,6 +629,7 @@ async function submitForm() {
             await new Promise(r => setTimeout(r, 500));
         }
         show('success'); hide('step2'); hide('foot2');
+        gtag('event', 'waitlist_signup', { event_category: 'conversion', event_label: 'consumer_waitlist' });
         launchConfetti();
     } catch(e) {
         btn.disabled = false;
