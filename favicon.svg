@@ -1,19 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
   <defs>
-    <style>
-      @font-face {
-        font-family: 'Manrope';
-        font-weight: 800;
-        src: url('data:font/woff2;base64,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') format('woff2');
-      }
-    </style>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#7C3AED"/>
-      <stop offset="70%" stop-color="#7C3AED"/>
+      <stop offset="0%"   stop-color="#7C3AED"/>
+      <stop offset="70%"  stop-color="#7C3AED"/>
       <stop offset="100%" stop-color="#EC4899"/>
     </linearGradient>
   </defs>
   <rect width="100" height="100" rx="22" fill="url(#g)"/>
   <text x="50" y="76" text-anchor="middle"
-        font-family="Manrope" font-weight="800" font-size="76" fill="white">m</text>
+        font-family="Manrope, Inter, system-ui, sans-serif"
+        font-weight="800" font-size="76" fill="white">m</text>
 </svg>
