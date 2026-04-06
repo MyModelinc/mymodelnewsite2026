@@ -104,8 +104,8 @@
         /* =============================== */
         nav{position:fixed;top:0;left:0;right:0;z-index:1000;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(12,12,20,0.75);border-bottom:1px solid var(--border);padding:1rem 2rem}
         .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
-        .nav-logo{font-family:'Manrope',sans-serif;font-weight:700;font-size:1.5rem;text-decoration:none;display:flex;gap:0.15rem}
-        .nav-logo .my{color:var(--text-primary)}.nav-logo .model{color:var(--accent)}
+        .nav-logo{font-family:'Manrope',sans-serif;font-weight:800;font-size:1.375rem;letter-spacing:-0.04em;text-decoration:none;display:inline-flex;align-items:baseline;gap:0}
+        .nav-logo .my{color:var(--text-primary)}.nav-logo .mdl{color:var(--accent)}
         .nav-links{display:flex;align-items:center;gap:2rem}
         .nav-link{color:var(--text-secondary);text-decoration:none;font-size:0.875rem;font-weight:500;transition:color 0.2s,opacity 0.2s;opacity:0.55}
         .nav-link:hover{color:var(--text-primary);opacity:1}
@@ -309,10 +309,12 @@
         .statscard-desc-lines p:nth-child(2),.statscard-desc-lines p:nth-child(3){color:var(--text-primary)}
 
         @media(max-width:900px){
-            .statscard-layout{grid-template-columns:1fr;gap:3rem}
-            .statscard-right{text-align:center}
+            .statscard-layout{grid-template-columns:1fr;gap:2rem}
+            .statscard-right{text-align:center;order:-1}
             .statscard-rule{margin:1.75rem auto}
-            .statscard-left{order:-1}
+            .statscard-section{padding:4rem 0 3rem}
+            .caption-l2,.caption-l3{display:none}
+            .statscard-caption{padding-top:1.75rem}
         }
 
         /* =============================== */
@@ -724,8 +726,8 @@
         footer{border-top:1px solid var(--border);padding:3rem 2rem}
         .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
         .footer-left{display:flex;align-items:center;gap:2rem}
-        .footer-logo{font-family:'Manrope',sans-serif;font-weight:700;font-size:1rem}
-        .footer-logo .my{color:var(--text-primary)}.footer-logo .model{color:var(--accent)}
+        .footer-logo{font-family:'Manrope',sans-serif;font-weight:800;font-size:1rem;letter-spacing:-0.04em;display:inline-flex;align-items:baseline;gap:0}
+        .footer-logo .my{color:var(--text-primary)}.footer-logo .mdl{color:var(--accent)}
         .footer-copy{font-size:0.875rem;color:var(--text-secondary)}
         .footer-links{display:flex;gap:2rem;align-items:center}
         .footer-link{font-size:0.875rem;color:var(--text-secondary);text-decoration:none;transition:color 0.3s}
@@ -887,7 +889,7 @@
         .manifesto-cta:hover::after{transform:scaleX(1)}
         .manifesto-cta:hover{color:var(--violet-glow)}
         .manifesto-social{display:flex;gap:1rem;justify-content:center;margin-top:2.5rem}
-        @media(max-width:768px){.manifesto-headline{font-size:clamp(3rem,12vw,4rem)}}
+        @media(max-width:768px){.manifesto-headline{font-size:clamp(3rem,12vw,4rem)}.manifesto-cta{margin-top:3rem}}
 
         .hero-copy h1:nth-child(1){animation:heroLineIn 0.55s cubic-bezier(0.16,1,0.3,1) 0.1s both}
         .hero-copy h1:nth-child(2){animation:heroLineIn 0.55s cubic-bezier(0.16,1,0.3,1) 0.22s both}
@@ -904,7 +906,7 @@
 <!-- NAV -->
 <nav>
     <div class="nav-inner">
-        <a href="/" class="nav-logo"><span class="my">my</span><span class="model">model</span></a>
+        <a href="/" class="nav-logo"><span class="my">my</span><span class="mdl">model</span></a>
         <div class="nav-links">
         </div>
         <a href="/join.html" class="nav-cta">Join the waitlist</a>
@@ -1125,7 +1127,7 @@
 <footer>
     <div class="footer-inner">
         <div class="footer-left">
-            <div class="footer-logo"><span class="my">my</span><span class="model">model</span></div>
+            <div class="footer-logo"><span class="my">my</span><span class="mdl">model</span></div>
             <div class="footer-copy">myModel, Inc. &copy; 2026</div>
         </div>
         <div class="footer-links">
