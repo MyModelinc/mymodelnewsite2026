@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mymodel — Press & Media</title>
+    <meta name="description" content="Press resources for mymodel — the audience intelligence platform built on consent. Company overview, founder information, and media contact.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="mymodel">
+    <meta property="og:title" content="mymodel — Press & Media">
+    <meta property="og:description" content="Press resources for mymodel — the audience intelligence platform built on consent.">
+    <meta property="og:url" content="https://getmymodel.com/press.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@getmymodel">
+    <link rel="canonical" href="https://getmymodel.com/press.html">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsMediaOrganization",
+      "name": "mymodel Press Room",
+      "url": "https://getmymodel.com/press.html",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "mymodel",
+        "url": "https://getmymodel.com",
+        "founder": { "@type": "Person", "name": "Jordan Smith", "jobTitle": "Founder & CEO" }
+      }
+    }
+    </script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#0F0B1A;--surface:#1A1426;--card:#231D30;
+            --border:rgba(255,255,255,0.07);
+            --text-primary:#eeedf2;--text-secondary:#b0adc2;--text-muted:#7a7694;
+            --accent:#A78BFA;--pink:#EC4899;--violet:#7C3AED;
+            --gradient:linear-gradient(135deg,#EC4899,#7C3AED);
+            --font-base:'Manrope',sans-serif;
+        }
+        html{scroll-behavior:smooth}
+        body{background:var(--bg);color:var(--text-primary);font-family:var(--font-base);font-size:1rem;line-height:1.65;overflow-x:hidden}
+        a{color:var(--accent);text-decoration:none}
+        a:hover{text-decoration:underline}
+
+        /* Nav */
+        nav{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(15,11,26,0.92);backdrop-filter:blur(12px);z-index:100}
+        .nav-logo{font-weight:800;font-size:1.375rem;letter-spacing:-0.04em;text-decoration:none}
+        .nav-logo .my{color:#eeedf2}
+        .nav-logo .mdl{color:#8B5CF6}
+        .nav-links{display:flex;gap:2rem;align-items:center}
+        .nav-links a{color:var(--text-secondary);font-size:0.9rem;font-weight:500;text-decoration:none;transition:color 0.2s}
+        .nav-links a:hover{color:var(--text-primary)}
+        .nav-cta{background:var(--accent);color:#0F0B1A;padding:0.5rem 1.25rem;border-radius:8px;font-weight:700;font-size:0.875rem;text-decoration:none;transition:opacity 0.2s}
+        .nav-cta:hover{opacity:0.85;text-decoration:none}
+
+        /* Layout */
+        main{max-width:860px;margin:0 auto;padding:4rem 2rem 6rem}
+        .page-eyebrow{font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+        h1{font-weight:800;font-size:clamp(2rem,4vw,3rem);letter-spacing:-0.04em;line-height:1.1;margin-bottom:1.5rem}
+        .lead{font-size:1.125rem;color:var(--text-secondary);max-width:600px;margin-bottom:3rem}
+
+        /* Sections */
+        section{margin-bottom:3.5rem}
+        h2{font-weight:700;font-size:1.25rem;letter-spacing:-0.02em;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border)}
+        p{color:var(--text-primary);margin-bottom:1rem}
+        p:last-child{margin-bottom:0}
+
+        /* Quick facts grid */
+        .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:0}
+        .fact{background:var(--card);padding:1.5rem;display:flex;flex-direction:column;gap:0.35rem}
+        .fact-label{font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted)}
+        .fact-value{font-size:1.0625rem;font-weight:700;color:var(--text-primary)}
+
+        /* Boilerplate */
+        .boilerplate{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.75rem}
+        .boilerplate p{font-size:0.9375rem;color:var(--text-secondary)}
+
+        /* Founder card */
+        .founder-card{display:flex;gap:1.5rem;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.75rem}
+        .founder-initials{width:56px;height:56px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.25rem;color:#fff;flex-shrink:0}
+        .founder-info{flex:1}
+        .founder-name{font-weight:700;font-size:1.0625rem;margin-bottom:0.2rem;color:var(--text-primary)}
+        .founder-title{font-size:0.875rem;color:var(--accent);margin-bottom:0.75rem}
+        .founder-bio{font-size:0.9375rem;color:var(--text-secondary);line-height:1.6;margin-bottom:0}
+
+        /* Contact */
+        .contact-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.75rem;display:flex;flex-direction:column;gap:0.5rem}
+        .contact-row{display:flex;gap:0.75rem;align-items:center;font-size:0.9375rem}
+        .contact-label{color:var(--text-muted);min-width:80px;font-weight:600;font-size:0.8125rem;letter-spacing:0.04em;text-transform:uppercase}
+        .contact-value{color:var(--text-primary)}
+        .contact-value a{color:var(--accent)}
+
+        /* Assets */
+        .assets-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem}
+        .asset-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem;text-align:center;text-decoration:none;transition:border-color 0.2s}
+        .asset-card:hover{border-color:var(--accent);text-decoration:none}
+        .asset-icon{font-size:1.75rem;margin-bottom:0.5rem}
+        .asset-name{font-size:0.875rem;font-weight:600;color:var(--text-primary);display:block}
+        .asset-desc{font-size:0.75rem;color:var(--text-muted);margin-top:0.2rem;display:block}
+
+        /* Footer */
+        footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--text-muted);font-size:0.8125rem}
+        footer a{color:var(--text-muted)}
+        footer a:hover{color:var(--text-secondary)}
+    </style>
+</head>
+<body>
+
+<nav>
+    <a class="nav-logo" href="/for-the-people.html"><span class="my">my</span><span class="mdl">model</span></a>
+    <div class="nav-links">
+        <a href="/for-the-people.html">For People</a>
+        <a href="/for-brands.html">For Brands</a>
+        <a class="nav-cta" href="/join.html">Join Waitlist</a>
+    </div>
+</nav>
+
+<main>
+    <div class="page-eyebrow">Press & Media</div>
+    <h1>mymodel in the press</h1>
+    <p class="lead">Resources for journalists, researchers, and investors covering the consent economy, audience intelligence, and the future of advertising.</p>
+
+    <section>
+        <h2>Quick Facts</h2>
+        <div class="facts">
+            <div class="fact">
+                <span class="fact-label">Company</span>
+                <span class="fact-value">mymodel, Inc.</span>
+            </div>
+            <div class="fact">
+                <span class="fact-label">Category</span>
+                <span class="fact-value">Audience Intelligence</span>
+            </div>
+            <div class="fact">
+                <span class="fact-label">Stage</span>
+                <span class="fact-value">Seed</span>
+            </div>
+            <div class="fact">
+                <span class="fact-label">Founded</span>
+                <span class="fact-value">2024</span>
+            </div>
+            <div class="fact">
+                <span class="fact-label">Website</span>
+                <span class="fact-value">getmymodel.com</span>
+            </div>
+            <div class="fact">
+                <span class="fact-label">Twitter</span>
+                <span class="fact-value">@getmymodel</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>About mymodel</h2>
+        <div class="boilerplate">
+            <p>mymodel is an audience intelligence platform that rebuilds the relationship between brands and consumers from the ground up. Users build a 360-degree behavioral Stats Card — a digital profile they own completely. Brands search for and deploy Audience Orders into matching behavioral segments, paying users directly for permission to reach them.</p>
+            <p>Unlike data brokers or ad networks that extract and resell consumer data without consent or compensation, mymodel makes the payment the consent. Every transaction is per-offer, explicit, and 100% of the payment goes to the user. mymodel earns through membership and transaction fees — additive to, not taken from, user earnings.</p>
+            <p>The result is the first audience intelligence system where the quality signal is verified by the financial commitment of the consumer: people who accept an Audience Order are real, motivated, and self-identified.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Founder</h2>
+        <div class="founder-card">
+            <div class="founder-initials">JS</div>
+            <div class="founder-info">
+                <div class="founder-name">Jordan Smith</div>
+                <div class="founder-title">Founder & CEO, mymodel</div>
+                <p class="founder-bio">Jordan Smith is the founder and CEO of mymodel, building the infrastructure for a consent-based data economy. Prior to mymodel, Jordan developed deep expertise in consumer data systems and digital advertising — giving mymodel an insider's view of the architecture it's replacing. mymodel is Jordan's thesis that the consumer's relationship with their own data is the most underpriced asset in advertising.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Press Contact</h2>
+        <div class="contact-card">
+            <div class="contact-row">
+                <span class="contact-label">Email</span>
+                <span class="contact-value"><a href="mailto:press@getmymodel.com">press@getmymodel.com</a></span>
+            </div>
+            <div class="contact-row">
+                <span class="contact-label">Twitter</span>
+                <span class="contact-value"><a href="https://twitter.com/getmymodel" target="_blank" rel="noopener">@getmymodel</a></span>
+            </div>
+            <div class="contact-row">
+                <span class="contact-label">Website</span>
+                <span class="contact-value"><a href="https://getmymodel.com">getmymodel.com</a></span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Brand Assets</h2>
+        <div class="assets-grid">
+            <a class="asset-card" href="/brand.html">
+                <div class="asset-icon">🎨</div>
+                <span class="asset-name">Brand Guidelines</span>
+                <span class="asset-desc">Colors, fonts, usage rules</span>
+            </a>
+            <a class="asset-card" href="/favicon.svg" download>
+                <div class="asset-icon">⬇</div>
+                <span class="asset-name">Logo (SVG)</span>
+                <span class="asset-desc">Primary icon mark</span>
+            </a>
+            <a class="asset-card" href="/og-image.html">
+                <div class="asset-icon">🖼</div>
+                <span class="asset-name">OG Image</span>
+                <span class="asset-desc">Social share card</span>
+            </a>
+        </div>
+    </section>
+
+    <section>
+        <h2>The Pitch in One Paragraph</h2>
+        <div class="boilerplate">
+            <p>The ad industry built a $600B business on data it took without asking. mymodel is the correction: a platform where consumers own their behavioral profile, brands pay to reach them directly, and every transaction is a willing, compensated exchange. The market for consent-based audience intelligence is the next decade of advertising infrastructure — and mymodel is building the rails.</p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p><a href="/for-the-people.html">For People</a> · <a href="/for-brands.html">For Brands</a> · <a href="/privacy.html">Privacy</a> · <a href="/press.html">Press</a></p>
+    <p style="margin-top:0.5rem">© 2026 mymodel, Inc. · <a href="mailto:press@getmymodel.com">press@getmymodel.com</a></p>
+</footer>
+
+</body>
+</html>
