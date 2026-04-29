@@ -615,12 +615,16 @@ async function submitForm() {
     btn.disabled = true;
     btn.textContent = 'Claiming your spot\u2026';
 
+    const _utmParams = new URLSearchParams(location.search);
     const payload = {
         ...s1,
         age_range: selectedAge || '',
         brands: [...selected].join(', '),
         submitted_at: new Date().toISOString(),
-        source: 'join-waitlist'
+        source: 'join-waitlist',
+        utm_source: _utmParams.get('utm_source') || '',
+        utm_medium: _utmParams.get('utm_medium') || '',
+        utm_campaign: _utmParams.get('utm_campaign') || ''
     };
 
     try {
@@ -717,10 +721,10 @@ function launchConfetti() {
 // ─── SHARE OVERLAY (from email CTA, requires ?share=1) ───
 (function() {
     if (new URLSearchParams(location.search).get('share') !== '1') return;
-    const shareUrl = location.origin + '/join';
+    const shareUrl = location.origin + '/join?utm_source=share-modal&utm_medium=other&utm_campaign=waitlist-share';
     const shareData = {
         title: 'mymodel',
-        text: 'Brands have to ask for your consent — and pay you when they get it. Join mymodel.',
+        text: "this girl who calls herself 'the anti tech bro' is launching mymodel, an app that pays consumers $1B by 2028 for our consent. we've been giving it up for free!!",
         url: shareUrl
     };
 
