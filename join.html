@@ -714,34 +714,58 @@ function launchConfetti() {
     frame = requestAnimationFrame(tick);
 }
 
-// ─── AUTO-SHARE (from email CTA) ───
+// ─── SHARE OVERLAY (from email CTA, requires ?share=1) ───
 (function() {
     if (new URLSearchParams(location.search).get('share') !== '1') return;
-    const url = location.origin + '/join.html';
+    const shareUrl = location.origin + '/join';
     const shareData = {
         title: 'mymodel',
         text: 'Brands have to ask for your consent — and pay you when they get it. Join mymodel.',
-        url: url
+        url: shareUrl
     };
-    setTimeout(() => {
-        if (navigator.share) {
-            navigator.share(shareData).catch(() => {});
-        } else if (navigator.clipboard) {
-            navigator.clipboard.writeText(url).then(showCopiedToast);
-        }
-    }, 250);
 
-    function showCopiedToast() {
-        const toast = document.createElement('div');
-        toast.textContent = 'Link copied — share it anywhere';
-        toast.style.cssText = 'position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:#231D30;color:#eeedf2;padding:14px 24px;border-radius:999px;font-family:Manrope,-apple-system,BlinkMacSystemFont,sans-serif;font-size:14px;font-weight:600;border:1px solid rgba(255,255,255,0.07);box-shadow:0 12px 40px rgba(0,0,0,0.5);z-index:9999;opacity:0;transition:opacity 0.3s';
-        document.body.appendChild(toast);
-        requestAnimationFrame(() => toast.style.opacity = '1');
-        setTimeout(() => {
-            toast.style.opacity = '0';
-            setTimeout(() => toast.remove(), 300);
-        }, 2400);
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(15,11,26,0.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:24px;';
+
+    const card = document.createElement('div');
+    card.style.cssText = 'background:#1A1426;border:1px solid rgba(255,255,255,0.08);border-radius:24px;padding:40px 32px 28px;max-width:380px;width:100%;text-align:center;box-shadow:0 24px 64px rgba(0,0,0,0.6);';
+    card.innerHTML = '<div style="font-family:Manrope,-apple-system,BlinkMacSystemFont,sans-serif;font-weight:800;font-size:24px;color:#eeedf2;letter-spacing:-0.025em;margin-bottom:10px;">Share mymodel</div>' +
+        '<div style="font-family:Manrope,-apple-system,BlinkMacSystemFont,sans-serif;font-weight:400;font-size:14px;color:#b0adc2;line-height:1.5;margin-bottom:28px;">The more of us, the sooner we get paid.</div>' +
+        '<button id="mm-share-btn" style="display:block;width:100%;background:#7C3AED;background-image:linear-gradient(135deg,#EC4899 0%,#7C3AED 100%);color:#fff;border:none;border-radius:999px;padding:18px 32px;font-family:Manrope,-apple-system,BlinkMacSystemFont,sans-serif;font-weight:700;font-size:15px;cursor:pointer;letter-spacing:0.01em;margin-bottom:8px;">Share the link</button>' +
+        '<button id="mm-dismiss-btn" style="display:block;width:100%;background:transparent;color:#7a7694;border:none;padding:10px;font-family:Manrope,-apple-system,BlinkMacSystemFont,sans-serif;font-weight:500;font-size:13px;cursor:pointer;">No thanks</button>';
+
+    overlay.appendChild(card);
+    document.body.appendChild(overlay);
+
+    function cleanup() {
+        overlay.remove();
+        const newUrl = new URL(location.href);
+        newUrl.searchParams.delete('share');
+        history.replaceState({}, '', newUrl);
     }
+
+    function showToast(msg) {
+        const toast = document.createElement('div');
+        toast.textContent = msg;
+        toast.style.cssText = 'position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:#231D30;color:#eeedf2;padding:14px 24px;border-radius:999px;font-family:Manrope,-apple-system,BlinkMacSystemFont,sans-serif;font-size:14px;font-weight:600;border:1px solid rgba(255,255,255,0.07);box-shadow:0 12px 40px rgba(0,0,0,0.5);z-index:99999;';
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 2400);
+    }
+
+    document.getElementById('mm-share-btn').addEventListener('click', async () => {
+        try {
+            if (navigator.share) {
+                await navigator.share(shareData);
+            } else if (navigator.clipboard) {
+                await navigator.clipboard.writeText(shareUrl);
+                showToast('Link copied');
+            }
+        } catch (e) { /* user dismissed share sheet, fine */ }
+        cleanup();
+    });
+
+    document.getElementById('mm-dismiss-btn').addEventListener('click', cleanup);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) cleanup(); });
 })();
 </script>
 </body>
