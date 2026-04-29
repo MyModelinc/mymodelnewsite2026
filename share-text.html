@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Share mymodel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
+  <link rel="icon" type="image/png" href="/favicon.png?v=3">
+  <style>
+    :root { --bg: #0F0B1A; --text: #eeedf2; --muted: #b0adc2; --accent: #A78BFA; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 24px; -webkit-font-smoothing: antialiased;
+    }
+    .card { text-align: center; max-width: 360px; }
+    .logo {
+      width: 72px; height: 72px; border-radius: 16px; margin: 0 auto 28px;
+      background: linear-gradient(135deg, #7C3AED 0%, #7C3AED 70%, #EC4899 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 52px; color: #fff; line-height: 1;
+    }
+    h1 {
+      font-size: 22px; font-weight: 700; margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+    p {
+      font-size: 14px; color: var(--muted); line-height: 1.5;
+      margin: 0 0 24px;
+    }
+    .btn {
+      display: inline-block; padding: 18px 36px;
+      background: linear-gradient(135deg, #EC4899, #7C3AED);
+      color: #fff; text-decoration: none; font-weight: 700;
+      font-size: 15px; border-radius: 999px;
+      box-shadow: 0 12px 32px rgba(124,58,237,0.3);
+    }
+    .quiet {
+      display: block; margin-top: 24px;
+      font-size: 13px; color: #7a7694; text-decoration: none;
+    }
+    .quiet:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">m</div>
+    <h1>Opening Messages…</h1>
+    <p>If nothing happens, tap below.</p>
+    <a id="fallback" class="btn" href="#">Open Messages</a>
+    <a href="/join?utm_source=email&utm_medium=email-cta&utm_campaign=waitlist-share&share=1" class="quiet">or share another way →</a>
+  </div>
+  <script>
+    var body = "this girl who calls herself 'the anti tech bro' is launching mymodel, an app that pays people $1B by 2028 for our consent. we've been giving it up for free!! https://getmymodel.com/join?utm_source=imessage&utm_medium=sms&utm_campaign=waitlist-share";
+    var smsUrl = 'sms:?body=' + encodeURIComponent(body);
+    document.getElementById('fallback').href = smsUrl;
+    setTimeout(function() { location.replace(smsUrl); }, 100);
+  </script>
+</body>
+</html>
