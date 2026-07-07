@@ -38,8 +38,8 @@
     @font-face { font-family:'Geist Mono'; src:url('https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/GeistMono-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
     @font-face { font-family:'Geist Mono'; src:url('https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/GeistMono-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script type="application/ld+json">
     [
       {
@@ -931,6 +931,16 @@
         [data-reveal-left].revealed{opacity:1;transform:translateX(0)}
         [data-reveal-right]{opacity:0;transform:translateX(30px);transition:opacity 0.65s ease,transform 0.65s ease}
         [data-reveal-right].revealed{opacity:1;transform:translateX(0)}
+        /* Fail-open fallback: when GSAP or IntersectionObserver is unavailable (CDN blocked by a
+           content blocker / iCloud Private Relay, or a slow mobile connection) the JS adds
+           .js-fallback so every scroll-gated element is forced visible — the page is never blank. */
+        html.js-fallback [data-reveal],
+        html.js-fallback [data-reveal-left],
+        html.js-fallback [data-reveal-right],
+        html.js-fallback .privacy-item,
+        html.js-fallback .privacy-item .privacy-x,
+        html.js-fallback .privacy-badge,
+        html.js-fallback .privacy-30days{opacity:1!important;transform:none!important;transition:none!important}
 
         /* HERO — CSS keyframe entry (no GSAP dependency) */
         @keyframes heroLineIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
@@ -1332,7 +1342,19 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    gsap.registerPlugin(ScrollTrigger);
+    // Fail-open: the page must render even if the GSAP CDN is blocked (content blockers,
+    // iCloud Private Relay) or slow. Guard the library so a missing global can't throw and
+    // abort all the code below that makes content visible. No GSAP => static page, no animations.
+    var GSAP_OK = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
+    if (GSAP_OK) {
+        gsap.registerPlugin(ScrollTrigger);
+    } else {
+        document.documentElement.classList.add('js-fallback');
+        var _chain = function(){ return _chainApi; };
+        var _chainApi = { to: _chain, from: _chain, fromTo: _chain, set: _chain, add: _chain, play: _chain, pause: _chain, kill: _chain };
+        window.gsap = { registerPlugin: function(){}, to: _chain, from: _chain, fromTo: _chain, set: _chain, timeline: function(){ return _chainApi; } };
+        window.ScrollTrigger = { create: function(){}, refresh: function(){}, getAll: function(){ return []; } };
+    }
 
     // Hero entry animations handled by CSS keyframes (see stylesheet)
 
@@ -1481,15 +1503,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // SCROLL REVEALS (generic)
     // ===========================
     const revealEls = document.querySelectorAll('[data-reveal],[data-reveal-left],[data-reveal-right]');
-    const revealObs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.classList.add('revealed');
-                revealObs.unobserve(e.target);
-            }
-        });
-    }, {threshold: 0.25, rootMargin: '0px 0px -8% 0px'});
-    revealEls.forEach(el => revealObs.observe(el));
+    if ('IntersectionObserver' in window) {
+        const revealObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('revealed');
+                    revealObs.unobserve(e.target);
+                }
+            });
+        }, {threshold: 0.25, rootMargin: '0px 0px -8% 0px'});
+        revealEls.forEach(el => revealObs.observe(el));
+    } else {
+        document.documentElement.classList.add('js-fallback');
+    }
 
     // ===========================
     // STEP CARDS — dramatic pop-in
@@ -1608,13 +1634,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1600);
         }
 
-        const obs = new IntersectionObserver(entries => {
-            if (entries[0].isIntersecting && !demoRunning) {
-                demoRunning = true;
-                runNextOffer();
-            }
-        }, { threshold: 0.4 });
-        obs.observe(section);
+        if ('IntersectionObserver' in window) {
+            const obs = new IntersectionObserver(entries => {
+                if (entries[0].isIntersecting && !demoRunning) {
+                    demoRunning = true;
+                    runNextOffer();
+                }
+            }, { threshold: 0.4 });
+            obs.observe(section);
+        }
     })();
 
     // ===========================
