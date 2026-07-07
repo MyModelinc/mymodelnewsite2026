@@ -34,8 +34,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script type="application/ld+json">
     [
       {
@@ -409,6 +409,20 @@
         [data-reveal].revealed{opacity:1;transform:translateY(0)}
         /* Ensure critical content is visible even without JS */
         .problem-stat-block,.pilot-detail{opacity:1!important;transform:none!important}
+        /* Fail-open fallback: when GSAP or IntersectionObserver is unavailable (CDN blocked by
+           a content blocker / iCloud Private Relay, or a slow mobile connection) the JS adds
+           .js-fallback so every scroll-gated element is forced visible — the page is never blank. */
+        html.js-fallback [data-reveal],
+        html.js-fallback .trust-scenario-label,
+        html.js-fallback .trust-hook,
+        html.js-fallback .trust-card-header-label,
+        html.js-fallback .trust-panel-before,
+        html.js-fallback .trust-panel-after,
+        html.js-fallback .trust-metric,
+        html.js-fallback .trust-bullet-text,
+        html.js-fallback .hiw-step,
+        html.js-fallback .hiw-arrow,
+        html.js-fallback .step-row{opacity:1!important;transform:none!important}
 
         /* ===================== HOW IT WORKS — STEP FLOW ===================== */
         .pulse-section{padding:6rem 0;border-top:1px solid var(--border)}
@@ -595,7 +609,7 @@
             <h1>The Ad Industry Runs on Guesses.<br><span class="gradient-text">We Built the Answer.</span></h1>
             <p class="hero-tagline">Consent unlocks superior intelligence.</p>
             <p class="hero-tagline" style="margin-bottom:1rem">We built the infrastructure for it.</p>
-            <p class="hero-thesis">Verified audiences. Live behavior. Deterministic results.</p>
+            <p class="hero-thesis">Verified audiences. Real consent. Deterministic signals.</p>
             <div class="hero-cta-wrap">
                 <a href="/brands/pilot-access.html" class="btn btn-primary" style="font-size:1.125rem;padding:1rem 2.5rem">Join the Founding Cohort &rarr;</a>
             </div>
@@ -617,12 +631,12 @@
         <div class="problem-stats">
             <div class="problem-stat-block" data-reveal>
                 <div class="problem-stat-number">$315B</div>
-                <p class="problem-stat-desc">the global data broker market &mdash; built on consumer data <strong>people never consented to sell</strong></p>
+                <p class="problem-stat-desc">the global data broker market &mdash; built on consumer data <strong>people never knowingly agreed to share</strong></p>
                 <p class="problem-stat-source">Mordor Intelligence, 2026</p>
             </div>
             <div class="problem-stat-block" data-reveal>
                 <div class="problem-stat-number">~50%</div>
-                <p class="problem-stat-desc">the accuracy of audience data brands buy &mdash; <strong>data without consent is data without context</strong></p>
+                <p class="problem-stat-desc">the accuracy of audience data brands buy &mdash; <strong>data without real consent is data without context</strong></p>
                 <p class="problem-stat-source">Truthset / CIMM Household Identity Study, via <a href="https://adage.com/article/measurement/nearly-half-data-used-ad-targeting-wrong-truthset-study/2521136/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;opacity:0.7">Ad Age</a></p>
             </div>
             <div class="problem-stat-block" data-reveal style="background:rgba(124,58,237,0.08);border-color:rgba(124,58,237,0.15)">
@@ -684,7 +698,7 @@
                     <tr class="granted-row table-row">
                         <td><span class="granted-label">Granted</span></td>
                         <td><strong>mymodel</strong></td>
-                        <td><strong>Deterministic.</strong><br><strong>Real-time.</strong><br><strong>360&deg; profile.</strong></td>
+                        <td><strong>Deterministic.</strong><br><strong>Consented.</strong><br><strong>360&deg; profile.</strong></td>
                         <td><strong>Finding &amp; winning<br>net-new users</strong></td>
                         <td style="color:var(--text-muted);font-size:0.75rem">GA July 2026</td>
                         <td style="color:var(--success-green);font-weight:700;letter-spacing:1px">$$</td>
@@ -726,7 +740,7 @@
             <div class="cmp-card granted-card">
                 <div class="cmp-type granted-label">Granted — mymodel</div>
                 <div class="cmp-rows">
-                    <div class="cmp-row"><span class="cmp-key">Quality</span><span class="cmp-val val-green">Deterministic. Real-time. 360° profile.</span></div>
+                    <div class="cmp-row"><span class="cmp-key">Quality</span><span class="cmp-val val-green">Deterministic. Consented. 360° profile.</span></div>
                     <div class="cmp-row"><span class="cmp-key">Best for</span><span class="cmp-val" style="color:var(--text-primary);font-weight:600">Finding &amp; winning net-new users</span></div>
                     <div class="cmp-row"><span class="cmp-key">Cost</span><span class="cmp-val val-green">$$</span></div>
                     <div class="cmp-row"><span class="cmp-key">Compliance</span><span class="cmp-val val-green">Zero risk — active consent</span></div>
@@ -1086,8 +1100,8 @@
                 <div class="sniper-stat sniper-stat--future">
                     <span class="sniper-stat-icon">⚡</span>
                     <div class="sniper-stat-num">100%</div>
-                    <div class="sniper-stat-label">Match Accuracy</div>
-                    <div class="sniper-stat-body">Deterministic, consented signals. <strong>No guessing. No waste. No excuses.</strong></div>
+                    <div class="sniper-stat-label">Consent-verified</div>
+                    <div class="sniper-stat-body">Deterministic, consented signals. <strong>Real people who opted in.</strong></div>
                 </div>
                 <div class="sniper-stat sniper-stat--future">
                     <span class="sniper-stat-icon">🎯</span>
@@ -1132,7 +1146,17 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    gsap.registerPlugin(ScrollTrigger);
+    // Fail-open: the page must render even if the GSAP CDN is blocked (content blockers,
+    // iCloud Private Relay) or slow. Guard the library so a missing global can't throw and
+    // abort all the code below that makes content visible. No GSAP => static page, no animations.
+    var GSAP_OK = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
+    if (GSAP_OK) {
+        gsap.registerPlugin(ScrollTrigger);
+    } else {
+        document.documentElement.classList.add('js-fallback');
+        window.gsap = { registerPlugin: function(){}, from: function(){}, to: function(){}, set: function(){} };
+        window.ScrollTrigger = { create: function(){} };
+    }
 
     // HERO
     gsap.from('.hero-badge', { y: 20, opacity: 0, duration: 0.5, ease: 'power3.out', delay: 0.05 });
@@ -1157,12 +1181,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }, {passive: true});
 
     // SCROLL REVEAL — pure CSS transitions, no GSAP opacity manipulation
-    const revealObs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) { e.target.classList.add('revealed'); revealObs.unobserve(e.target); }
-        });
-    }, {threshold: 0.08});
-    document.querySelectorAll('[data-reveal]').forEach(el => revealObs.observe(el));
+    if ('IntersectionObserver' in window) {
+        const revealObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('revealed'); revealObs.unobserve(e.target); }
+            });
+        }, {threshold: 0.08});
+        document.querySelectorAll('[data-reveal]').forEach(el => revealObs.observe(el));
+    } else {
+        document.documentElement.classList.add('js-fallback');
+    }
 
     // TABLE ROWS FLY-IN — x movement only
     document.querySelectorAll('.table-row').forEach((row, i) => {
@@ -1271,17 +1299,22 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(loopQueries, 11000);
     }
 
-    const agptObs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting && !agptStarted) {
-                agptStarted = true;
-                loopQueries();
-                agptObs.unobserve(e.target);
-            }
-        });
-    }, {threshold: 0.2});
     const agptDisplay = document.getElementById('agpt-display');
-    if (agptDisplay) agptObs.observe(agptDisplay);
+    if ('IntersectionObserver' in window && agptDisplay) {
+        const agptObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting && !agptStarted) {
+                    agptStarted = true;
+                    loopQueries();
+                    agptObs.unobserve(e.target);
+                }
+            });
+        }, {threshold: 0.2});
+        agptObs.observe(agptDisplay);
+    } else if (agptDisplay && !agptStarted) {
+        agptStarted = true;
+        loopQueries();
+    }
 
 
     // PROBLEM STATS STAGGER — y movement only, no opacity manipulation
