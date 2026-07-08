@@ -1,0 +1,42 @@
+name: Render check (mobile Safari resilience)
+
+# Loads every real page in WebKit — normally and with all third-party hosts blocked —
+# and fails if any page throws an uncaught error or renders blank. Catches the class of
+# bug where content is hidden by default and depends on a CDN script that a content
+# blocker / iCloud Private Relay can block on mobile Safari.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: e2e
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright WebKit
+        run: npx playwright install --with-deps webkit
+
+      - name: Run render checks
+        run: npx playwright test
+
+      - name: Upload report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: e2e/playwright-report/
+          retention-days: 7

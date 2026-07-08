@@ -1,0 +1,13 @@
+{
+  "name": "mymodelnewsite2026-e2e",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Deploy-time render checks — catch pages that blank out on mobile Safari when the GSAP CDN / third-party scripts are blocked.",
+  "scripts": {
+    "test": "playwright test",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0"
+  }
+}
