@@ -12,7 +12,7 @@
       gtag('config', 'G-4PJY0SFBZB');
     </script>
     <title>Privacy Policy — mymodel</title>
-    <meta name="description" content="mymodel privacy policy. How we collect, use, and protect your data, including Gmail access for Stats Card generation. Your rights under CCPA and California law.">
+    <meta name="description" content="mymodel privacy policy. How we collect, use, and protect your data, including the email data you upload for Stats Card generation. Your rights under CCPA and California law.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="mymodel">
     <meta property="og:title" content="Privacy Policy — mymodel">
@@ -162,7 +162,7 @@
                 <li><a href="#who-we-are">Who We Are</a></li>
                 <li><a href="#data-we-collect">Data We Collect</a></li>
                 <li><a href="#how-we-collect">How We Collect It</a></li>
-                <li><a href="#gmail-and-google">Gmail &amp; Google Account Data</a></li>
+                <li><a href="#email-and-google">Email Data &amp; Google Sign-In</a></li>
                 <li><a href="#how-we-use">How We Use Your Data</a></li>
                 <li><a href="#brand-sharing">Sharing With Brands</a></li>
                 <li><a href="#service-providers">Service Providers &amp; Third Parties</a></li>
@@ -271,62 +271,59 @@
 
         <div class="section-divider"></div>
 
-        <!-- 4. GMAIL & GOOGLE DATA -->
-        <div id="gmail-and-google">
-            <h2>4. Gmail &amp; Google Account Data</h2>
-            <p>When you choose to connect your Gmail account to mymodel, we access your Google account using OAuth authorization. This section governs our use of Google user data and supplements (and where conflicting, supersedes) the general data-handling sections of this policy.</p>
+        <!-- 4. EMAIL DATA YOU UPLOAD & GOOGLE SIGN-IN -->
+        <div id="email-and-google">
+            <h2>4. Email Data You Upload &amp; Google Sign-In</h2>
+            <p>mymodel builds your Stats Card from transactional emails that you provide to us. We do not connect to your inbox and we do not use the Gmail API. Your email data reaches us in two ways, both started by you: a one-time export you upload from Google Takeout, and optional email forwarding you set up yourself. Separately, you may choose to sign in with Google, which gives us only your basic identity. This section governs both and supplements (and where conflicting, supersedes) the general data-handling sections of this policy.</p>
 
-            <h3>What we access</h3>
-            <p>We request the following Google OAuth scopes during sign-in:</p>
+            <h3>Google Sign-In (identity only)</h3>
+            <p>If you choose "Sign in with Google," we request only basic identity information through these scopes:</p>
             <ul>
-                <li><code>https://www.googleapis.com/auth/gmail.readonly</code> — read-only access to your Gmail messages, message metadata (sender, subject, date, labels), and email attachments. We do not request write, modify, or send permissions for Gmail.</li>
-                <li><code>openid</code>, <code>email</code>, <code>profile</code> — your basic identity (email address, name, profile picture) to create and authenticate your mymodel account.</li>
+                <li><code>openid</code>, <code>email</code>, <code>profile</code>: your basic identity (email address, name, profile picture), used to create and authenticate your mymodel account.</li>
+            </ul>
+            <p>We do not request, and never receive, access to the contents of your Gmail. There is no <code>gmail.readonly</code> or other Gmail content scope, and we do not read your mailbox through any Google API.</p>
+
+            <h3>How your email data reaches us</h3>
+            <ul>
+                <li><strong>One-time upload (Google Takeout).</strong> You export your own email history from Google Takeout and upload the resulting file to mymodel. Your first upload covers up to 12 months of history, scoped to promotional and update categories: receipts, order and shipping confirmations, subscription notices, appointment confirmations, and similar transactional messages. You generate this file and provide it to us; we never pull it from your account.</li>
+                <li><strong>Optional email forwarding.</strong> To keep your Stats Card current without re-uploading, you can set up forwarding so that qualifying emails are sent to a mymodel address. You configure this yourself and can turn it off at any time. Manual re-upload remains available as an alternative.</li>
             </ul>
 
-            <h3>How we use Gmail data</h3>
-            <p>We access your Gmail messages solely to build and maintain your Stats Card — a behavioral profile derived from purchase receipts, shipping confirmations, subscription notifications, appointment confirmations, and similar transactional emails. The Stats Card is the core product feature that enables you to receive paid offers from brands.</p>
-            <p>Specifically, our processing involves:</p>
+            <h3>How we use the email data you provide</h3>
+            <p>We use the emails you provide solely to build and maintain your Stats Card, a behavioral profile derived from purchase receipts, shipping confirmations, subscription notifications, appointment confirmations, and similar transactional emails. The Stats Card is the core product feature that enables you to receive paid offers from brands. Specifically, our processing involves:</p>
             <ol>
-                <li><strong>Periodic message retrieval.</strong> Our background workers periodically retrieve your recent messages (a capped number per refresh cycle, currently every six hours) using your stored OAuth refresh token. We do not retrieve messages older than the configured retention window.</li>
-                <li><strong>In-memory analysis only.</strong> Retrieved messages are processed in our worker process memory. We pass relevant message content to Anthropic's Claude API (see "Sub-processors" below) to extract structured behavioral signals: brand affinities, purchase categories, recent transactions, and related metadata.</li>
-                <li><strong>No persistence of raw Gmail content.</strong> We do NOT store the raw content of your Gmail messages in our database. Email bodies, subjects, attachments, and headers are discarded after analysis. Only the derived structured signals (e.g., "shops at Sephora") are stored as part of your Stats Card.</li>
+                <li><strong>Parsing.</strong> We parse the file you upload, or the messages you forward, to identify transactional content.</li>
+                <li><strong>In-memory analysis only.</strong> Relevant message content is processed in our worker process memory. We pass it to Anthropic's Claude API (see "Sub-processors" below) to extract structured behavioral signals: brand affinities, purchase categories, recent transactions, and related metadata.</li>
+                <li><strong>No persistence of raw email content.</strong> We do NOT store the raw content of your uploaded or forwarded emails in our database. Email bodies, subjects, attachments, and headers are discarded after analysis. Only the derived structured signals (e.g., "shops at Sephora") are stored as part of your Stats Card.</li>
                 <li><strong>Sensitive-category filtering.</strong> Before any data is stored, we apply a sensitive-category filter that strips signals related to specific medical diagnoses, race/ethnicity, immigration status, disability, legal trouble, domestic violence resources, children's identifiable information, financial distress, explicit adult content, firearms, and active addiction recovery. These categories are filtered out of stored signals regardless of what your messages contain.</li>
             </ol>
 
-            <h3>How long we keep Gmail-derived data</h3>
+            <h3>How long we keep this data</h3>
             <ul>
-                <li><strong>Your OAuth refresh token:</strong> Retained while your account is active and Gmail connection is enabled. Revoked and deleted upon disconnection or account deletion.</li>
+                <li><strong>Raw uploaded or forwarded email content:</strong> Not retained. Discarded immediately after analysis.</li>
                 <li><strong>Derived behavioral signals (Stats Card):</strong> Retained while your account is active. Individual purchase events are pruned after 18 months. Upon account deletion, all derived signals are removed within 30 days.</li>
-                <li><strong>Raw Gmail content:</strong> Not retained. Discarded immediately after analysis in each refresh cycle.</li>
+                <li><strong>Google Sign-In identity:</strong> Retained while your account is active. Removed upon account deletion.</li>
             </ul>
 
-            <h3>Who we share Gmail-derived data with</h3>
-            <p>We do not share your Gmail content or raw email data with any third party.</p>
-            <p>Derived Stats Card signals (not raw email content) are shared with brands ONLY when (a) a brand has sent you a specific offer through the platform, (b) you have explicitly accepted that offer, and (c) the brand pays for time-bounded access to your Stats Card. You can decline any offer for any reason. Brands never receive raw Gmail content or per-purchase dollar amounts.</p>
+            <h3>Who we share this data with</h3>
+            <p>We do not sell the raw content of the emails you upload or forward, and we do not share that raw content with brands. To generate your Stats Card, we use one sub-processor, Anthropic, which processes email content on our behalf under contract and does not use it for its own purposes (see "Sub-processors" below).</p>
+            <p>Derived Stats Card signals (not raw email content) are shared with brands ONLY when (a) a brand has sent you a specific offer through the platform, (b) you have explicitly accepted that offer, and (c) the brand pays for time-bounded access to your Stats Card. You can decline any offer for any reason. Brands never receive raw email content or per-purchase dollar amounts.</p>
 
             <h3>Sub-processors</h3>
-            <p>We use the following sub-processors in connection with Gmail data:</p>
             <ul>
-                <li><strong>Anthropic, PBC</strong> — natural language processing of email content for behavioral signal extraction. Per Anthropic's commercial terms, prompt content sent to the Claude API is not used to train Anthropic's models and is not retained beyond the duration of the API request, except as required for short-term abuse monitoring.</li>
-                <li><strong>Render Services, Inc.</strong> — application hosting and database storage for derived signals (not raw email content).</li>
-                <li><strong>Google LLC</strong> — original data source via the Gmail API.</li>
+                <li><strong>Anthropic, PBC:</strong> natural language processing of the email content you provide, for behavioral signal extraction. Per Anthropic's commercial terms, prompt content sent to the Claude API is not used to train Anthropic's models and is not retained beyond the duration of the API request, except as required for short-term abuse monitoring.</li>
+                <li><strong>Render Services, Inc.:</strong> application hosting and database storage for derived signals (not raw email content).</li>
+                <li><strong>Google LLC:</strong> authentication provider for Sign in with Google (basic identity only). Google is not a source of your email content for us; you export that yourself through Google Takeout.</li>
             </ul>
 
-            <h3>Limited Use compliance</h3>
-            <p>Our use of information received from Google APIs adheres to <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google's API Services User Data Policy</a>, including the Limited Use requirements. Specifically:</p>
-            <ul>
-                <li>We use Google user data only to provide and improve user-facing features that are prominent in the mymodel application — building and maintaining your Stats Card.</li>
-                <li>We do not transfer Google user data to others except as necessary to provide or improve user-facing features, comply with applicable law, or as part of a merger, acquisition, or sale of assets (with notice to you).</li>
-                <li>We do not use Google user data for serving advertisements.</li>
-                <li>We do not allow humans to read Google user data except (a) with your specific consent, (b) for security purposes (such as investigating abuse), (c) to comply with applicable law, or (d) when the data has been aggregated and anonymized.</li>
-            </ul>
+            <h3>Google API Services compliance</h3>
+            <p>Because we do not use the Gmail API or any restricted Gmail scope, the Gmail Limited Use requirements do not apply to the email data you upload or forward. Our use of the basic identity scopes (<code>openid</code>, <code>email</code>, <code>profile</code>) under Sign in with Google adheres to <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google's API Services User Data Policy</a>. We do not use Google identity data for advertising, and we do not transfer it to others except as needed to operate the Service, comply with applicable law, or as part of a merger, acquisition, or sale of assets (with notice to you).</p>
 
-            <h3>Disconnecting Gmail</h3>
-            <p>You can disconnect Gmail at any time from the Settings screen in the mymodel mobile app. Disconnection immediately revokes your stored OAuth refresh token, stops all future Gmail message retrieval, and does not retroactively delete derived signals already stored in your Stats Card. To remove existing signals as well, delete your account.</p>
-            <p>You can also revoke mymodel's access directly through your Google Account at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>. Revoking access there immediately stops our ability to retrieve your messages even if our in-app disconnect has not yet run.</p>
+            <h3>Stopping data collection</h3>
+            <p>You can turn off email forwarding at any time from the Settings screen in the mymodel mobile app, which stops all future forwarded messages. You can stop providing historical data by not uploading again. You can revoke Sign in with Google directly through your Google Account at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>. Stopping collection does not retroactively delete derived signals already stored in your Stats Card. To remove existing signals, delete your account.</p>
 
             <h3>Account deletion</h3>
-            <p>You can delete your mymodel account at any time from the Settings screen in the mobile app. Account deletion permanently removes your Stats Card, all derived signals, your OAuth tokens, and all associated records within 30 days, except for records we are legally required to retain (such as transaction records for tax compliance, per the retention schedule in section 11). You may also request deletion by emailing <a href="mailto:support@getmymodel.com">support@getmymodel.com</a>.</p>
+            <p>You can delete your mymodel account at any time from the Settings screen in the mobile app. Account deletion permanently removes your Stats Card, all derived signals, your Google Sign-In identity, and all associated records within 30 days, except for records we are legally required to retain (such as transaction records for tax compliance, per the retention schedule in section 11). You may also request deletion by emailing <a href="mailto:support@getmymodel.com">support@getmymodel.com</a>.</p>
         </div>
 
         <div class="section-divider"></div>
@@ -385,6 +382,7 @@
             </ul>
             <p>All service providers are contractually required to protect your data, use it only for the services they provide to us, and comply with applicable privacy law.</p>
             <p>We do not share your data with advertisers, data brokers, or social media platforms except as part of an offer you've accepted (such as an audience export to Meta or Google, which only occurs with your consent as part of a brand offer).</p>
+            <p>Once an audience export has been shared with a platform such as Meta or Google as part of an offer you accepted, mymodel cannot recall or delete the copy that platform received. You can stop future exports and withdraw consent going forward, but data already delivered to a platform is outside our control.</p>
         </div>
 
         <div class="section-divider"></div>
