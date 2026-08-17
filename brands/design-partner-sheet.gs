@@ -1,4 +1,4 @@
-// myModel Design Partner Application — Google Apps Script
+// mymodel Design Partner Application — Google Apps Script
 // Deploy as: Web App → Execute as: Me → Who has access: Anyone
 // Paste the deployment URL into pilot-access.html as FORM_ENDPOINT
 
